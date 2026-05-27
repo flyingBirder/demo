@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .filter {
+            width: 990px;
+            margin: 0 auto;
+            display: flex;
+            padding: 50px 30px;
+
+        }
+
+        .filter a {
+            padding: 10px 20px;
+            background: #f5f5f5;
+            color: #666;
+            text-decoration: none;
+            margin-right: 20px;
+        }
+
+        .filter a:active,
+        .filter a:focus {
+            background: #05943c;
+            color: #fff;
+        }
+
+        .list {
+            width: 990px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .list .item {
+            width: 240px;
+            height: 300px;
+            /* margin-left: 10px; */
+            margin-bottom: 20px;
+            padding: 20px 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transition: all 0.3s linear;
+
+        }
+
+        .list .item:hover {
+            border: 1px solid greenyellow;
+            transform: translateY(-10px);
+        }
+
+
+        .list .item img {
+            width: 100%;
+            height: 200px;
+
+        }
+
+        .list .item .name {
+            text-align: left;
+            margin-top: 10px;
+        }
+
+        .list .item .price {
+            font-size: 22px;
+            color: firebrick;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="filter">
+        <a href="javascript:;" data-index="0">0-100元</a>
+        <a href="javascript:;" data-index="1">100-300元</a>
+        <a href="javascript:;" data-index="2">300元以上</a>
+        <a href="javascript:;">全部商品</a>
+    </div>
+    <div class="list">
+
+    </div>
+    <script>
+        const data = [
+            {
+                name: '商品1',
+                price: 100,
+            },
+            {
+                name: '商品2',
+                price: 90,
+            },
+            {
+                name: '商品3',
+                price: 300,
+            },
+            {
+                name: '商品4',
+                price: 250,
+            },
+            {
+                name: '商品5',
+                price: 120,
+            },
+            {
+                name: '商品6',
+                price: 600,
+            },
+            {
+                name: '商品7',
+                price: 700,
+            },
+            {
+                name: '商品8',
+                price: 400,
+            },
+            {
+                name: '商品9',
+                price: 260,
+            }
+
+        ];
+
+        function renderHTML(arr) {
+            let html = '';
+            arr.forEach(item => {
+                const { src, name, price } = item;
+                html += `
+                <div class="item">
+                    <img src=${src} alt="">
+                    <p class="name">${name}</p>
+                    <p class="price">${price}</p>
+                </div>
+                `
+            });
+            document.querySelector('.list').innerHTML = html;
+        }
+        // 1. 渲染HTML
+        renderHTML(data);
+
+
+        //2. 过滤筛选
+        document.querySelector('.filter').addEventListener('click', function (e) {
+            const { tagName, dataset } = e.target;
+            if (tagName === 'A') {
+                // arr 是过滤后的新数组
+                let arr = data;
+                if (dataset.index === '0') {
+                    arr = arr.filter(item => item.price > 0 && item.price <= 100);
+                } else if (dataset.index === '1') {
+                    arr = arr.filter(item => item.price >= 100 && item.price <= 300);
+                } else if (dataset.index === '2') {
+                    arr = arr.filter(item => item.price > 300);
+                }
+                // 渲染HTML
+                renderHTML(arr);
+            }
+        });
+
+    </script>
+</body>
+
+</html>

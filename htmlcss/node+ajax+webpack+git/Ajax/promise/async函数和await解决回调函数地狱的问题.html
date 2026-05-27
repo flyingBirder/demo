@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>async函数和await解决回调函数地狱的问题</title>
+</head>
+
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <form action="">
+        <label for="province">省份：</label>
+        <select name="province" id="province">
+            <option value="">请选择省份</option>
+
+        </select>
+        <label for="city">城市：</label>
+        <select name="city" id="city">
+            <option value="">请选择城市</option>
+
+        </select>
+        <label for="district">区县：</label>
+        <select name="district" id="district">
+            <option value="">请选择区县</option>
+
+        </select>
+    </form>
+    <script>
+        /* 
+        目标：掌握async函数和await解决回调函数地狱的问题
+        概念：在async函数中，使用await关键字，获取promise对象“成功状态”的结果值。
+        注意：await关键字只能在async函数中使用。（await会阻止“异步函数内“代码的继续执行，会原地等待结果）
+        */
+
+        async function getData() {
+            const pObj = await axios({ url: 'http://hmajax.itheima.net/api/province' });
+            const pname = pObj.data.list[0];
+            const cObj = await axios({ url: 'http://hmajax.itheima.net/api/city', params: { pname } });
+            const cname = cObj.data.list[0];
+            const dObj = await axios({ url: 'http://hmajax.itheima.net/api/area', params: { pname, cname } });
+            const dname = dObj.data.list[0];
+            document.querySelector('#province option:first-child').innerHTML = pname;
+            document.querySelector('#city option:first-child').innerHTML = cname;
+            document.querySelector('#district option:first-child').innerHTML = dname;
+        }
+        getData();
+    </script>
+
+</body>
+
+</html>

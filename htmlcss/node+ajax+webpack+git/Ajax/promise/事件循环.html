@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        console.log(1);// 直接放到调用栈执行。
+        setTimeout(() => { console.log(2) }, 0);// 先放到宿主环境中，等时间到了再将异步回调放到任务队列中。
+        function myFn() {
+            console.log(3);
+        }
+        function ajaxFn() {
+            const xhr = new XMLHttpRequest();
+            xhr.open('get', 'http://hmajax.itheima.net/api/province');
+            xhr.addEventListener('loadend', function () {
+                console.log(4)
+            });
+            xhr.send();
+        }
+        for (let i = 0; i < 1; i++) {// 放到调用栈执行。
+            console.log(5);
+        }
+        ajaxFn();// 先把ajaxFn()放到调用栈执行，等同步任务执行完了，再将loadend加载事件（异步任务）⌚️放到宿主环境中，等时间到了再将异步回调放到任务队列中。
+        document.addEventListener('click', function () {
+            console.log(6);
+        });
+        myFn();// 放到调用栈执行。
+        // 1 5 3 调用栈空闲后，去任务队列查询 先把2拿到调用栈执行 再是4 点击才执行6
+    </script>
+</body>
+
+</html>

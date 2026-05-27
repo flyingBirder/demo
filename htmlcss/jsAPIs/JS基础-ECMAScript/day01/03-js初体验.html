@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>js基础-ECMAScript基础</title>
+  <style>
+    .active {
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <button class="active">1</button>
+  <button>2</button>
+  <button>3</button>
+  <button>4</button>
+  <script>
+    var btns = document.querySelectorAll('button');
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].addEventListener('click', function () {
+        document.querySelector('.active').className = '';
+        this.className = 'active';
+      });
+    }
+  </script>
+
+</body>
+
+</html>

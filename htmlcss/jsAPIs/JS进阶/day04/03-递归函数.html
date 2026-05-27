@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let i = 1;
+        // fn() 函数调用自身，称为递归函数, 递归函数必须要有一个结束条件, 否则会导致栈溢出, 导致浏览器崩溃, 
+        // 栈溢出是指函数调用自身形成了一个无限循环, 导致栈内存溢出, 栈内存是用来存储函数调用的信息的, 每个函数调用都会在栈内存中占用一定的空间, 如果递归调用没有结束条件, 那么栈内存就会不断地增长, 直到栈溢出.
+        function fn() {
+            console.log(`i = ${i}`);
+            if (i > 5) {
+                return;
+            }
+            i++;
+            fn();
+        }
+        fn();
+    </script>
+</body>
+
+</html>

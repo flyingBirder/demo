@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        // 构造函数
+        // 1.公共属性写在构造函数中
+        function Person(name, age, sex) {
+            this.name = name;
+            this.age = age;
+            this.sex = sex;
+            // 写在构造函数中浪费内存空间
+            /* this.say = function () {
+                console.log(`我是${this.name}，我今年${this.age}岁，我是${this.sex}`);
+            } */
+        }
+        // 原型对象 Person.prototype
+        // Person.prototype
+        //console.dir(Person.prototype); // object 
+
+        // 原型对象上的方法可以被所有实例化对象调用  
+        // 用原型对象.属性的方式 赋值操作
+
+        // 2.公共方法写在原型对象中
+        Person.prototype.sayHello = function () {
+            console.log('hello');
+        }
+
+        // 实例化对象
+        const p1 = new Person('张三', 18, '男');
+        const p2 = new Person('李四', 20, '女');
+        // 调用原型对象上的方法
+        p1.sayHello(); // hello
+        p2.sayHello(); // hello
+
+
+        /* 
+                //公共属性写在构造函数中
+                function Fun(name, age) {
+                    this.name = name;
+                    this.age = age;
+                }
+                // 公共方法写在原型对象中
+                Fun.prototype.sayInfo = function () {
+                    console.log(`我是${this.name}，我今年${this.age}岁`);
+                }
+                const f1 = new Fun('lily', 12);
+                const f2 = new Fun('lucy', 14);
+                // 调用原型对象上的方法
+                f1.sayInfo(); // 我是lily，我今年12岁
+                f2.sayInfo(); // 我是lucy，我今年14岁
+                // 原型对象上的方法可以被所有实例化对象调用
+                console.log(f1.sayInfo === f2.sayInfo); // true
+         */
+    </script>
+</body>
+
+</html>

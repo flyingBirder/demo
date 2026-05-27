@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        console.log(111);
+        setTimeout(() => {
+            console.log(222);
+        }, 1000);
+        console.log(333);
+        // 输出顺序：111 333 222
+
+        console.log(111);
+        setTimeout(() => {
+            console.log(222);
+        }, 0);
+        console.log(333);
+        // 输出顺序：111 333 222
+
+        console.log(111);
+        document.addEventListener('click', function () {
+            console.log(444);
+        });
+        console.log(222);
+        setTimeout(function () {
+            console.log(333);
+        }, 3000);
+        // 输出顺序：111 222 444 333
+        // 同步任务按顺序放在执行栈，异步任务放在任务队列，等待执行栈清空后再执行。
+
+        // 事件循环机制：
+        // 1. 执行栈清空后，从任务队列中取出第一个任务，放入执行栈执行。
+        // 2. 执行栈清空后，从任务队列中取出第一个任务，放入执行栈执行。
+        // 3. 执行栈清空后，从任务队列中取出第一个任务，放入执行栈执行。
+        // ...
+    </script>
+
+</body>
+
+</html>

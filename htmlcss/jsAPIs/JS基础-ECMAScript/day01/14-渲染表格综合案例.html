@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    h2 {
+      text-align: center;
+    }
+
+    table {
+      margin: 0 auto;
+    }
+
+    th,
+    td {
+      padding: 10px 30px;
+    }
+
+    table,
+    th,
+    td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>订单确认表</h2>
+
+</body>
+<script>
+  let productName = prompt('请输入商品名称');
+  let price = parseInt(prompt('请输入商品单价'));
+  let quantity = parseInt(prompt('请输入商品数量'));
+  let amount = price * quantity;
+  // 字符串模板`` 可以在字符串中嵌入变量 ${变量名}
+  document.write(`
+  <table>
+    <tr>
+      <th>商品名称</th>
+      <th>单价</th>
+      <th>数量</th>
+      <th>金额</th>
+      <th>操作</th>
+    </tr>
+    <tr>
+      <td>${productName}</td>
+      <td>${price}元</td>
+      <td>${quantity}件</td>
+      <td>${amount}元</td>
+      <td><button>删除</button></td>
+    </tr>
+  </table>
+  `);
+
+</script>
+
+</html>

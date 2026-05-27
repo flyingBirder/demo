@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>留言板</title>
+</head>
+<body>
+    <textarea name="message" id="" cols="30" rows="10" placeholder="请输入留言内容">
+
+    </textarea>
+    <button>发布</button>
+    <p>留言列表：</p>
+    <ul>
+
+    </ul>
+    <script>
+        var btn = document.querySelector('button');
+        var textarea = document.querySelector('textarea');
+        var ul = document.querySelector('ul');
+        // 点击发布按钮，将留言添加到留言列表
+        btn.onclick = function(){
+            // 1.判断留言是否为空
+            if(message.trim() === ''){
+                alert('请输入留言内容');
+                return false;   
+            }else{
+
+                 // 1.获取留言
+            var message = textarea.value;
+            // 2.创建li元素，将留言添加到li元素中
+            var li = document.createElement('li');
+            // 添加删除按钮，点击删除按钮，删除当前li元素，不想链接跳转 就用 href='javascript:;'
+            li.innerHTML = message + '<a href="javascript:;">删除</a>';
+            // 3. 将li元素添加到ul元素中,实现留言列表的更新
+            ul.insertBefore(li,ul.children[0]);
+            // 4. 清空文本框内容
+            textarea.value = '';
+                //点击留言列表里的删除按钮
+                var delbtn = ul.querySelectorAll('a');
+                delbtn.onclick = function(){
+                    // 1.删除当前li元素,当前a标签的父元素li
+                    ul.removeChild(this.parentNode);
+                }
+
+            }
+           
+        }
+    </script>
+
+       
+
+
+</body>
+</html>

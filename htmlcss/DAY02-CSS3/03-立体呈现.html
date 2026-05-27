@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .cube{
+            position: relative;
+            margin: 100px auto;
+            width: 200px;
+            height: 200px;
+            /* 立方体呈现的第一步添加transform-style属性 */
+            transform-style: preserve-3d;
+            transition: all 1s;
+        }
+        .cube div{
+            width: 200px;
+            height: 200px;
+            /* 立方体呈现的第二步:子级定位 */
+            position: absolute;
+            left:0;
+            top:0;
+
+           
+        }
+        .front{
+                background-color: red;
+                /* 立方体呈现的第三步:调整子盒子位置。比如添加translateZ属性 */
+                transform: translateZ(-100px);
+            }
+        .back{
+            background-color: blue;
+                /* 立方体呈现的第三步:调整子盒子位置。比如添加translateZ属性 */
+            transform: translateZ(100px);
+        }
+        .cube:hover{
+            transform: rotateY(90deg)
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="cube">
+        <div class="front"></div>
+        <div class="back"></div>
+    </div>
+    
+</body>
+</html>

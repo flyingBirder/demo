@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            position: relative;
+        }
+        img{
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 1px solid #333;
+            background-color: pink;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <img src="./images/1.jpg" alt="pic" title="">
+    <script>
+        // mouseEvent 鼠标移动事件对象
+        // mousemove 鼠标移动事件：只要鼠标移动，就会触发事件
+        // 鼠标在页面中移动鼠标，给document注册鼠标移动事件
+        // 图片要移动距离，不占位置，需要绝对定位
+        // 每次鼠标移动，都会产生最新的鼠标坐标，根据最新的鼠标坐标，给图片设置最新的位置
+        document.addEventListener('mousemove',function(mouseEvent){
+            console.log(mouseEvent.clientX);
+            console.log(mouseEvent.clientY);
+            var img = document.querySelector('img');
+            img.style.left = mouseEvent.clientX - 25 + 'px';
+            img.style.top = mouseEvent.clientY - 25 + 'px';
+        })
+    </script>
+    
+</body>
+</html>

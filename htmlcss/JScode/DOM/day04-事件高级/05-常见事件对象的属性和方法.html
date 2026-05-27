@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>常见事件对象的属性和方法- e.target </title>
+</head>
+<body>
+    <div>常见事件对象的属性和方法:e.target</div>
+    <ul>
+        <li>事件对象的属性：</li>
+        <li>事件对象的方法：</li>
+    </ul>
+    <script>
+        var div  = document.querySelector('div');
+        div.onclick = function(e){
+            // 兼容处理：如果浏览器不支持事件对象，就使用window.event
+            e= e|| window.event;
+            var target = e.target || e.srcElement;
+            console.log(target);
+            // e.target 就是事件触发的目标元素
+        }
+
+        var ul = document.querySelector('ul');
+        ul.addEventListener('click',function(e){
+
+            console.log(e.target);
+            console.log(this);
+            console.log(currentTarget);// 跟this 一样，都是事件绑定的元素，ul
+            // this 就是事件绑定的元素，ul
+            // e.target 就是事件触发的目标元素，li
+        });
+    </script>
+</body>
+</html>

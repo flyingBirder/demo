@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" placeholder="请输入用户名">
+    <span id="msg"></span>
+    <script>
+        // 用户名规则：6-18位，只能包含字母、数字、下划线和减号
+        const reg = /^[a-zA-Z0-9-_]{6,18}$/;
+        const input = document.querySelector('input');
+        const span = document.querySelector('#msg');
+        // 失去焦点时验证用户名格式
+        input.addEventListener('blur', function () {
+            const value = this.value.trim();
+            if (reg.test(value)) {
+                span.innerHTML = '用户名格式正确';
+                span.style.color = 'green';
+            } else {
+                span.innerHTML = '用户名格式错误';
+                span.style.color = 'red';
+            }
+        })
+    </script>
+
+</body>
+
+</html>

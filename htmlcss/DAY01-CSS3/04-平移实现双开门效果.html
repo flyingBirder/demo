@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 双开门效果布局结构： */
+        .father{
+            position: relative;
+            margin: 0 auto;
+            width: 1366px;
+            height: 600px;
+            background-color: red;
+            /* 隐藏超出部分 */
+            overflow: hidden;
+        }
+        .father .left,
+        .father .right{
+            width: 50%;
+            height: 600px;
+            position: absolute;
+            top:0;
+
+            /* 过渡属性 */
+            animation: all 1s;
+        }
+        .father .left{
+            background-color: pink;
+            left: 0;
+        }
+        .father .right{
+            background-color: goldenrod;
+            right: 0;
+
+        }
+        /* 鼠标悬停时，左侧门平移到左侧 */
+        div.father:hover .left{
+            transform: translate(-100%);
+        }
+        /* 鼠标悬停时，右侧门平移到右侧 */
+        div.father:hover .right{
+            transform: translate(100%);
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+    
+</body>
+</html>

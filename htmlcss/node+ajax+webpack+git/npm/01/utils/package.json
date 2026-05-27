@@ -1,0 +1,8 @@
+{
+    "name": "cz_utils",
+    "version": "1.0.0",
+    "description": "这是一个工具包",
+    "main": "index.js",
+    "author": "iheima",
+    "license": "MIT"
+}

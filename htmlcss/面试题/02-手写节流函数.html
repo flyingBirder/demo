@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .video {
+            width: 800px;
+            margin: 0 auto;
+        }
+
+        .video video {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="video">
+        <video src="https://v.itheima.net/LapADhV6.mp4" controls></video>
+
+
+    </div>
+    <script>
+        //节流：常见的前端性能优化方案，它可以防止JS高频触发事件造成的性能浪费
+        //使用场景：在触发频率高的事件中，执行耗费性能的操作，连续触发，单位时间内只有一次生效
+        // 频率高的事件比如：resize  scroll  input  keyup mousemove...
+
+        const video = document.querySelector('video')
+        video.addEventListener('timeupdate', throttle(func, 3000));
+        function func() {
+            console.log(video.currentTime)
+        }
+        function throttle(fn, delay) {
+
+            let timeId = null;
+            return function (...args) {
+                if (timeId) return;
+                const _this = this;
+                timeId = setTimeout(() => {
+                    fn.apply(_this, args);
+                    timeId = null;
+                }, delay);
+            }
+        }
+
+    </script>
+</body>
+
+</html>

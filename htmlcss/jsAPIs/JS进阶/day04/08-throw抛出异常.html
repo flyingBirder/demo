@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //  抛出异常, 中断函数执行
+
+        function fn(x, y) {
+            if (!x || !y) {
+                // throw '第一个参数不能为空';
+                throw new Error('参数错误');// 抛出异常, 中断函数执行；推荐使用new Error()
+            }
+            return x + y;
+        }
+        fn();
+    </script>
+</body>
+
+</html>

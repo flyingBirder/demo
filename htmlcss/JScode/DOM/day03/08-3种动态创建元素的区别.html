@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>面试：三种动态创建元素的区别</title>
+</head>
+<body>
+    <!-- 1. document.write() 开发中不推荐使用-->
+    <!-- 2. innerHTML -->
+    <!-- 3. createElement() -->
+
+
+
+    <!-- 区别：
+     1.document.write() 是直接向页面文档流写入内容。如果页面文档流加载完成，再调用document.write(),会覆盖页面文档流加载完成的内容，即重绘。
+     2.innerHTML 是将内容写入某个dom节点，不会导致页面重绘。
+     3.innerHTML 可以创建多个元素效率更高（拼接字符串效率低，需要采取数组形式拼接），结构稍微复杂。
+     4.createElement() 创建多个元素效率稍微低一些，但结构清晰。
+     总结：不同浏览器下，innerHTML 效率要高一些(采取数组形式)，createElement() 效率要低一些。
+    -->
+     <button>点击创建元素</button>
+     <p>abc</p>
+     <div class="inner"></div>
+     <div class="create"></div>
+     <script>
+        // 1. document.write(), 可以创建元素，也可以写入内容.如果页面文档流加载完成，再调用document.write(),会覆盖页面文档流加载完成的内容，即重绘。
+        document.write('<p>hello world</p>');
+        // 重绘：页面文档流加载完成，再调用document.write(),会覆盖页面文档流加载完成的内容。
+        window.onload = function () {
+            document.write('<p>hello world</p>');
+        }
+        // 点击按钮，也会产生重绘。
+        var btn = document.querySelector('button');
+        var p = document.querySelector('p');
+        btn.addEventListener('click', function (e) {
+            document.write('<p>hello world</p>');    
+        });
+        // 2.innerHTML 可以创建元素，也可以写入内容。
+        var inner = document.querySelector('.inner');
+        // 拼接字符串形式
+       for(var i = 0; i < 100; i++){
+            inner.innerHTML += '<a href="https://www.baidu.com">百度</a>';
+       }
+       // 推荐：数组形式拼接
+       var arr = [];
+       for(var i = 0; i < 100; i++){
+            arr.push('<a href="https://www.baidu.com">百度</a>');
+       }
+       inner.innerHTML = arr.join('');
+
+
+
+        // 3.createElement() 只能创建元素，不能写入内容。
+        var create = document.querySelector('.create');
+        // var a = document.createElement('a');
+        // a.href = 'https://www.baidu.com';
+        // a.innerHTML = 'hello world';
+        // create.appendChild(a);
+        for(var i = 0; i < 100; i++){
+            var a = document.createElement('a');
+            create.appendChild(a);
+        }
+      
+        
+
+     </script>
+    
+</body>
+</html>

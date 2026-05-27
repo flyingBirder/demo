@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>综合案例二卡片</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        a{
+            text-decoration: none;
+        }
+        .news{
+            margin: 100px auto;
+            width: 360px;
+            height: 200px;
+            /* background-color: pink; */
+        }
+        .news .head{
+            height: 34px;
+            background: #eee;
+            border:1px solid #dbdee1;
+            border-left: 0;
+        }
+        .news .head a{
+            display: inline-block;
+            width: 48px;
+            height: 34px;
+            border-right: 1px solid #dbdee1;
+            border-top: 3px solid #ff8400;
+            margin-top: -1px;
+            text-align: center;
+            line-height: 34px;
+            background-color: #fff;
+            color: #333;
+            font-size: 14px;
+        }
+        .news .content{
+            padding: 5px;
+            padding-left: 15px;
+
+        }
+        .content ul li{
+            list-style: square;
+            color: #ff8400;
+            
+           ;
+
+
+
+        }
+        .content ul li a{
+            padding-left: 25px;
+            color: #666;
+            font-size: 12px;
+            line-height: 24px;
+            background-image: url(./images/2.jpeg);
+            background-repeat: no-repeat;
+            background-position: 0 center;
+            
+
+
+        }
+        .content ul li a:hover{
+            color: #ff8400;
+        }
+        /* .content ul li a::before{
+            content: '';
+            margin-right: 5px;
+            
+        } */
+    </style>
+</head>
+<body>
+    <div class="news">
+        <div class="head">
+            <a href="#">
+                标题
+            </a>
+        </div>
+        <div class="content">
+            <ul>
+                <li><a href="#">新闻标题1</a></li>
+                <li><a href="#">新闻标题2</a></li>
+                <li><a href="#">新闻标题3</a></li>
+                <li><a href="#">新闻标题4</a></li>
+                <li><a href="#">新闻标题5</a></li>
+                <li><a href="#">新闻标题6</a></li>
+            </ul>
+            
+        </div>
+    </div>
+    
+</body>
+</html>

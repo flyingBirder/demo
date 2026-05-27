@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 箭头函数的参数只有一个时,可以省略括号
+        const fun = (a, b) => {
+            // 函数体只有一条语句时,可以省略大括号
+            console.log('hello world');
+        }
+        fun(1, 2);
+
+
+        // 箭头函数的参数只有一个时,可以省略括号
+        const fun1 = a => {
+            console.log(a);
+        }
+        fun1(1);
+
+
+        // 箭头函数的参数只有一个时,可以省略括号
+        // 函数体只有一条语句时,可以省略大括号
+        // 函数体只有一条语句时,可以省略 return 关键字
+        const fun3 = (x, y) => {
+            return x + y;
+
+        }
+
+        console.log(fun3(1, 2));// 3
+
+
+        const fun2 = x => x + x;
+        console.log(fun2(2));// 4
+
+        // 加括号的函数体,可以返回对象字面量表达式 
+        const fun4 = name => ({ uname: name });
+        console.log(fun4('张三'));// {uname:'张三'}
+
+
+        // 利用箭头函数求和
+        const getSum = (...args) => {
+            let sum = 0;
+            for (let i = 0; i < args.length; i++) {
+                sum += args[i];
+            }
+            return sum;
+        }
+        const res = getSum(1, 2, 3, 4, 5);
+        console.log(res);// 15
+    </script>
+</body>
+
+</html>

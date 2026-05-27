@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #ad {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 300px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="ad">
+        这是一个广告
+    </div>
+    <script>
+        // 1. 获取广告元素
+        const ad = document.getElementById('ad');
+        // 2. 3秒后关闭广告 延迟函数setTimeout 
+        /*  setTimeout(() => {
+             ad.style.display = 'none';
+         }, 3000);
+  */
+        setTimeout(function () {
+            ad.style.display = 'none';
+        }, 3000);
+    </script>
+</body>
+
+</html>

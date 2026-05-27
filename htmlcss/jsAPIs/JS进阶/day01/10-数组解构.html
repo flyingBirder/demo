@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 数组解构
+        const arr = [1, 2, 3, 4, 5];
+        // 定义变量接收数组元素
+        const [a, b, c, d, e] = arr;
+        console.log(a, b, c, d, e);// 1 2 3 4 5
+        const [max, min, avg] = [100, 60, 80];
+
+
+        const [a1, b1, ...c1] = arr;
+        console.log(a1, b1, c1);// 1 2 [3, 4, 5]
+
+
+        // 数组结构的应用 交换变量的值
+        let a2 = 10;
+        let b2 = 20;
+        [a2, b2] = [b2, a2];
+        console.log(a2, b2);// 20 10
+
+        //情况一：变量多，单元值少的情况
+        const [a3, b3, c3] = [100, 60];
+        console.log(a3, b3, c3);// 100 60 undefined
+        //情况二：变量少，单元值多的情况,使用扩展运算符接收剩余元素
+        const [a4, b4, ...c4] = [100, 60, 80];
+        console.log(a4, b4, c4);// 100 60 [80]
+        // 情况三：变量多，单元值少的情况，防止undefined传递，使用默认值
+        const [a5 = 0, b5 = 0, c5 = 0] = [100, 60];
+        console.log(a5, b5, c5);// 100 60 0
+        // 情况四：按需导入,只需要第一个元素
+        const [a6, b6, , d6] = [100, 20, 40, 30];
+        console.log(a6, b6, d6);// 100 20 30
+
+        // 情况五：支持多维数组 嵌套数组解构
+        const [a7, b7, [c7, d7]] = [100, 20, [30, 40]];
+        console.log(a7, b7, c7, d7);// 100 20 30 40
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Object 静态方法
+        const obj = {
+            name: '张三',
+            age: 18,
+            sex: '男'
+        }
+        //1. Object.keys(obj)
+        // 遍历对象的属性名
+        const keys = Object.keys(obj);
+        console.log(keys);// ['name', 'age', 'sex']
+        //2. Object.values(obj)
+        // 遍历对象的属性值 
+        const values = Object.values(obj);
+        console.log(values);// ['张三', 18, '男']
+        //3. Object.assign()
+        // 对象复制
+        const obj1 = Object.assign({}, obj);
+        console.log(obj1);// {name: '张三', age: 18, sex: '男'}
+        // Object.assign() 合并对象
+        const obj2 = Object.assign({}, obj, {
+            age: 20,
+            sex: '女'
+        });
+        console.log(obj2);// {name: '张三', age: 20, sex: '女'}
+
+
+
+    </script>
+
+</body>
+
+</html>

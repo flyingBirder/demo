@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let students = [
+      {
+        uname: 'bob',
+        age: '28',
+        gender: 'male',
+        hobby: ['sing', 'dance'],
+        address: '中国 北京',
+        email: 'ob@qq.com',
+      },
+      {
+        uname: 'lily',
+        age: '18',
+        gender: 'female',
+        hobby: ['sing', 'dance'],
+        address: '中国 香港',
+        email: 'lily@qq.com',
+      },
+      {
+        uname: 'alice',
+        age: '19',
+        gender: 'female',
+        hobby: ['sing', 'dance'],
+        address: '中国 上海',
+        email: 'alice@qq.com',
+      }
+    ];
+    for (let i = 0; i < students.length; i++) {
+      console.log(students[i]);// 打印数组元素（对象） 
+      console.log(students[i].uname);
+      console.log(students[i]['age']);
+
+    }
+  </script>
+</body>
+
+</html>

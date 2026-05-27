@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册事件/绑定事件</title>
+</head>
+<body>
+    <button>传统注册事件： 唯一性</button>
+    <button>事件监听注册事件：IE9以前不支持</button>
+    <button>attachEvent: 只能在IE浏览器中使用 ie9以前使用的</button>
+    <script>
+        var btn = document.querySelector('button');
+        var btn1 = btn[0];
+        var btn2 = btn[1];
+        var btn3 = btn[2];
+        //var btn1 = document.querySelector('button:nth-child(1)');
+        //var btn2 = document.querySelector('button:nth-child(2)');
+        // 1.传统注册事件： 只能给一个元素添加一个事件处理函数
+        btn1.onclick = function(){
+            alert('传统注册事件');
+        }
+        btn1.onclick = function(){
+            alert('传统注册事件2');
+        }
+        // 2.addEventListener()方法， 事件监听注册事件： 可以给一个元素添加多个事件处理函数 
+        // type 事件类型：字符串，需要带引号，例如'click'、'mouseover'等 ，而且不带on
+        // listener 事件处理函数：事件触发时要执行的函数， 可以是匿名函数也可以是命名函数
+        btn2.addEventListener('click',function(){
+            alert('事件监听注册事件');
+        })
+        btn2.addEventListener('click',function(){
+            alert('事件监听注册事件2');
+        })
+
+        // 3.attachEvent()方法 只能在IE浏览器中使用 ie9以前使用的
+        // 事件类型：字符串，需要带引号，而且带on，例如'onclick'、'onmouseover'等 
+        btn3.attachEvent('onclick',function(){
+            alert('attachEvent事件监听注册事件  ');
+        })
+    </script>
+</body>
+</html>

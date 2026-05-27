@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 闭包: 函数嵌套函数, 内部函数可以使用外部函数的变量
+        // 定义外层函数outer
+
+        /*
+        简单写法：
+        function outer() {
+            const a = 1;
+            // 定义内层函数inner
+            function inner() {
+                // 内层函数可以使用外层函数的变量a
+                console.log(a);// 1
+            }
+            // 调用内层函数
+            inner();
+        }
+        outer(); */
+
+        /*     //基本写法：
+            function outer() {
+                let a = 11;
+                function inner() {
+                    console.log(a);// 11
+                }
+                return inner;
+            }
+            const fn = outer();
+            fn();
+    
+        */
+
+
+        /*  //简约写法：
+            function outer() {
+                const a = 1;
+                return function () {
+                    console.log(a);// 1
+                }
+            }
+            const fun = outer();
+            fun();
+            
+        */
+
+        /*        // 闭包的应用：实现计数器,每次调用计数器,计数加1
+               // 这个i是一个全局变量,每次调用计数器,都可以访问到这个i,所以可以实现计数器的功能，但是有个问题,就是i是一个全局变量,所以可以被修改,所以不是一个安全的计数器
+                let i = 1;
+                function couter() {
+                    console.log(`当前计数:${i}`);// 当前计数:2 当前计数:3
+                    console.log(`当前计数:${i}`);// 当前计数:2
+                }
+                couter();// 当前计数:2
+                couter();// 当前计数:3
+        
+         */
+
+        /*      // 闭包的应用：实现数据的私有
+                // 这个count是一个局部变量,只能在inner函数中访问,所以可以实现数据的私有，但是可以通过返回值的方式,将inner函数暴露出来,从而实现数据的访问，
+                // 这样就可以在外部访问到count变量,但是不能直接修改count变量,只能通过调用inner函数来修改count变量
+
+                function couter() {
+                    let count = 1;
+                    function inner() {
+                        count++;
+                        console.log(`当前计数:${count}`);
+                    }
+                    return inner;
+                }
+                const fn = couter();
+                fn();// 当前计数:2
+                fn();// 当前计数:3
+                fn();// 当前计数:4
+        
+         */
+
+
+
+    </script>
+</body>
+
+</html>

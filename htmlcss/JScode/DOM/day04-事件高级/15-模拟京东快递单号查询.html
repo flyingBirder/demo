@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="search">
+        <div class="con">123</div>
+        <input type="text " placeholder="请输入快递单号" id="jd">
+    </div>
+    <!-- 1. 模拟京东快递单号查询
+     1.快递单号输入内容时，上面的大体盒子会显示出来，显示的内容是用户输入的快递单号同时字体放大。
+     2.表单检测输入：给表单添加一个键盘事件
+     3.快递单号输入内容的值赋值给大体盒子
+     2.如果输入的快递单号为空，上面的大体盒子会隐藏起来。
+     
+    
+    -->
+     <script>
+        var con = document.querySelector('.con');
+        var jd = document.querySelector('#jd');
+    
+        jd.addEventListener('keyup', function (e) {
+            if(this.value === ''){
+                con.style.display = 'none';
+                
+            }else{
+
+                con.style.display = 'block';
+                con.innerHTML = this.value;
+            }
+        });
+        // 当获得焦点时，输入的内容不为空con大盒子就显示出来
+        jd.addEventListener('focus', function (e) {
+            if(this.value !== ''){
+                con.style.display = 'block';
+
+
+            }
+        })  
+        // 当失去焦点时，con大盒子就隐藏起来
+        jd.addEventListener('blur', function (e) {
+            con.style.display = 'none';
+        })  
+     </script>
+   
+</body>
+</html>

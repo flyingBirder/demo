@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+        1.定义myApply方法
+        2.设置this并调用原函数
+        3.接收剩余参数并返回结果
+        4.使用Symbol优化避免属性名冲突
+        */
+        //1.定义myApply方法
+        //3.接收剩余参数并返回结果
+        Function.prototype.myApply = function (thisArg, args) {
+            // console.log('myApply执行啦');
+            //2.设置this并调用原函数
+            const key = Symbol('key');// 定义一个唯一的Symbol作为属性名，避免与thisArg对象的其他属性冲突
+            thisArg[key] = this;// 将原函数绑定到thisArg对象的临时属性key上
+            const res = thisArg[key](...args);// 调用原函数并传递参数 //...将数组展开为参数列表依次传递给原函数
+            delete thisArg[key];// 删除临时属性
+            return res;// 返回原函数的执行结果
+
+        }
+        const person = {
+            name: '张三'
+        }
+        function func(num1, num2) {
+            console.log(this);
+            console.log(num1, num2);
+            return num1 + num2;
+        }
+        const res = func.myApply(person, [100, 200]);
+        console.log(res);
+    </script>
+</body>
+
+</html>

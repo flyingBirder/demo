@@ -1,0 +1,30 @@
+.alert {
+    opacity: 0;
+    transition: all 0.5s;
+}
+
+.alert.show {
+    opacity: 1;
+}
+
+.form_wrap {
+    margin: 0 auto;
+    width: 500px;
+    background-color: white;
+}
+
+.form_wrap h3 {
+    text-align: center;
+}
+
+.form_wrap .item {
+    margin-bottom: 10px;
+}
+
+.form_wrap .item input {
+    width: 100%;
+}
+
+.form_wrap .item button {
+    width: 100%;
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>盒子模型</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            /* 边框 border(bd):solid实线 / dashed虚线 /dotted点线*/
+            border: 1px solid #000;
+            /* 边框-单方向边框属性：border-top、border-right、border-bottom、border-left */
+            border-top: 5px dashed red;
+            background: yellowgreen;
+            padding: 20px;
+            margin: 50px;
+            /* 记忆方法：顺时针方向，哪个方向没有了看对面方向值 */
+            /* 内边距 padding(pd): 上 右 下 左 */
+            /* 内边距-单方向属性：padding-top、padding-right、padding-bottom、padding-left */
+            padding-top: 20px;
+            padding-right: 20px;
+            padding-bottom: 20px;
+            padding-left: 20px;
+            /* 内边距duo多值写法 */
+            /* 四值：上 右 下 左 */
+            padding: 20px 30px 40px 50px;
+            /* 三值：上 左右 下 */
+            padding: 20px 30px 20px ;
+            /* 二值：上下 左右 */
+            padding: 20px 30px;
+            /* 单值：所有方向 */
+            padding: 20px;
+            /* 外边距-单方向属性：margin-top、margin-right、margin-bottom、margin-left */
+            /* margin-top: 20px;
+            margin-right: 20px;
+            margin-bottom: 20px;
+            margin-left: 20px; */
+
+            /* 外边距不会撑大盒子的尺寸 */
+            /* 外边距 margin(mg): 上 右 下 左 */
+            
+        }
+    </style>
+</head>
+<body>
+    <div>我是一个div</div>
+    
+</body>
+</html>

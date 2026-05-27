@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // 1. 定义商品数据
+        const goods = [
+            {
+                name: '商品1',
+                price: 100,
+            },
+            {
+                name: '商品2',
+                price: 200,
+            },
+            {
+                name: '商品3',
+                price: 300,
+            },
+        ];
+        // 2. 筛选出价格大于等于200的商品
+        const filteredGoods = goods.filter(good => good.price >= 200);
+        console.log(filteredGoods);// [{name: '商品2', price: 200}, {name: '商品3', price: 300}]
+
+        const filterGoods = goods.filter(good => { return good.price >= 300 });
+        console.log(filterGoods);// [{name: '商品3', price: 300}]
+    </script>
+
+</body>
+
+</html>

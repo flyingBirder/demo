@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+        <style>
+           
+            span{
+                position: absolute;
+                top: 350px;
+                left: 0px;
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                background-color: aquamarine;
+            }
+        </style>
+</head>
+<body>
+    <!-- 回调函数原理：函数可以作为一个参数，将这个函数作为参数传到另一个函数中，当那个函数执行完成后，再执行传进去的这个函数，这个过程叫做回调 -->
+    <button>点击</button>
+    <span ></span>
+
+    <script>
+      
+        var span = document.querySelector('span');
+        var btn = document.querySelector('button');
+       // 缓动动画原理：每次移动的距离 = (目标位置 - 当前位置) / 10
+
+        function animate(obj,target,callback){// 第三个实参：回调函数
+            // 先清除之前的定时器，保证每次点击按钮时，只有一个定时器在运行
+            clearInterval(obj.timer); //解决一个bug：不停的点击按钮，定时器会累加，导致元素移动速度加快
+             obj.timer = setInterval(function(){
+                // 每次移动的距离 = (目标位置 - 当前位置) / 10
+                var step = (target - obj.offsetLeft) / 10;
+                // 为了防止小数的出现，我们需要对step进行取整处理
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);// Math.ceil()向上取整，Math.floor()向下取整
+                if(obj.offsetLeft == target){
+                    // 停止动画，本质就是停止定时器
+                    clearInterval(obj.timer);
+                    if(callback){
+                    // 动画完成后，调用回调函数
+                         
+                        callback();
+                        span.style.backgroundColor = 'red';
+                    }
+                }else{
+                    obj.style.left = obj.offsetLeft + step+ 'px';
+                }
+            },15);
+        }
+        // 点击
+        btn.addEventListener('click',function(){
+            // 调用animate函数，实现span元素的移动
+            animate(span,1000,function(){});// 第三个实参：回调函数
+            
+        })
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>label标签</title>
+</head>
+<body>
+    <!-- label 标签表示标签，for 属性表示标签对应的表单元素的 id 属性值 -->
+    <label for="username">请输入您的姓名：</label>
+    <input type="text" id="username">
+    <br>
+    <br>
+    <label for="password">请输入您的密码：</label>
+    <input type="password" id="password">
+    <br>
+    <br>
+    请选择您的性别：
+    <input type="radio" id="male" name="gender">
+    <label for="male">男</label>
+    <input type="radio" id="female" name="gender">
+    <label for="female">女</label>
+    <br>
+    <br>
+请选择您的爱好：
+<!-- 每个复选框都要包裹在 label 标签中,这样可以增大点击范围，增加用户体验 -->
+    <label>
+        <input type="checkbox">瑜伽
+    </label>
+    <label>
+        <input type="checkbox">跑步
+    </label>
+    <label>
+        <input type="checkbox">骑行
+    </label>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    ul {
+      width: 1200px;
+
+      margin: 0 auto;
+      list-style: none;
+      display: flex;
+    }
+
+    li {
+      width: 20%;
+      margin-bottom: 10px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+
+    img {
+      width: 100%;
+      height: 300px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <script>
+    let data = [
+      {
+        name: '吕布',
+        imgSrc: 'https://img1.baidu.com/it/u=3522242222,2802884322&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500'
+      },
+      {
+        name: '关羽',
+        imgSrc: 'https://img2.baidu.com/it/u=3222242222,2802884322&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500'
+      },
+      {
+        name: '张飞',
+        imgSrc: 'https://img3.baidu.com/it/u=3422242222,2802884322&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500'
+      },
+      {
+        name: '赵云',
+        imgSrc: 'https://img4.baidu.com/it/u=3622242222,2802884322&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500'
+      },
+      {
+        name: '马超',
+        imgSrc: 'https://img5.baidu.com/it/u=3822242222,2802884322&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500'
+      },
+      {
+        name: '黄忠',
+        imgSrc: 'https://img6.baidu.com/it/u=4022242222,2802884322&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500'
+      }
+
+    ];
+
+    let str = '';
+    for (let i = 0; i < data.length; i++) {
+      str += `
+      <li>
+        <img src=${data[i].imgSrc} title=${data[i].name} alt="">
+        
+      </li>
+      
+      `;
+    }
+    document.write(`<ul>${str}</ul>`)
+
+
+  </script>
+</body>
+
+</html>

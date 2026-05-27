@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>京东倒计时</title>
+    <style>
+        div{
+            text-align: center;
+        }
+    span{   width: 20px;
+            line-height: 20px;
+            font-size: 20px;
+            color: red;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <span class="hour">1</span>：
+        <span class="minute">2</span>：
+        <span class="second">3</span>
+    </div>
+    <script>
+        // 1.获取元素
+        var hour = document.querySelector('.hour');
+        var minute = document.querySelector('.minute');
+        var second = document.querySelector('.second');
+        // 获取目标时间的毫秒数
+        var target = +new Date('2026-12-31 00:00:00');
+        countDown();
+        setInterval(countDown, 1000);   
+        function countDown() {
+             // 1.获取当前时间的毫秒数
+            var now = +new Date();  
+            // 2.计算时间差的秒数
+            var diff = ((target - now)/1000);
+            // 3.将时间差转换为小时、分钟、秒
+            var h = parseInt(diff / 60 / 60  % 24);
+            h = h < 10 ? '0' + h : h;
+            var m = parseInt(diff / 60 % 60);
+            m = m < 10 ? '0'+ m : m;
+            var s = parseInt(diff % 60);
+            s = s < 10 ? '0' + s : s;
+            // 4.将时间差显示在页面上
+            hour.innerHTML = h ;
+            minute.innerHTML = m ;
+            second.innerHTML = s ;
+        }
+       
+    </script>
+    
+</body>
+</html>

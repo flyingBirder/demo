@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+        需求：男人和女人不要使用同一个对象，但是不同对象里面包含相同的属性和方法
+        答案：构造函数
+        new 构造函数() 每次都可以创建一个新的对象
+        
+        */
+
+
+        // 定义（父类） 父构造函数 People，用于创建人对象
+        function People() {
+            this.head = 1;
+            this.body = 1;
+        }
+        // 定义（子类） 子构造函数 Women，用于创建女人对象
+        function Women() {
+
+        }
+        // 定义（子类） 子构造函数 Man，用于创建男人对象
+        function Man() { }
+
+        // Women 通过原型继承 构造函数People的属性，Man 通过原型继承 构造函数People的属性
+        Women.prototype = new People();
+        Man.prototype = new People();
+
+        // 修复 Women 原型对象的 constructor 指向，指向 Women 构造函数；修复 Man 原型对象的 constructor 指向，指向 Man 构造函数
+        Women.prototype.constructor = Women;
+        Man.prototype.constructor = Man;
+        // 为 Women 原型对象添加 baby 方法，用于生产婴儿
+        Women.prototype.baby = function () {
+            console.log('生产一个婴儿');
+        }
+        //
+        Man.prototype.huxu = function () {
+            console.log('男人有胡须');
+        }
+        // 创建 Women 实例对象 peppa；创建 Man 实例对象 qiaozhi
+        const peppa = new Women();
+        const qiaozhi = new Man();
+        // peppa 实例对象可以访问 People 构造函数中的属性；qiaozhi 实例对象可以访问 People 构造函数中的属性
+        console.log(peppa);
+        console.log(qiaozhi); 
+    </script>
+</body>
+
+</html>

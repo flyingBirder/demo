@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .bg{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="box one"></div>
+     <button>添加类名</button>
+     <script>
+        var box = document.querySelector('.box');
+        // 增加类名
+        box.classList.add('active');
+        // 移除类名
+        box.classList.remove('box');
+        var btn = document.querySelector('button');
+        // 点击按钮切换body的类名
+        btn.onclick = function(){
+            document.body.classList.toggle('bg');
+        }
+     </script>
+
+    
+</body>
+</html>

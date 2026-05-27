@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .box{
+            width: 600px;
+            height: 112px;
+            border: 5px solid #000;
+            margin: 100px auto;
+            overflow: hidden;
+
+        }
+        .box ul{
+            list-style: none;
+            /* width: 100%; */
+            height: 100%;
+            display: flex;
+            animation: move 6s linear infinite;
+        }
+        .box ul li {
+            width: 200px;
+            height: 100%;
+        }
+        .box img{
+            width: 200px;
+            display: block;
+        }
+        @keyframes move{
+            0%{
+                transform: translateX(0);
+            }
+            100%{
+                transform: translateX(-1400px);
+            }
+        }
+        /* 鼠标悬停时暂停动画 */
+        .box:hover ul{
+            animation-play-state:paused;
+            cursor: pointer;
+           
+
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul>
+            <li>
+                <img src="./images/1.jpeg" alt="">
+            </li>
+            <li>
+                <img src="./images/2.jpeg" alt="">
+            </li>
+            <li>
+                <img src="./images/3.jpeg" alt="">
+            </li>
+            <li>
+                <img src="./images/4.jpg" alt="">
+            </li>
+            <li>
+                <img src="./images/5.jpeg" alt="">
+            </li>
+            <li>
+                <img src="./images/6.jpg" alt="">
+            </li>
+            <li>
+                <img src="./images/7.jpeg" alt="">
+            </li>
+            <!-- 替身：填补留白缝隙 -->
+            <li>
+                <img src="./images/1.jpeg" alt="">
+            </li>
+            <li>
+                <img src="./images/2.jpeg" alt="">
+            </li>
+            <li>
+                <img src="./images/3.jpeg" alt="">
+            </li>
+
+          
+        </ul>
+
+
+    </div>
+    
+</body>
+</html>

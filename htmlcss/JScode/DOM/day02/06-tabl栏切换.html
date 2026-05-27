@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .tab_list ul{
+        display: flex;
+            list-style: none;
+            margin-right: 10px;
+        }
+        .item{
+            display: none;
+        }
+        .current{
+            color: #fff;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="tab">
+        <div class="tab_list">
+            <ul>
+                <li class="current"> 选项卡1</li>
+                <li>选项卡2</li>
+                <li>选项卡3</li>
+            </ul>
+        </div>
+        <div class="tab_content">
+                <div class="item" style="display: block;"> 内容1</div>
+                <div class="item"> 内容2</div>
+                <div class="item"> 内容3</div>
+        </div>
+    </div>
+    <script>
+        var lists = document.querySelector(".tab_list").querySelectorAll("li");
+        var contents = document.querySelector(".tab_content").querySelectorAll(".item");
+        // 循环遍历选项卡 注册点击事件
+        for(var i=0;i<lists.length;i++) {
+            // 给每个选项卡添加属性index作为索引号
+            lists[i].setAttribute('index',i);
+            // 给每个选项卡添加点击事件
+            lists[i].onclick = function(){
+                for(var j=0;j<lists.length;j++){
+                    // 移除所有选项卡的current类名
+                    lists[j].className = '';
+                    // 隐藏所有内容区域
+                    contents[j].style.display = 'none';
+                    
+                }
+                // 添加当前选项卡的current类名
+                this.className = 'current';
+                // 获取当前选项卡的index属性值
+                var index = this.getAttribute('index');
+                // 显示当前内容区域
+                contents[index].style.display = 'block';
+            }
+
+        }
+
+    </script>
+</body>
+</html>

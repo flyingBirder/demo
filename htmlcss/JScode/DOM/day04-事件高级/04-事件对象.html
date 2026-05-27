@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>事件对象：写在事件处理函数的小括号中，当作形参，用来接收事件对象</div>
+    <!-- 事件对象：事件发生时，浏览器会自动创建一个事件对象，包含了事件相关的信息 -->
+     <!--当我们注册事件时，event对象就会被系统自动创建，并传递给事件处理函数。 -->
+     <!-- 事件对象也有兼容问题，IE8及以下浏览器不支持事件对象，处理方案：使用window.event -->
+     
+
+
+     <script>
+        var div = document.querySelector('div');
+        div.onclick = function(e){
+            // 兼容处理：如果浏览器不支持事件对象，就使用window.event
+            if(e || window.event){
+                e = window.event;
+            }
+            // event就是事件对象
+            console.log(e);
+        }
+
+        div.addEventListener('click',function(event){
+            // event 就是事件对象,还可以写成e、evt等，根据个人喜好。
+            console.log(event);
+        })
+
+     </script>
+    
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .nav{
+            position: relative;
+            width: 600px;
+            height: 40px;
+            margin: 0 auto;
+
+        }
+        .cloud{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: 40px;
+            background-color: pink;
+            z-index: -1;
+        }
+        ul{
+            width: 100%;
+            height: 100%;
+            list-style: none;
+            
+        }
+        li{
+            float: left;
+            margin-right: 20px;
+            width: 100px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+        }
+        a{
+            text-decoration: none;
+        }
+    </style>
+    <script src="animate.js"></script>
+</head>
+<body>
+    <!-- 筋斗云案例需求：
+     1.鼠标经过某个li,筋斗云就会显示在当前li的位置；
+     2.鼠标离开某个li,筋斗云就会回到原来的位置；
+     3.鼠标点击了某个li,筋斗云就会显示在当前li的位置,并且筋斗云会显示当前li的内容；
+     案例分析：
+     1.利用动画函数实现筋斗云的移动效果；
+     2.原先筋斗云的位置是0；
+     3.鼠标经过某个li,把当前li的offsetLeft作为筋斗云的目标位置；
+     4.鼠标离开某个li,把筋斗云的目标位置设置为0；
+     
+    -->
+     <div class="nav">
+        <span class="cloud"></span>
+        <ul>
+            <li><a href="#">首页</a></li>
+            <li><a href="#">关于我们</a></li>
+            <li><a href="#">产品中心</a></li>
+            <li><a href="#">联系我们</a></li>
+        </ul>
+     </div>
+<script>
+    window.addEventListener('load',function(){
+        var nav = document.querySelector('.nav');
+        var cloud = document.querySelector('.cloud');
+        var lis = nav.querySelectorAll('li');
+        var current = 0;// 存储筋斗云的初始位置
+        for(var i = 0;i<lis.length;i++){
+            // 鼠标经过某个li,把当前li的位置作为筋斗云的目标位置；
+            lis[i].addEventListener('mouseenter',function(){
+                animate(cloud,this.offsetLeft);
+            });
+            // 鼠标离开某个li,筋斗云复原为0；
+            lis[i].addEventListener('mouseleave',function(){
+                animate(cloud,current);
+            });
+            // 鼠标单击li把当前位置作为筋斗云的目标位置；
+            lis[i].addEventListener('click',function(){
+                // 点击了某个li,把当前li的offsetLeft赋值给current；
+                current = this.offsetLeft;
+
+
+
+            });
+
+            
+        }
+
+    });
+</script>
+</body>
+</html>

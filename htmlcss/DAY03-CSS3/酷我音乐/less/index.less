@@ -1,0 +1,228 @@
+//out: ../css/
+@import './base.less';
+
+@vw: 3.75vw;
+body{
+    background-color: #f9fafb;
+
+}
+
+
+// 头部
+header{
+    // 固定在顶部,添加固定属性会改变元素的显示模式为行内元素，宽度靠内容撑开，解决方案：添加宽度100%
+    position: fixed;
+    left:0;
+    top:0;
+    padding: 0 (15/@vw);
+    width: 100%;
+
+    height: (50/@vw);
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .left{
+        width: (235/@vw);
+        height: (50/@vw);
+        background-image: url(../images/logo.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+    a{
+    width: (80/@vw);
+    height: (30/@vw);
+    background-color: #ffe31b;
+    border-radius: (15/@vw);
+    text-align: center;
+    line-height: (30/@vw);
+    font-size: (14/@vw);
+    color: #333;
+    }
+}
+.search{
+    //header固定定位，会脱离标准流不占位。搜索就会跑到顶部被遮挡。解决方法：添加margin-top
+    // 搜索框距离顶部50px,避免被头部遮挡.
+    margin-top: (50/@vw);
+    height: (52/@vw);
+    padding: (10/@vw) (15/@vw);
+
+    .text{
+        text-align: center;
+        line-height: (32/@vw);
+        height: (32/@vw);
+        background-color: #f2f4f5;
+        border-radius: (16/@vw);
+        color: #a1a4b3;
+        font-size: (14/@vw);
+        .iconfont{
+            vertical-align: bottom;
+            font-size: (16/@vw);
+        }
+        
+    }
+     
+}
+.banner{
+    height: (108/@vw);
+    padding: 0 (15/@vw);
+    ul li{
+        width: (345/@vw);
+        height: (108/@vw);
+        img{
+            width: 100%;
+            height: 100%;
+            // 图片等比例缩放避免图片被挤压
+            // object-fit: contain/cover;
+        }
+    }
+
+}
+//排行榜
+.list{
+    margin-top: (20/@vw);
+    padding: 0 (15/@vw);
+
+}
+// 排行榜标题
+.title{
+    display: flex;
+    justify-content: space-between;
+    line-height: (25/@vw);
+    margin-bottom: (16/@vw);
+
+
+    h4{
+        font-size: (20/@vw);
+        color: #333;
+    }
+     a{
+        font-size: (12/@vw);
+        color: #a1a4b3;
+        .iconfont{
+            vertical-align: bottom;
+            font-size: (16/@vw);
+        }
+     }
+
+}
+// 排行榜列表
+.list{
+    .content{
+        ul li{
+            display: flex;
+            margin-bottom: (16/@vw);
+            height: (105/@vw);
+            border-radius: (10/@vw);
+            .pic{
+                margin-right: (20/@vw);
+                
+                img{
+                    border-radius: (10/@vw);
+    
+                    width: (105/@vw);
+                    height: (105/@vw);
+                }
+            }
+            .text{
+                a{
+                    display: block;
+                    font-size: (12/@vw);
+                    color: #a1a4b3;
+                    line-height: 1.8;
+                }
+                .more{
+                    font-size: (14/@vw);
+                    color: #333;
+                    .iconfont{
+                        vertical-align: bottom;
+                        font-size: (16/@vw);
+                    };
+                }
+    
+            }
+        }
+    }
+
+}
+
+// 推荐歌单
+.recommend{
+    padding: 0 (15/@vw);
+    .content{
+        ul{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+
+            li{
+                margin-bottom: (16/@vw);
+                width: (105/@vw);
+                height: (143/@vw);
+
+                .pic{
+                    position: relative;
+                    width: (105/@vw);
+                    height: (105/@vw);
+                    img{
+                        width: 100%;
+                        height: 100%;
+                    }
+                    .cover{
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        background-color: rgba(0,0,0,0.5);
+                        width: (70/@vw);
+                        height: (28/@vw);
+                        line-height: (28/@vw);
+                        text-align: center;
+                        font-size: (14/@vw);
+                        color: #fff;
+                        border-radius: 0 (10/@vw) 0 (10/@vw);
+                    }
+                }
+                .text{
+                    font-size: (14/@vw);
+                    color: #a1a4b3;
+                }
+                
+            }
+        }
+
+    }
+}
+//
+.download{
+    display: flex;
+    align-items: center;
+    position: fixed;
+    bottom: (30/@vw);
+    left: (15/@vw);
+    width: (345/@vw);
+    height: (45/@vw);
+    border-radius: (22.5/@vw);
+    background-color: #fff;
+    padding: 0 (10/@vw) 0 (15/@vw);
+    img{
+        width: (145/@vw);
+        height: (45/@vw);
+        margin-right: (10/@vw);
+    }
+    p{
+        flex:1;
+        font-size: (14/@vw);
+        color: #333;
+    }
+    .iconfont{
+        width: (32/@vw);
+        height: (32/@vw);
+        line-height: (32/@vw);
+        text-align: center;
+        font-size: (16/@vw);
+        color: #333;    
+        background-color: #f2f3f5;
+        border-radius: 50%;
+    };
+
+}

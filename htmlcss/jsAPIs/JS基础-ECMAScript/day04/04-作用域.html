@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+      // 作用域：变量的有效范围 
+      let num = 10; // 全局变量
+      function fn(){
+        let num = 20; // 局部变量
+        console.log(num);// 20
+      }
+      fn();
+   */
+
+    // 访问原则：在能够访问到的情况下，先局部，局部没有再找全局。
+    let num = 10;
+    function fn() {
+      // let num = 20;
+      function fun() {
+        // let num = 30;
+        console.log(num);
+      }
+      fun();
+    }
+    fn();
+
+
+  </script>
+
+</body>
+
+</html>

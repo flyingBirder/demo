@@ -1,0 +1,84 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ul,
+ol {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: #000;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  height: 1.17333333rem;
+  line-height: 1.17333333rem;
+  padding: 0 0.4rem;
+  background-color: pink;
+}
+.header .back {
+  font-size: 0.58666667rem;
+  transform: rotate(180deg);
+}
+.header h3 {
+  font-size: 0.45333333rem;
+}
+.header .note {
+  color: #2cb5a5;
+  font-size: 0.4rem;
+}
+.banner {
+  margin-top: 0.8rem;
+  margin-bottom: 0.90666667rem;
+  text-align: center;
+}
+.banner img {
+  width: 6.4rem;
+  height: 5.49333333rem;
+  margin-bottom: 0.48rem;
+}
+.banner p {
+  font-size: 0.42666667rem;
+}
+.banner p span {
+  color: #16c2a3;
+}
+.type {
+  padding: 0 0.4rem;
+}
+.type ul li {
+  border: 0.02666667rem solid #16c2a3;
+  height: 2.08rem;
+  border-radius: 0.10666667rem;
+  margin-bottom: 0.4rem;
+  padding: 0.4rem;
+}
+.type ul li a {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.type ul li a img {
+  margin-right: 0.26666667rem;
+  width: 1.06666667rem;
+  height: 1.06666667rem;
+  border-radius: 50%;
+}
+.type ul li a .text {
+  flex: 1;
+}
+.type ul li a .text h4 {
+  font-size: 0.42666667rem;
+  color: #3c3e42;
+  line-height: 0.64rem;
+}
+.type ul li a .text p {
+  font-size: 0.37333333rem;
+}
+.type ul li a span {
+  font-size: 0.42666667rem;
+  color: #16c2a3;
+}

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="" id="">
+    <script>
+        var input = document.querySelector('input');
+        // 1. 模拟京东按键获焦点
+        // 2. 模拟京东按键获焦点的原理：当用户按下 S 键时，会触发搜索框的 focus 事件
+        document.addEventListener('keyup', function (e) {
+            if(e.keyCode === 83){
+                input.focus();
+
+            }
+        })
+    </script>
+    
+</body>
+</html>

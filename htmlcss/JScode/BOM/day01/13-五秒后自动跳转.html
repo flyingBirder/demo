@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>五秒后自动跳转</title>
+</head>
+<body>
+    <button>点击跳转</button>
+    
+    <script>
+        var btn = document.querySelector('button');
+    
+        btn.addEventListener('click', function () {
+            
+                location.href = 'https://www.baidu.com';
+            
+        })
+    </script>
+    <div>5秒后自动跳转</div>
+    <script>
+        var div = document.querySelector('div');
+        var timer = 5;
+        fn();
+        // 五秒后自动跳转
+        setInterval(fn, 1000);
+        function fn(){
+            if(timer < 0){
+                location.href = 'https://www.baidu.com';
+
+            }else{
+                div.innerHTML = '您将在' + timer + '秒后自动跳转';
+                timer--;
+            }
+        }
+    </script>
+</body>
+</html>

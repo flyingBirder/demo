@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <p>ppp</p>
+    </ul>
+    <script>
+
+        // 需求：点击li，li背景颜色变红，其他的li背景颜色变灰
+        const ul = document.querySelector('ul');
+        ul.addEventListener('click', function (e) {
+            // e 事件对象 
+            // console.log(this); this指向ul
+            // 事件委托：利用事件冒泡，将事件处理函数绑定在父元素上，当子元素触发事件时，会冒泡到父元素上，从而触发事件处理函数
+            // 事件委托的原理：利用事件冒泡，将事件处理函数绑定在父元素上，当子元素触发事件时，会冒泡到父元素上，从而触发事件处理函数
+            // 事件委托的优势：1. 减少事件处理函数的绑定次数，提高性能 2. 动态添加的子元素也可以绑定事件处理函数
+
+            // console.log(e.target); // e.target 指向触发事件的元素
+
+            if (e.target.tagName === 'LI') { //根据e.target.tagName 判断指向触发事件的元素的标签名是否是LI
+                e.target.style.backgroundColor = 'red';
+            }
+
+
+        });
+    </script>
+
+
+
+
+
+</body>
+
+</html>

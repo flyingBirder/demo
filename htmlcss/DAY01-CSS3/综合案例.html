@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .btn{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        button{
+            width: 400px;
+            height: 200px;
+            padding: 20px 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+            background-color: #f86442;
+            border: none;
+            border-radius: 50%px;
+            cursor: pointer;
+        }
+        button:first-child{
+            background-image: linear-gradient(to left,#f86442,rgba(255,255,255,.3));
+
+        }
+        button:last-child{
+            background-image: linear-gradient(-45deg,#f86442,rgba(255,255,255,.3));
+        }
+
+        button:nth-child(2){
+            background-image: radial-gradient(100px at center center , #678903,rgba(255,255,255,.3));
+        }
+        button:nth-child(3){
+            background-image: radial-gradient(200px at left top ,rgba(255,255,255,.3),#f86442);
+        }
+
+
+        .content ul{
+            width: 1200px;
+            height: 300px;
+            margin: 10px auto;
+            display: flex;
+            justify-content: space-between;
+            list-style: none;
+            overflow: hidden;
+        }
+        .content ul li a{
+            position: relative;
+        }
+        .content ul img{
+            width: 300px;
+            transition: all .5s;
+            border-radius: 10px;
+        }
+        .content ul .cover{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 300px;
+            height: 300px;
+            border-radius: 10px;
+            background: rgba(0,0,0,.5) url(./images/play.jpg) no-repeat center/30px;
+            
+            opacity: 0;
+            transition: all .5s;
+
+        }
+
+        .content ul li:hover .cover{
+            opacity: 1;
+            background-size: 100px;
+        }
+        .content ul li:hover img{
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="btn">
+        <button>登陆</button>
+        <button>注册</button>
+        <button>提交</button>
+        <button>注销</button>
+    </div>
+    <div class="content">
+        <ul>
+            <li>
+                <a href="#">
+                    <div class="pic">
+                        <img src="./images/windcar1.jpeg" alt="">
+                    </div>
+                    <div class="cover"></div>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <div class="pic">
+                        <img src="./images/windcar1.jpeg" alt="">
+                    </div>
+                    <div class="cover"></div>
+
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <div class="pic">
+                        <img src="./images/windcar1.jpeg" alt="">
+                    </div>
+                    <div class="cover"></div>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <div class="pic">
+                        <img src="./images/windcar1.jpeg" alt="">
+                    </div>
+                    <div class="cover"></div>
+
+                </a>
+            </li>
+    
+        </ul>
+    
+        
+
+    </div>
+    
+</body>
+</html>

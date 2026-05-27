@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-image: url(https://dss2.bdstatic.com/kfoZeXSm1A5BphGlnYG/skin/41.jpg?2);
+        }
+        ul{
+            margin: 100px auto;
+            width: 800px;
+            height: 200px;
+            display: flex;
+            list-style: none;
+        }
+        ul img{
+            width: 200px;
+            height: 150px;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li><img src="https://dss2.bdstatic.com/kfoZeXSm1A5BphGlnYG/skin/41.jpg?2" alt=""></li>
+        <li><img src="https://dss1.bdstatic.com/kvoZeXSm1A5BphGlnYG/skin/1024.jpg?2" alt=""></li>
+        <li><img src="https://dss3.bdstatic.com/iPoZeXSm1A5BphGlnYG/skin/1022.jpg?2" alt=""></li>
+        <li><img src="https://dss2.bdstatic.com/kfoZeXSm1A5BphGlnYG/skin/1017.jpg?2" alt=""></li>
+    </ul>
+    <script>
+        // 1.获取所有图片元素
+       // var imgs = document.querySelector('ul').getElementsByTagName('img');
+        var imgs = document.querySelector('ul').querySelectorAll('img');        
+        // 2.遍历所有图片元素，绑定点击事件
+        for(var i = 0;i<imgs.length;i++){
+            imgs[i].onclick = function(){
+                
+                //3.将当前点击的图片路径设置为body的背景图片
+                document.body.style.backgroundImage = 'url('+this.src+')';
+            }
+
+        }
+    </script>
+    
+</body>
+</html>

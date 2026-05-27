@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- offset系列经常用于获取元素位置：offsetTop、offsetLeft -->
+     <script>
+        // 1. 元素.offsetTop：获取元素到最近的有定位父元素的顶部距离
+        // 2. 元素.offsetLeft：获取元素到最近的有定位父元素的左侧距离
+        // 3. 元素.offsetWidth：获取元素的宽度（包括内边距、边框、内容宽度）,返回值是Number类型
+        // 4. 元素.offsetHeight：获取元素的高度（包括内边距、边框、内容高度）,返回值是Number类型
+        // 注意：offsetTop、offsetLeft、offsetWidth、offsetHeight是只读属性，不能赋值
+     </script>
+     <!-- client系列经常用于获取元素尺寸大小：clientWidth、clientHeight -->
+     <script>
+        // 5. 元素.clientWidth：获取元素的宽度（包括内边距、内容宽度）
+        // 6. 元素.clientHeight：获取元素的高度（包括内边距、内容高度）
+         
+        // 注意：clientWidth、clientHeight是只读属性，不能赋值
+     </script>
+     <!-- scroll系列经常用于获取元素滚动距离：scrollTop、scrollLeft -->
+     <script>
+        // 7. 元素.scrollTop：获取元素的垂直滚动条位置（滚动距离）
+        // 8. 元素.scrollLeft：获取元素的水平滚动条位置（滚动距离）
+        // 9. 元素.scrollWidth：获取元素的宽度（包括内边距、内容宽度、超出部分）
+        // 10. 元素.scrollHeight：获取元素的高度（包括内边距、内容高度、超出部分）
+        // 注意：scrollTop、scrollLeft、scrollWidth、scrollHeight是可读写属性，可赋值
+     </script>
+     <!-- 注意：页面滚动距离可以通过document.documentElement.scrollTop或document.body.scrollTop获取 -->
+      <!-- 11. 页面滚动距离 = 元素.scrollTop（或scrollLeft） - 元素.offsetTop（或offsetLeft） -->
+       <!-- 获取页面垂直或水平滚动距离: window.pageYOffset或window.pageXOffset-->
+    
+</body>
+</html>

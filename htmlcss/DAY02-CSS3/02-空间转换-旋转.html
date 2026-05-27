@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            margin: 100px auto;
+            /* 透视属性:近大远小，近实远虚。取值范围800-1200px */
+            perspective: 1000px;
+            
+            
+        }
+        .img{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            /* 过渡属性 */
+            transition: all 1s;
+        }
+        .box .img:hover{
+            /* 左手法则：左手握住旋转轴，大拇指指向正值方向，其他四值弯曲方向为旋转正值的方向 */
+            /* 旋转属性  绕z轴旋转 */
+            transform: rotateZ(360deg);
+            /* 旋转属性  绕x轴旋转 */
+            transform: rotateX(360deg);
+            /* 旋转属性  绕y轴旋转 */
+            transform: rotateY(360deg);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="img"></div>
+    </div>
+
+</body>
+</html>

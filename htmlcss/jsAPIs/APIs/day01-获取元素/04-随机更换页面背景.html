@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function getRandomNum(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+    // const body = document.querySelector('body');
+    const random = getRandomNum(1, 5);
+    document.body.style.backgroundImage = `url(./images/${random}.jpeg)`;
+    document.body.style.backgroundSize = 'cover';
+  </script>
+</body>
+
+</html>

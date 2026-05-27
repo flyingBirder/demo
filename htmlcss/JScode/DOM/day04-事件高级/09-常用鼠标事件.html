@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 常用鼠标事件：禁用鼠标选中文本内容和鼠标右键 </title>
+</head>
+<body>
+    我是文档中的文本内容，你选不中我，也复制不了我。
+
+    <script>
+        //1. contextmenu 事件：鼠标右键点击时触发
+        document.addEventListener('contextmenu',function(e){
+            e.preventDefault();// 阻止鼠标右键的默认行为
+        })
+        // 2.selectstart 事件：鼠标选中文本内容时触发
+        document.addEventListener('selectstart',function(e){
+            e.preventDefault();// 阻止鼠标选中文本的默认行为
+        })
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       img{
+        margin-left: 200px;
+        margin-top: 200px;
+        width: 300px;
+        height: 300px;
+        border: 1px solid #333;
+        /* 过渡效果 */
+        transition: all .5s;
+        /* 旋转中心默认为中心点:transform-origin:右下角为转动点 */
+        /* transform-origin: right bottom; */
+
+       }
+       /* 鼠标悬停时，图片旋转360度 */
+       img:hover{
+        /* 取值为正顺时针方向旋转，取值为负逆时针方向旋转 */
+        transform: rotate(360deg);
+       }
+      
+    </style>
+</head>
+<body>
+    <img src="./images/windcar1.jpeg" alt="">
+   
+</body>
+</html>

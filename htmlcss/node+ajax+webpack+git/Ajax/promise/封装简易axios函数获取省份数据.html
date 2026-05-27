@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p></p>
+    <script>
+        // 1.定义 myAxios函数，接收配置对象作为参数，返回一个 Promise 实例
+        function myAxios(config) { // config 是一个配置对象，包含了请求的相关信息
+            return new Promise((resolve, reject) => {
+                const xhr = new XMLHttpRequest();
+                // 2. 执行XHR发送请求,method 默认为 get
+                xhr.open(config.method || 'get', 'http://hmajax.itheima.net/api/province');
+                xhr.addEventListener('loadend', function () {
+                    // 3. 调用 成功/失败 处理函数
+                    if (xhr.status >= 200 && xhr.status < 300) {
+                        resolve(JSON.parse(xhr.response));
+
+                    } else {
+                        reject(new Error(xhr.response));
+                    }
+                });
+                xhr.send();
+            });
+        }
+        // 4.调用 myAxios 函数获取省份数据
+        myAxios({
+            url: 'http://hmajax.itheima.net/api/province',
+        }).then(res => {
+            // 处理成功的结果
+            console.log(res);
+            document.querySelector('p').innerHTML = res.list.join('<br>');
+
+        }).catch(err => {
+            // 处理失败的结果
+            console.dir(err);
+            document.querySelector('p').innerHTML = err.message;
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            text-align: center;
+            line-height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <script>
+        const box = document.querySelector('.box');
+        let i = 0;
+        function mouseMove(e) {
+            box.innerHTML = i++;
+            console.log(e);// 鼠标移动时，打印鼠标坐标
+
+        }
+        // 手写防抖函数核心：利用setTimmeout定时器实现
+        //1. 定义一个定时器变量timer，用于存储 setTimeout 返回的定时器ID
+        //2. 每次鼠标移动的时候，判断定时器是否存在，有就清除定时器
+        //3. 如果没有定时器就重新开启定时器，存入到timer变量中
+        // 4. 定时器到期后，调用函数fn
+        // 5. 同时，为了防止内存泄漏，每次调用防抖函数时，都要判断定时器是否存在，有就清除定时器
+        // 6. 为了防止函数调用时，this指向问题，使用apply方法调用函数fn，将this指向当前调用的对象
+
+        function debounce(fn, delay) {
+            let timer;
+            // return 返回一个匿名函数；作用：鼠标每次移动时，都要调用fn函数
+            return function (...args) {
+                const _this = this;// 保存当前调用的对象
+                if (timer) clearTimeout(timer);// 如果定时器存在，就清除定时器
+                timer = setTimeout(function () {
+                    fn.apply(_this, args);// 调用函数fn，同时绑定this指向当前调用的对象
+                }, delay)
+            }
+        }
+        // 给盒子添加鼠标移动事件，调用防抖函数
+        box.addEventListener('mousemove', debounce(mouseMove, 500));
+
+
+
+
+
+    </script>
+</body>
+
+</html>

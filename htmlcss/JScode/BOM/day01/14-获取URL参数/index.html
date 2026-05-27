@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <span></span><h1>欢迎来到首页</h1>
+    <script>
+        var params = location.search.substr(1);// 从第1个字符开始截取到最后一个字符
+        console.log(params);
+        var username = params.split('=')[1];// 把字符串以'='为分隔符，分隔成数组，取数组的第2个元素
+        console.log(username);
+        document.querySelector('span').innerHTML = '你好，' + username;
+
+    </script>
+    
+</body>
+</html>

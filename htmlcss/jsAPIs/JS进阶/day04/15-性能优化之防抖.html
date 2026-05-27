@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+    <!-- 引入lodash库 -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+</head>
+
+<body>
+    <div class="box"></div>
+    <script>
+        // 防抖：在事件被触发n秒后再执行回调，如果在这n秒内事件又被触发，则重新计时。
+        // 需求：鼠标在盒子上移动，里面的数字会发生变化
+        const box = document.querySelector('.box');
+        let i = 0;
+        function mouseMove() {
+            box.innerHTML = i++;
+        }
+        // box.addEventListener('mousemove', mouseMove);
+
+        // 问题：鼠标在盒子上移动，里面的数字会不断变化，这是因为事件被触发的频率非常高，导致回调函数被频繁调用。
+        // 解决：利用lodash库实现防抖 500ms后执行回调函数
+        // 语法：_.debounce(func, [wait=0], [options={}])
+        // func：要防抖的函数
+        // wait：等待时间，单位毫秒
+        // options：选项对象
+        // 返回值：返回新的防抖函数
+
+        box.addEventListener('mousemove', _.debounce(mouseMove, 500));
+    </script>
+</body>
+
+</html>

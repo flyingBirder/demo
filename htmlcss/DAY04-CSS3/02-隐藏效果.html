@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            display: flex;
+        }
+        .left{
+            width: 300px;
+            height: 500px;
+            background-color: pink;
+        }
+        .right{
+            /* 左边固定宽度后父级尺寸剩余的都给右边。 */
+            flex: 1;
+            height: 500px;
+            background-color: greenyellow;
+        }
+        @media(max-width:768px){
+            .left{
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="left">网页宽度小于等于768px时,隐藏</div>
+        <div class="right">我一直在这里。我一直在这里。我一直在这里。我一直在这里。我一直在这里。我一直在这里。我一直在这里。我一直在这里。我一直在这里。我一直在这里。
+            我一直在这里。我一直在这里。我一直在这里。我一直在这里。我一直在这里。我一直在这里。我一直在这里。我一直在这里。我一直在这里。我一直在这里。我一直在这里。
+            我一直在这里。我一直在这里。我一直在这里。我一直在这里。我一直在这里。我一直在这里。我一直在这里。我一直在这里。我一直在这里。我一直在这里。我一直在这里。
+            我一直在这里。我一直在这里。我一直在这里。我一直在这里。我一直在这里。我一直在这里。我一直在这里。我一直在这里。我一直在这里。我一直在这里。我一直在这里。</div>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* relative */
+        /* div{
+            position: relative;
+            top:-100px;
+            left:-100px;
+        } */
+
+        /* absolute */
+
+        .news{
+            position: relative;
+        
+            width: 400px;
+            height: 350px;
+            margin: 100px auto;
+            background-color: #f8f8f8;
+        }
+        .news img{
+            width: 100%;
+        }
+        .news span{
+            position: absolute;
+            top:0;
+            right:0;
+
+            display: block;
+            width: 100px;
+            height: 32px;
+            background-color:rgba(0, 0, 0, 0.5);
+            text-align: center;
+            line-height: 32px;
+            color: #000;
+        }
+
+
+        /* 居中定位 */
+        .box{
+            position: relative;
+            /* width: 1000px; */
+            height: 600px;
+            background-color: pink;
+            
+        }
+        .box img{
+            width: 400px;
+            height: 200px;
+
+            position: absolute;
+            top:50%;
+            left:50%;
+            /* margin-top: -100px;
+            margin-left: -200px; */
+            transform: translate(-50%,-50%);
+
+
+        }
+    </style>
+</head>
+<body>
+    <!-- 定位作用：灵活的改变盒子在网页中的位置；实现：1.定位模式：position 2.边偏移：left/top/right/bottom -->
+
+    <!-- position：relative 相对定位的特点：1.参照自己原来的位置2.不脱标，占位。3.标签显示模式不变 -->
+   
+     <p>
+        Vue.js（发音为/vjuː/，类似view）是由尤雨溪（Evan You）于2014年2月发布的渐进式JavaScript框架，基于标准HTML、CSS和JavaScript构建，采用MIT开源协议并由社区驱动维护。该框架核心库专注视图层开发，通过声明式、组件化的编程模型提升用户界面构建效率，具备约20KB轻量核心并采用虚拟DOM技术优化性能，能够处理大规模应用且几乎无需手动优化。 [4-5] [8] [12]
+作为当前生产环境使用最广泛的JavaScript框架之一，Vue支持自底向上增量开发，可应用于静态HTML增强、单页应用（SPA）、服务端渲染（SSR）、静态站点生成（SSG）等场景，可通过Node包管理器（npm）在Windows及Linux子系统（WSL）部署。其生态覆盖WebComponents、移动端、桌面端等多终端开发需求，提供选项式API与组合式API两种编程风格，支持单文件组件（*.vue文件）。
+
+     </p>
+     <p>
+        Vue.js（发音为/vjuː/，类似view）是由尤雨溪（Evan You）于2014年2月发布的渐进式JavaScript框架，基于标准HTML、CSS和JavaScript构建，采用MIT开源协议并由社区驱动维护。该框架核心库专注视图层开发，通过声明式、组件化的编程模型提升用户界面构建效率，具备约20KB轻量核心并采用虚拟DOM技术优化性能，能够处理大规模应用且几乎无需手动优化。 [4-5] [8] [12]
+作为当前生产环境使用最广泛的JavaScript框架之一，Vue支持自底向上增量开发，可应用于静态HTML增强、单页应用（SPA）、服务端渲染（SSR）、静态站点生成（SSG）等场景，可通过Node包管理器（npm）在Windows及Linux子系统（WSL）部署。其生态覆盖WebComponents、移动端、桌面端等多终端开发需求，提供选项式API与组合式API两种编程风格，支持单文件组件（*.vue文件）。
+</p>
+<div><img src="./images/1.webp" alt=""></div>
+<p>Vue.js（发音为/vjuː/，类似view）是由尤雨溪（Evan You）于2014年2月发布的渐进式JavaScript框架，基于标准HTML、CSS和JavaScript构建，采用MIT开源协议并由社区驱动维护。该框架核心库专注视图层开发，通过声明式、组件化的编程模型提升用户界面构建效率，具备约20KB轻量核心并采用虚拟DOM技术优化性能，能够处理大规模应用且几乎无需手动优化。 [4-5] [8] [12]
+    作为当前生产环境使用最广泛的JavaScript框架之一，Vue支持自底向上增量开发，可应用于静态HTML增强、单页应用（SPA）、服务端渲染（SSR）、静态站点生成（SSG）等场景，可通过Node包管理器（npm）在Windows及Linux子系统（WSL）部署。其生态覆盖WebComponents、移动端、桌面端等多终端开发需求，提供选项式API与组合式API两种编程风格，支持单文件组件（*.vue文件）。</p>
+
+
+
+    <!-- absolute 绝对定位的特点：1.参照最近的已定位祖先元素2.脱标，不占位。3.标签显示模式不变 ；使用场景：子级绝对定位，父级相对定位。-->
+
+    
+    <div class="news">
+        <img src="./images/1.webp" alt="">
+        <span>展会活动</span>
+        <h4>2023年10月10日 10:00-12:00</h4>
+    </div>
+
+
+    <!-- position:fixed 固定定位的特点：1脱标不占位2.参照物：浏览器的窗口3.显示模式为行内块元素 ;场景：元素的位置在网页滚动时不会改变 -->
+   
+
+    <!--定位居中，实现步骤：1绝对定位 2.水平垂直边偏移量50% 3.负 margin ：宽度或高度的一半 。transform：translate(-50%,-50%)-->
+
+    <div class="box">
+        <img src="./images/1.webp" alt="">
+    </div>
+</body>
+</html>

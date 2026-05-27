@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <img src="./images/1.jpeg" alt="">
+  <script>
+    function getRandomNum(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+    const img = document.querySelector('img');// 获取图片元素
+    const random = getRandomNum(1, 5);// 图片随机序号
+    img.src = `./images/${random}.jpeg`;// 图片随机路径
+  </script>
+
+</body>
+
+</html>

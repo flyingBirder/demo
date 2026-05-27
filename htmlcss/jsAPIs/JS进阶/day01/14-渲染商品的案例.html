@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        #container {
+            width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .item {
+            width: 200px;
+            height: 200px;
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .item img {
+            width: 100px;
+            height: 100px;
+        }
+
+        .item p {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div class="item">
+            <img src="./images/1.jpg" alt="">
+            <p>商品名称</p>
+            <p>商品价格</p>
+        </div>
+    </div>
+    <script>
+
+        // 2. 定义商品数据
+        const goods = [
+            {
+                name: '商品1',
+                price: 100,
+                src: './images/1.jpg'
+            },
+            {
+                name: '商品2',
+                price: 200,
+                src: './images/2.jpg'
+            },
+            {
+                name: '商品3',
+                price: 300,
+                src: './images/3.jpg'
+            },
+            {
+                name: '商品4',
+                price: 400,
+                src: './images/4.jpg'
+            }
+            ,
+            {
+                name: '商品5',
+                price: 500,
+                src: './images/5.jpg'
+            },
+            {
+                name: '商品6',
+                price: 600,
+                src: './images/6.jpg'
+            }
+        ];
+        let str = '';
+        // 3. 遍历商品数据,创建商品元素,添加到字符串中
+        goods.forEach(item => {
+            const { src, name, price } = item;
+            str += `
+            <div class="item">
+                <img src="${src}" alt="">
+                <p class="name">${name}</p>
+                <p class="price">${price}</p>
+            </div>
+            `;
+        });
+        // 4. 渲染商品元素到容器中
+        const container = document.getElementById('container').innerHTML = str;
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .slider {
+      margin: 0 auto;
+      position: relative;
+      width: 500px;
+      height: 500px;
+      overflow: hidden;
+    }
+
+    .slider img {
+      /* display: block; */
+      width: 100%;
+      height: 80%;
+      vertical-align: bottom;
+    }
+
+    .slider p {
+      padding: 20px;
+      height: 20%;
+      background-color: rgb(200, 7, 6);
+    }
+
+    .slider ul {
+      list-style: none;
+      position: absolute;
+      bottom: 15px;
+      left: 15px;
+      display: flex;
+      align-items: center;
+    }
+
+    .slider ul li {
+      width: 8px;
+      height: 8px;
+      margin: 5px;
+      border-radius: 50%;
+      background-color: #fff;
+      opacity: .4;
+      cursor: pointer;
+    }
+
+    ul li.active {
+      opacity: 1;
+      width: 12px;
+      height: 12px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="slider">
+    <img src="./images/1.jpeg" alt="">
+    <p></p>
+    <ul>
+      <li class="active"></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+
+  <script>
+    const slideData = [
+      {
+        url: './images/1.jpeg',
+        title: '这是第1张图片',
+        color: 'rgb(200,7,6)',
+      },
+      {
+        url: './images/2.jpeg',
+        title: '这是第2张图片',
+        color: 'rgb(100,6,6)',
+      },
+      {
+        url: './images/3.jpeg',
+        title: '这是第3张图片',
+        color: 'rgb(100,67,255)',
+      },
+      {
+        url: './images/4.jpeg',
+        title: '这是第4张图片',
+        color: 'rgb(100,255,6)',
+      },
+      {
+        url: './images/5.jpeg',
+        title: '这是第5张图片',
+        color: 'rgb(255,67,6)',
+      },
+    ];
+    const img = document.querySelector('img');
+    const p = document.querySelector('p');
+    let i = 0;
+    setInterval(function () {
+      i++;
+      if (i >= slideData.length) {
+        i = 0;
+      }
+      img.src = slideData[i].url;
+      p.innerHTML = slideData[i].title;
+      p.style.backgroundColor = slideData[i].color;
+
+      document.querySelector('ul li.active').classList.remove('active');
+      document.querySelector(`ul li:nth-child(${i + 1})`).classList.add('active');
+    }, 1000)
+
+  </script>
+</body>
+
+</html>

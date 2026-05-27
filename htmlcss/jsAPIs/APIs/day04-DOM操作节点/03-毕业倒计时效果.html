@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            padding: 20px;
+            width: 500px;
+            height: 300px;
+            margin: 0 auto;
+            text-align: center;
+            background-color: pink;
+            color: white;
+        }
+
+        h2 {
+            font-size: 28px;
+        }
+
+        h2 span {
+            display: inline-block;
+            font-size: 30px;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            background-color: black
+        }
+
+        h3 {
+            font-size: 20px;
+        }
+
+        .deadline {
+            margin-top: 50px;
+            font-size: 25px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="box">
+        <h3 class="nowdate"></h3>
+        <h2>下班倒计时：</h2>
+        <h2><span id="day"></span>天<span id="hour"></span>:<span id="minute"></span>:<span id="second"></span></h2>
+        <h3 class="deadline">18:30:00下课</h3>
+    </div>
+    <script>
+        // 日期对象实例
+        const date = new Date();
+        console.log(date)
+        const nowdate = document.querySelector('.nowdate');
+        nowdate.innerHTML = `今天是${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日`;
+        // 0. 定义一个函数，用于计算倒计时
+        function getCountTime() {
+            // 1. 先获取到当前时间戳
+            const now = +new Date();
+            // 2. 再获取到目标时间戳
+            const deadline = +new Date('2025-12-3 18:30:00');
+            // 3. 计算时间差 （单位：秒）
+            const diffTime = (deadline - now) / 1000;
+            // 4. 计算天数
+            const day = Math.floor(diffTime / 60 / 60 / 24);
+            // 5. 计算小时数
+            const hour = Math.floor(diffTime / 60 / 60) % 24;
+            // 6. 计算分钟数
+            const minute = Math.floor(diffTime / 60) % 60;
+            // 7. 计算秒数
+            const second = Math.floor(diffTime) % 60;
+            // 8. 渲染到页面
+            document.getElementById('day').innerHTML = day;
+            document.getElementById('hour').innerHTML = hour < 10 ? '0' + hour : hour;
+            document.getElementById('minute').innerHTML = minute < 10 ? '0' + minute : minute;
+            document.getElementById('second').innerHTML = second < 10 ? '0' + second : second;
+
+        }
+        // 8. 先调用一次函数，避免页面加载时倒计时显示错误
+        getCountTime();
+        // 9. 开启定时器，每秒钟调用一次函数
+        setInterval(getCountTime, 1000);
+    </script>
+</body>
+
+</html>

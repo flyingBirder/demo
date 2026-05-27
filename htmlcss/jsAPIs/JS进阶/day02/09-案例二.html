@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .list {
+            width: 990px;
+            margin: 100px auto 0;
+        }
+
+        .item {
+            padding: 15px;
+            transition: all 0.3s;
+            display: flex;
+            border-top: 1px solid #e4e4e4;
+            align-items: baseline;
+            /* align-items: baseline;
+            justify-content: flex-start;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #999;
+            padding: 10px 0; */
+        }
+
+        .item:nth-child(4n) {
+            margin-left: 0;
+        }
+
+        .item:hover {
+            background-color: #f4f4f4;
+        }
+
+        .item img {
+            width: 80px;
+            height: 80px;
+            background-color: pink;
+            margin-right: 10px;
+        }
+
+        .item .name {
+            font-size: 18px;
+            margin-right: 10px;
+            color: #333;
+            flex: 2;
+        }
+
+        .item .name .tag {
+            display: block;
+            padding: 2px;
+            font-size: 12px;
+            color: #999;
+        }
+
+
+
+        .item .price,
+        .item .sub-total {
+            font-size: 18px;
+            color: firebrick;
+            flex: 1;
+        }
+
+        .item .price::before,
+        .item .sub-total::before {
+            content: '¥';
+            font-size: 12px;
+        }
+
+        .item .desc {
+            flex: 2;
+            font-size: 14px;
+            color: #888;
+        }
+
+
+        .count {
+            flex: 1;
+            color: #aaa;
+        }
+
+        .total {
+            width: 990px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: flex-end;
+            border-top: 1px solid #e4e4e4;
+            padding: 20px;
+
+        }
+
+        .total span {
+            font-size: 18px;
+            color: firebrick;
+            font-weight: bold;
+            margin-right: 50px;
+        }
+
+        .total span::before {
+            content: '¥';
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="list">
+
+    </div>
+    <div class="total">总计：<span></span></div>
+    <script>
+        const goodList = [{
+            id: 10001,
+            pictrue: '1.jpg',
+            name: '这是一个称心如意的手磨咖啡机。',
+            spec: { size: '迷你版', color: '白色' },
+            price: 1046,
+            count: 2,
+        },
+        {
+            id: 10002,
+            pictrue: '2.jpg',
+            name: '这是一个法式面包机。',
+            spec: { size: '中号', color: '黄色' },
+            price: 1246,
+            count: 1,
+        },
+        {
+            id: 10003,
+            pictrue: '3.jpg',
+            name: '这是一个饮水机。',
+            spec: { size: '家用版', color: '白色' },
+            price: 646,
+            count: 2,
+        },
+        {
+            id: 10004,
+            pictrue: '4.jpg',
+            name: '这是一个电压力锅。',
+            spec: { size: '3-5人', color: '黄色' },
+            price: 546,
+            count: 1,
+            gift: ' 一个清洗球，一把锅铲',
+        },
+        ];
+        const list = document.querySelector('.list');
+        const totalPrice = document.querySelector('.total span');
+        list.innerHTML = goodList.map(item => {
+            // 对象解构
+            const { pictrue, name, spec, price, count, gift } = item;
+            // 遍历对象的属性值 并拼接成字符串
+            const text = Object.values(spec).join(' / ');
+            // 处理子项总价 保留2位小数
+            const subTotal = (price * count).toFixed(2);
+            // 处理赠品
+            const giftText = gift ? gift.split('，').map(item => `<span class="tag">【赠品】${item}</span>`).join('') : '';
+            return `
+                <div class="item">
+                    <img src=${pictrue} alt="照片">
+                    <p class="name">${name}${giftText}</p>
+                    <p class="desc">${text}</p>
+                    <p class="price">${price.toFixed(2)}</p>
+                    <p class="count">x${count}</p>
+                    <p class="sub-total">${subTotal}</p>
+                </div>
+            `
+        }).join('');
+        // 计算总价 并保留2位小数 
+        const total = goodList.reduce((pre, cur) => pre + (cur.price * cur.count * 100) / 100, 0);
+        // 处理总价 保留2位小数
+        totalPrice.innerHTML = total.toFixed(2);
+    </script>
+</body>
+
+</html>

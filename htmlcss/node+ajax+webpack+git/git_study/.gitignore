@@ -1,0 +1,12 @@
+# 忽略npm下载的第三方包： node_modules 目录
+node_modules
+# 忽略webpack打包的文件夹： dist 目录
+dist
+# 忽略vscode配置文件
+.vscode
+# 忽略密钥文件
+*.pem
+*.cer
+# 忽略日志文件
+*.log
+password.txt

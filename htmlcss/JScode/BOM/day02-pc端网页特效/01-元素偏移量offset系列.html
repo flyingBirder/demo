@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>offset偏移量</title>
+</head>
+<body>
+    <div class="father" style="width: 500px; height: 500px; background-color: red; position: relative;">
+        <div class="son" style="width: 200px; height: 200px; background-color: pink;margin-top: 100px;margin-left: 100px;">
+
+        
+        </div>
+    </div>
+    <script>
+        // offsetLeft： 返回元素相对带有定位的父元素的左边框的距离，如果没有父亲或者父亲没有定位,则返回元素相对body的左边框的距离
+        // offsetTop： 返回元素相对带有定位的父元素的上边框的距离,如果没有父亲或者父亲没有定位,则返回元素相对body的上边框的距离
+        // offsetWidth： 返回元素的宽度（包含边框、内边距、内容宽度）
+        // offsetHeight： 返回元素的高度（包含边框、内边距、内容高度）
+        // offsetParent： 返回元素最近的带有定位的父元素,如果没有则返回body
+        var father = document.querySelector('.father');
+        var son = document.querySelector('.son');
+       
+        console.log(son.offsetLeft); // 
+        console.log(son.offsetTop); // 
+        console.log(son.offsetWidth); // 200
+        console.log(son.offsetHeight); // 200
+        console.log(son.offsetParent); // <div class="father" style="width: 500px; height: 500px; background-color: red; position: relative;">
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="input" placeholder="请输入内容">
+    <script>
+        //防抖：常见的前端性能优化方案，他可以防止JS高频渲染页面时出现的视觉抖动/卡顿（例如：用户在输入框中输入内容时，每次输入都触发了事件，导致页面频繁渲染，从而出现视觉抖动）
+        //使用场景：在触发频率高的事件中，执行耗费性能的操作，连续操作之后只执行一次生效
+        //频率高的事件比如：search  input  
+        // 耗费性能的操作：比如发送网络请求、操作页面等
+        /* 手写防抖函数
+        1.返回防抖动的新函数
+        2.原函数中的this可以正常使用
+        3.原函数中的参数可以正常使用
+        */
+
+        const input = document.getElementById('input');
+        function func(e) {
+            console.log(e.value);
+        }
+        function debounce(fn, delay) {
+            return function (...args) {
+                const _this = this;
+                let timer;
+                if (timer) {
+                    clearTimeout(timer);
+                }
+                timer = setTimeout(() => {
+                    fn.apply(_this, args);
+                }, delay);
+
+            }
+        }
+
+        input.addEventListener('input', debounce(func, 500));
+    </script>
+</body>
+
+</html>

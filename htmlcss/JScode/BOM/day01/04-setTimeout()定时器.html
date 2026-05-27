@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setTimeout()定时器</title>
+</head>
+<body>
+    <!-- 
+        setTimeout(调用的函数, 延迟的时间(毫秒))定时器：用于在指定的时间后执行一次代码。调用的函数叫做回调函数。这个函数需要等待一定的时间到了后才可以调用执行。
+    -->
+    <script>
+        // setTimeout()定时器的基本语法
+        // setTimeout(要执行的代码, 延迟的时间(毫秒))
+        // 例如，在2秒后执行一次代码
+        setTimeout(function() {
+            console.log('2秒后执行了');
+        }, 2000);
+        //区分不同的定时器，需要给每个定时器设置一个唯一的标识符
+        var timer1 = setTimeout(function() {
+            console.log('2秒后执行了');
+        }, 2000);
+    </script>
+
+    <div id="ad">这是一个元素</div>
+    <script>
+        // 例如，在5秒后隐藏广告元素
+        setTimeout(function() {
+            document.getElementById('ad').style.display = 'none';
+        }, 5000);
+    </script>
+    
+</body>
+</html>

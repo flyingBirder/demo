@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>this指向</title>
+</head>
+<body>
+    <button id="btn">点击我</button>
+    <!-- 一般情况下，this指向调用它的对象 -->
+    <!-- 1. 全局环境下this指向全局对象window -->
+    <script>
+        console.log(this);
+        window.console.log(this);
+        window.fn();
+        function fn() {
+            console.log(this);
+        }
+        setTimeout(function(){
+            console.log(this);// window
+        }, 1000);
+    </script>
+
+    <!-- 2. 方法调用下this指向调用它的对象 -->
+    <script>
+        var obj = {
+            name: '张三',
+            sayName: function() {
+                console.log(this);
+            }
+        }
+        obj.sayName();// obj
+
+        var btn = document.getElementById('btn');
+        btn.onclick = function(){
+            console.log(this);// this指向btn
+        }
+        btn.addEventListener('click', function(){
+            console.log(this);// this指向btn
+        })
+
+    </script>
+
+    <!-- 3. 构造函数调用下this指向新创建的对象 -->
+    <script>
+        function Person(name, age) {
+            this.name = name; // this指向新创建的对象p1
+            this.age = age;
+        }
+        var p1 = new Person('张三', 18);// 构造函数 实例化对象p1
+        console.log(p1);// Person {name: '张三', age: 18}
+    </script>
+</body>
+</html>

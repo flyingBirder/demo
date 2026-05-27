@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>清除clearTimeout定时器</title>
+</head>
+<body>
+    <div class="btn">点击我</div>
+
+    
+    <!-- 
+        clearTimeout()定时器：用于清除之前设置的 setTimeout() 定时器。
+    -->
+    <script>
+        var btn = document.querySelector('.btn');
+        // 例如，清除之前设置的定时器 timer1
+        var timer1 = setTimeout(function() {
+            console.log('5秒后执行了');
+        }, 5000);
+        // clearTimeout(定时器的标识符)
+        // 点击按钮后，清除定时器
+        btn.addEventListener('click', function() {
+            clearTimeout(timer1);
+        });
+
+    </script>
+    
+</body>
+</html>

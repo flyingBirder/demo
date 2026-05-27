@@ -1,0 +1,364 @@
+/* 版心居中 */
+.wrapper{
+    width: 1200px;
+    margin: 0 auto;
+}
+body{
+    background-color: #f3f5f7;
+}
+/* 头部区域 */
+
+.header{
+    height: 100px;
+    background-color: #fff;
+}
+.header .wrapper{
+    display: flex;
+    padding-top: 30px;
+}
+/* .logo */
+.logo a{
+    /* 行内元素转显示模式为块级元素 */
+    display: block;
+    /* 设置图片宽高背景图。图片宽度继承父级 */
+    width: 195px;
+    height: 40px;
+    background-image: url(../images/1.png);
+    background-repeat: no-repeat;
+
+    /* 文字隐藏 搜索引擎关键字*/
+    font-size: 0;
+
+}
+
+/* 导航.nav */
+
+.nav{
+    margin-left: 100px;
+}
+.nav ul{
+    display: flex;
+}
+.nav ul li{
+    margin-right: 24px;
+}
+.nav ul li a{
+    display: block;
+    padding: 6px 8px;
+    font-size: 19px;
+    line-height: 27px;
+}
+/* 导航.nav 鼠标悬停 ,active类 表示默认选中的状态*/
+.nav ul li a:hover,.nav ul li a.active{
+
+    border-bottom: 2px solid #0094ff;
+    color: #0094ff;
+}
+
+
+/* 搜索框.search */
+.search{
+    display: flex;
+    width: 417px;
+    height: 40px;
+    background-color: #f3f5f7;
+    margin-left: 64px;
+    padding: 0 12px 0 12px ;
+    border-radius: 20px;
+}
+.search input{
+    flex: 1;
+    background-color: transparent;
+    border: 0;
+    /* 去除焦点框 */
+    outline: none;
+    
+}
+.serach input::placeholder{
+    color: #999;
+    font-size: 14px;
+}
+.search a{
+    align-self: center;
+    width: 16px;
+    height: 16px;
+    background-image: url(../images/放大镜.png);
+    
+}
+/* 用户.user */
+.user{
+    margin-left: 32px;
+}
+.user a{
+    display: flex;
+    align-items: center;
+}
+.user a img{
+    /* 行内块和行内的垂直居中 */
+    vertical-align: middle;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.user a span{
+    margin-left: 10px;
+    font-size: 16px;
+    line-height: 27px;
+    color: #666;
+}
+/* banner */
+.banner{
+    height:420px;
+    background-color: #0092cb;
+}
+.banner .wrapper{
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    /* background-image: url(../uploads/banner.png); */
+}
+/* banner .left */
+.banner .left{
+    padding: 15px 20px;
+    height: 100%;
+    width: 200px;
+    background-color :rgba(0,0,0,0.41);
+}
+
+.banner .left a{
+    /* 块级元素的宽度继承父级 */
+    display: block;
+    height: 48px;
+    line-height: 48px;
+    font-size: 16px;
+    color: #fff;
+    background: url(../images/arrow.jpg) no-repeat right center;
+}
+.banner .left a:hover{
+    color: #0094ff;
+}
+/* banner .right */
+.banner .right{
+    margin-top: 60px;
+    width: 218px;
+    height: 305px;
+    background-color: #209dd5;
+    border-radius: 10px;
+}
+.banner .right h3{
+    padding-left: 15px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 48px;
+    color: #fff;
+}
+.banner .right .content{
+    padding: 15px;
+    height: 257px;
+    border-radius: 10px;
+    background-color: #fff;
+}
+.banner .right dl{
+    margin-bottom: 12px;
+    border-bottom: 1px solid #f3f5f7;
+
+
+}
+.banner .right dt{
+    margin-bottom: 8px;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 700;
+
+}
+.banner .right dd{
+    margin-bottom: 8px;
+    font-size: 12px;
+    line-height: 16px;
+    
+}
+.banner .right dd span{
+    color: #0094ff;
+}
+.banner .right dd strong{
+    color: #7d7d7d;
+    font-weight: normal;
+}
+.banner .right a{
+    display: block;
+    height: 32px;
+    background-color: #00a4ff;
+    text-align: center;
+    line-height: 32px;
+    font-size: 14px;
+    color: #fff;
+    border-radius: 15px;
+}
+/* 精品推荐.recommend */
+.recommend{
+    display: flex;
+    margin-top: 15px;
+    padding: 0 15px;
+    height: 60px;
+    line-height: 60px;
+    background-color: #fff;
+    box-shadow: 0px 1px 2px 0px rgba(211, 211, 211, 0.5);
+
+}
+.recommend h3{
+    color: #0094ff;
+    font-size: 18px;
+    font-weight: 400;
+}
+.recommend ul{
+    display: flex;
+    /* 除去h3和a所占的尺寸，复级剩下的尺寸全部分给ul */
+    flex:1;
+}
+.recommend ul li a{
+    padding: 0 24px;
+    border-right:1px solid #e0e0e0;
+    font-size: 18px;
+}
+.recommend ul li:last-child a{
+    border-right: 0;
+}
+.recommend .modify{
+    font-size: 16px;
+    color: #0094ff;
+}
+/* 精品推荐课程.course */
+.course{
+    margin-top: 15px;
+
+}
+.hd{
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+    line-height: 60px;
+    padding-right: 15px;
+
+}
+.hd h3{
+    font-size: 20px;
+    font-weight: 400;
+}
+.hd .more{
+    font-size: 14px;
+    color: #999;
+}
+/* 精品推荐课程.course .bd */
+.bd ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.bd li{
+    margin-bottom: 15px;
+    width: 228px;
+    height: 270px;
+}
+.bd li .pic{
+    height: 156px;
+}
+.bd li .text{
+    height: 115px;
+    padding: 20px;
+    background-color: #fff;
+
+}
+.bd li .text h4{
+    font-size: 14px;
+    font-weight: 400;
+    height: 40px;
+    line-height: 20px;
+    margin-bottom: 13px;
+}
+.bd li .text p{
+    font-size: 14px;
+    line-height: 20px;
+    color: #999;
+}
+.bd li .text p span{
+    color: #ff7c2d;
+}
+.bd li .text p i{
+    font-style: normal;
+}
+/* 前端开发课程 */
+.hd ul{
+    display: flex;
+}
+.hd ul li{margin-right: 60px;
+    font-size: 16px;
+}
+.hd ul li .active, .hd ul li a:hover{
+    color: #0094ff;
+}
+/* 前端开发课程 .bd */
+.bd{
+    display: flex;
+    justify-content: space-between;
+}
+.bd .left{
+    width: 228px;
+}
+.bd .right{
+    width: 957px;
+}
+
+.bd .right .top{
+    margin-bottom: 15px;
+    height: 100px;
+}
+
+/* 底部 */
+.footer{
+    margin-top: 60px;
+    padding: 60px;
+    height: 273px;
+    background-color:#fff;
+}
+.footer .wrapper{
+    display: flex;
+    justify-content: space-between;
+}
+.footer .left{
+    width: 400px;
+}
+.footer .left p{
+    margin-top: 24px;
+    margin-bottom: 14px;
+    font-size: 14px;
+    line-height: 17px;
+    color: #666;
+}
+.footer .left .download{
+    display: block;
+    width: 120px;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    font-size: 14px;
+    color: #0094ff;
+    border: 1px solid #0094ff;
+}
+.footer .right{
+    display: flex;
+}
+.footer .right dl{
+    margin-left: 130px;
+}
+.footer .right dl dt{
+    margin-bottom: 24px;
+    font-size: 16px;
+    line-height: 23px;
+}
+.footer .right dl dd a{
+    margin-bottom: 12px;
+    font-size: 14px;
+    line-height: 24px;
+    color: #666;
+}

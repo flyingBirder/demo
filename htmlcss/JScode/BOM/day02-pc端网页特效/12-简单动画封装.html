@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+        <style>
+            .box{
+                position: absolute;
+                left: 0px;
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+                background-color: pink;
+            }
+            span{
+                position: absolute;
+                top: 350px;
+                left: 0px;
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                background-color: aquamarine;
+            }
+        </style>
+</head>
+<body>
+    <button>点击夏雨荷</button>
+    <div class="box"></div>
+    <span ></span>
+
+    <script>
+        var box = document.querySelector('.box');
+        var span = document.querySelector('span');
+        var btn = document.querySelector('button');
+        // 简单动画封装，obj目标对象，target目标位置
+        // 给不同的元素添加不同的定时器，防止定时器冲突
+        function animate(obj,target){
+            // 先清除之前的定时器，保证每次点击按钮时，只有一个定时器在运行
+            clearInterval(obj.timer); //解决一个bug：不停的点击按钮，定时器会累加，导致元素移动速度加快
+             obj.timer = setInterval(function(){
+                if(obj.offsetLeft>= target){
+                    // 停止动画，本质就是停止定时器
+                    clearInterval(obj.timer);
+                }else{
+                    obj.style.left = obj.offsetLeft + 1 + 'px';
+                }
+            },10);
+        }
+        // 点击夏雨荷，盒子和球同时移动
+        btn.onclick = function(){
+            animate(box,400);
+            animate(span,600);
+        }
+        // 调用函数
+        // animate(box,400);
+        // animate(span,600);
+    </script>
+</body>
+</html>

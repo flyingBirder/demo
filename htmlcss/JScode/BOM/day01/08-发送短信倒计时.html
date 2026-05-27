@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>发送短信倒计时</title>
+</head>
+<body>
+    <input type="text"> 
+    <button>发送短信</button>
+    <script>
+        // 发送短信倒计时
+        var btn = document.querySelector('button');
+        var  time  = 60;
+
+        // 1. 点击按钮后禁用按钮
+        // 2. 按钮上显示倒计时
+        // 3. 倒计时结束后启用按钮
+        btn.addEventListener('click',function(){
+            // 点击按钮后，禁用按钮，开始倒计时
+            btn.disabled = true;//  可以写成 this.disabled = true;
+            var timer = setInterval(function(){
+                if(time <= 0){
+                    // 倒计时结束后，清除定时器，启用按钮，按钮上显示发送短信
+                    clearInterval(timer);
+                    btn.disabled = false;
+                    btn.innerHTML = '发送短信';
+                }else{
+                    // 倒计时过程中，每秒钟减少1秒，按钮上显示倒计时
+                    time--;
+                    btn.innerHTML = '还剩' + time + '秒';
+
+                }
+                
+                
+            },1000)
+        })
+    </script>
+    
+</body>
+</html>

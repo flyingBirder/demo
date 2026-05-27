@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div>
+    <h1>年会随机抽奖</h1>
+    <button>开始抽奖</button>
+    <p>抽奖结果：<br></p>
+    <h2>一等奖：<span id="one">？？？</span></h2>
+    <h3>二等奖：<span id="two">？？？</span></h3>
+    <h4>三等奖：<span id="three">？？？</span></h4>
+  </div>
+  <script>
+    const personArr = ['张三', '李四', '王五', '赵六', '王二'];
+    const btn = document.querySelector('button');
+
+    // 一等奖
+    const randomIndex1 = Math.floor(Math.random() * personArr.length);// 抽取随机数组下标
+    document.querySelector('#one').innerHTML = personArr[randomIndex1];// 抽取随机数组元素
+    personArr.splice(randomIndex1, 1);// 删除已抽中的元素
+
+
+
+    // 二等奖
+    const randomIndex2 = Math.floor(Math.random() * personArr.length);
+    document.querySelector('#two').innerHTML = personArr[randomIndex2];
+    personArr.splice(randomIndex2, 1);
+
+    // 三等奖
+    const randomIndex3 = Math.floor(Math.random() * personArr.length);
+    document.querySelector('#three').innerHTML = personArr[randomIndex3];
+    personArr.splice(randomIndex3, 1);
+
+
+
+
+  </script>
+
+</body>
+
+</html>

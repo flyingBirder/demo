@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            浅拷贝：
+            1. 只拷贝对象的第一层属性，不会拷贝对象的深层属性
+            2. 拷贝后的对象和原对象是独立的，互不影响
+
+        
+        */
+        const obj = {
+            name: '张三',
+            age: 18,
+            sex: '男'
+        }
+
+        // 浅拷贝：方法一
+        const obj1 = { ...obj };
+        console.log(obj1);// {name: '张三', age: 18, sex: '男'}
+        obj1.name = '李四';
+        console.log(obj1);// {name: '李四', age: 18, sex: '男'}
+        console.log(obj);// {name: '张三', age: 18, sex: '男'}
+        // 浅拷贝：方法二 
+        const obj2 = {};
+        Object.assign(obj2, obj);
+        console.log(obj2);// {name: '张三', age: 18, sex: '男'}
+        obj2.name = '王五';
+        console.log(obj2);// {name: '王五', age: 18, sex: '男'}
+        console.log(obj);// {name: '张三', age: 18, sex: '男'}
+
+        // 多层对象
+        const obj3 = {
+            name: '张三',
+            age: 18,
+            sex: '男',
+            friend: {
+                name: '李四',
+                age: 19,
+                sex: '男'
+            }
+        }
+        const obj4 = { ...obj3 };
+        obj4.friend.age = 20;
+        // 浅拷贝：方法一和方法二都只能拷贝对象的第一层属性，不会拷贝对象的深层属性
+        console.log(obj4);// {name: '张三', age: 18, sex: '男', friend: {name: '李四', age: 20, sex: '男'}}
+        // 原对象也被改变了
+        console.log(obj3);// {name: '张三', age: 18, sex: '男', friend: {name: '李四', age: 20, sex: '男'}}
+
+
+    </script>
+</body>
+
+</html>

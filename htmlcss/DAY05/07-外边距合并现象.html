@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>外边距合并现象</title>
+    <style>
+        /* 外边距合并现象：垂直方向的外边距会合并，合并后的外边距为较大的那个值 */
+        /* 外边距合并现象：垂直排列的盒子设置外边距只需要设置一个盒子的外边距 */
+        .box1{
+            width: 200px;
+            height: 200px;
+            background: grey;
+            margin-bottom: 200px;
+        }
+        .box2{
+            width: 200px;
+            height: 200px;
+            background: grey;
+            margin-top: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">box1</div>
+    <div class="box2">box2</div>
+    
+</body>
+</html>

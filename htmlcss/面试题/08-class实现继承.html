@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- 
+    extends 关键字用于实现类的继承
+    super 关键字用于调用父类的构造函数，初始化父类的属性，必须在子类的构造函数中调用
+
+-->
+
+<body>
+    <script>
+        // 父类
+        class Person {
+            name
+            // 构造函数
+            constructor(name) {
+                this.name = name;
+            }
+            sayHi() {
+                console.log('我是父类的sayhi');
+            }
+        }
+        // 子类
+        class Student extends Person {
+            age
+            constructor(name, age) {
+                // 调用父类的构造函数，初始化父类的属性，必须在子类的构造函数中调用
+                // super(name)
+                this.age = age;
+            }
+            sayHello() {
+                console.log('我是子类的sayhello');
+            }
+            // 同名方法，子类优先调用，就近调用
+            sayHi() {
+                console.log('我是子类的sayhi');
+            }
+
+
+        }
+        const s = new Student('lily', 12);
+        s.sayHi();// 我是子类的sayhi
+
+    </script>
+</body>
+
+</html>

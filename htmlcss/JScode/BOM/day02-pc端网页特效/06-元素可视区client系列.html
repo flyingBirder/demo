@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            border: 10px solid red;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- client系列 -->
+     <!-- clientWidth/clientHeight : 内容区域的宽度/高度（不包含边框）-->
+       <!-- offsetWidth/offsetHeight : 内容区域的宽度/高度（包含边框,内边距）-->
+       <div id="box">
+            这是一个盒子
+       </div>
+       <script>
+           var box = document.getElementById('box');
+           console.log(box.clientWidth);
+           console.log(box.clientHeight);
+           console.log(box.offsetWidth,box.offsetHeight);
+       </script>
+</body>
+</html>

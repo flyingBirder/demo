@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+  </style>
+</head>
+
+<body>
+  <textarea name="" id="" cols="30" rows="10">
+  用户注册协议如下：
+
+  1. 您必须年满18岁才能注册。
+  2. 您在注册时必须提供准确的个人信息。
+  3. 您在使用我们的服务时必须遵守相关法律法规。
+  4. 您在使用我们的服务时必须遵守相关法律法规。
+
+  </textarea>
+  <br>
+  <button class="btn" disabled>我已经阅读用户协议（60）</button>
+  <script>
+    const btn = document.querySelector('.btn');
+    let time = 60;
+    let timer = setInterval(function () {
+      time--;
+      btn.innerHTML = `我已经阅读用户协议（${time}）`;
+      if (time === 0) {
+        clearInterval(timer);
+        btn.disabled = false;
+        btn.innerHTML = `同意`;
+
+      }
+
+    }, 1000)
+
+
+  </script>
+</body>
+
+</html>

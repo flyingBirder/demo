@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>操作元素-修改属性</title>
+    <style>
+        img{
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 分时问候语显示需求:根据当前时间显示不同的内容 -->
+    <p></p>
+    <script>
+        // 1. 先获取元素
+        var p = document.querySelector('p');
+        // 2.获取当前时间的小时数
+        var date = new Date();
+        var h = date.getHours();
+        // 3. 操作元素:判断小时数改变元素内容和属性
+        p.innerHTML = date;
+        if(h < 12){
+            p.innerHTML = '早上好';
+        }else if(h < 18){
+            p.innerHTML = '下午好';
+        }else{
+            p.innerHTML = '晚上好';
+        }
+    </script>
+    <button>张学友</button>
+    <button>刘德华</button>
+    <img src="./images/1.jpg" alt="张学友">
+    <script>
+        var btn1 = document.querySelector('button:nth-child(1)');
+        var btn2 = document.querySelector('button:nth-child(2)');
+        var img = document.querySelector('img');
+        btn1.onclick = function(){
+            img.src = './images/1.jpg';
+            img.alt = '张学友';
+        }
+        btn2.onclick = function(){
+            img.src = './images/2.jpg';
+            img.alt = '刘德华';
+        }
+    </script>
+
+
+    
+</body>
+</html>

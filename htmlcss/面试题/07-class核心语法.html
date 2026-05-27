@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class Person {
+            //公有属性
+            name
+            age = 18;
+
+            //构造函数
+            constructor(name) {
+                this.name = name;
+                //构造函数内部的this 指向实例对象
+                // console.log(this);
+                //动态添加属性（不推荐）
+                this.hobby = ['篮球', '足球'];
+            }
+
+            //公有方法
+            say() {
+                console.log(`我是${this.name},我今年${this.age}岁`);
+            }
+            sayHello() {
+                console.log('hello');
+            }
+        }
+        const p = new Person('lily');
+        p.say();
+        p.sayHello();
+    </script>
+</body>
+
+</html>

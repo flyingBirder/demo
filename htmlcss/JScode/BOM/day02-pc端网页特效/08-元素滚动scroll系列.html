@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        元素滚动scroll系列元素滚动scroll系列元素滚动scroll系列元素滚动scroll系列元素滚动scroll系列元素滚动scroll系列元素滚动scroll系列元素滚动scroll系列元素滚动scroll系列
+        元素滚动scroll系列元素滚动scroll系列元素滚动scroll系列元素滚动scroll系列元素滚动scroll系列元素滚动scroll系列元素滚动scroll系列元素滚动scroll系列
+    </div>
+    <script>
+         // 1. scrollTop：获取或设置元素的垂直滚动条位置
+         // 2. scrollLeft：获取或设置元素的水平滚动条位置
+         // 3. scrollWidth：获取元素的内容宽度（包括溢出部分）//实际的内容宽度
+         // 4. scrollHeight：获取元素的内容高度（包括溢出部分）
+         // 5. clientWidth：获取元素的可见宽度（不包括边框和滚动条）//可见的宽度
+         // 6. clientHeight：获取元素的可见高度（不包括边框和滚动条）//可见的高度
+         // 7. offsetWidth：获取元素的宽度（包括边框和滚动条）//元素的宽度
+         // 8. offsetHeight：获取元素的高度（包括边框和滚动条）//元素的高度
+         var div = document.querySelector('div');
+         console.log(div.scrollTop);
+         console.log(div.scrollLeft);
+         console.log(div.scrollWidth);
+         console.log(div.scrollHeight);
+         // 9. 滚动事件：scroll
+         // 元素滚动scroll系列元素滚动scroll系列元素滚动scroll系列元素滚动scroll系列元素滚动scroll系列元素滚动scroll系列元素滚动scroll系列元素滚动scroll系列元素滚动scroll系列
+         div.addEventListener('scroll', function(){
+            console.log(div.scrollTop); // 垂直滚动条位置 scrollHeight - clientHeight
+            console.log(div.scrollLeft);
+            console.log(div.scrollHeight - div.clientHeight)
+         })
+         
+    </script>
+    
+</body>
+</html>

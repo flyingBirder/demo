@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link href="https://unpkg.com/@wangeditor/editor@latest/dist/css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./index.css">
+    <title>数据管理平台-发布文章页</title>
+</head>
+
+<body>
+    <div class="alert info-box"></div>
+    <div class="wrap">
+        <!-- 侧边栏 -->
+        <div class="aside">
+
+        </div>
+        <!-- 右侧内容区域 -->
+        <div class="main">
+
+            <div class="top-nav">
+                <div class="nav-item">
+                    <span class="nickname">昵称</span>
+                    <span class="quick"> 退出</span>
+                </div>
+            </div>
+            <div class="titles">发布文章</div>
+            <form action="" class="art-form">
+                <input type="text" hidden name="id">
+                <div>
+                    <label for="title" class="form-label">标题</label>
+                    <input type="text" name="title" id="title" class="form-control">
+                </div>
+                <div>
+                    <label for="channel_id" class="form-label">频道</label>
+                    <select name="channel_id" id="channel_id" class="form-select channel-select">
+                        <option value="">请选择文章频道</option>
+                    </select>
+                </div>
+
+                <div class="cover">
+                    <label for="img">封面:</label>
+                    <lable for="img" class="place">+</lable>
+                    <input class="img-file" type="file" name="img" id="img" hidden>
+                    <img src="" class="rounded">
+                </div>
+                <div>
+                    <label for="content">内容:</label>
+                    <!-- 富文本编辑器 位置 -->
+                    <div id="editor—wrapper">
+                        <div id="toolbar-container"><!-- 工具栏 --></div>
+                        <div id="editor-container"><!-- 编辑器 --></div>
+                    </div>
+                    <!-- 记录富文本内容 用于表单收集 -->
+                    <textarea name="content" class="publish-content" hidden></textarea>
+                </div>
+                <div>
+                    <button type="button" class="btn btn-primary send">发布</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/form-serialize@0.7.2/index.min.js"></script>
+    <script src="../../lib/form-serialize.js"></script>
+    <script src="https://unpkg.com/@wangeditor/editor@latest/dist/index.js"></script>
+    <script src="../../utils/request.js"></script>
+    <script src="../../utils/editor.js"></script>
+    <script src="../../utils/auth.js"></script>
+    <script src="../../utils/alert.js"></script>
+    <script src="./index.js"></script>
+</body>
+
+</html>

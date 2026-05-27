@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let obj = {
+      uname: 'bob',
+      age: '23',
+      gender: 'male',
+      hobby: ['ride', 'soccer'],
+      address: '中国 北京',
+      email: 'bob@qq.com',
+
+
+    };
+    // 遍历对象的属性名和属性值
+    for (let key in obj) {
+      console.log(key);// key是带引号的属性名
+      console.log(obj[key]);// obj[key]是属性值
+    }
+
+  </script>
+</body>
+
+</html>

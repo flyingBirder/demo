@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const obj = {
+            name: '张三',
+            age: 18,
+            sex: '男'
+        }
+        //对象解构赋值时,可以给属性起别名
+        // const { name: user, age, sex } = obj;
+        // console.log(user, age, sex);// 张三 18 男
+
+        //数组对象解构
+        const [{ uname, uage, usex }] = [{ uname: '张三', uage: 18, usex: '男' }]
+        console.log(uname, uage, usex);// 张三 18 男
+
+        // 多级对象解构
+        const obj2 = {
+            name: '佩奇',
+            age: 18,
+            family: {
+                mother: '猪妈妈',
+                father: '猪爸爸',
+                brother: '乔治'
+            }
+        }
+        const { name: pet, age, family: { mother, father, brother } } = obj2;
+        console.log(pet, age, mother, father, brother);// 佩奇 18 猪妈妈 猪爸爸 乔治
+
+
+        //多维对象解构
+        const msg = {
+            "code": 200,
+            "msg": "请求成功",
+            "data": [
+                {
+                    "name": "张三",
+                    "age": 18,
+                    "sex": "男"
+                },
+                {
+                    "name": "里斯",
+                    "age": 18,
+                    "sex": "女"
+                },
+                {
+                    "name": "王五",
+                    "age": 18,
+                    "sex": "男"
+                }
+            ]
+        }
+        // 渲染函数,参数为msg对象
+        /*  function render({ data }) {
+             console.log(data);
+             data.map(item => {
+                 console.log(item);
+             });
+ 
+         } */
+        // 渲染函数,参数为msg对象
+        // 解构赋值时,可以给属性起别名,这里将data属性起别名为myData
+        function render({ data: myData }) {
+            console.log(myData);
+            myData.forEach(element => {
+                console.log(element);
+            });
+
+        }
+
+        render(msg);
+    </script>
+</body>
+
+</html>

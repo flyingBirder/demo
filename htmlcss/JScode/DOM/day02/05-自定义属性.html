@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自定义属性</title>
+</head>
+<body>
+    <!-- 
+    内置属性可以通过element.属性名来获取或设置
+    自定义属性:程序员自己定义的，可以通过element.getAttribute("属性名")来获取或设置
+      -->
+    <!-- 自定义属性的作用：为了保存和使用数据。有些数据可以保存在页面中而不用保存在数据库中 -->
+    <!-- H5中规范自定义属性：data-属性名 -->
+    <div id="div1" class="box" title="这是一个盒子" data-index="1" data-list-name="lily">
+        这是一个盒子
+    </div>
+    <script>
+        // 1. 获取元素
+        var div1 = document.getElementById("div1");
+        
+        //2.操作属性：获取属性
+        console.log(div1.getAttribute("data-index"));
+        console.log(div1.title);
+        //2.操作属性：设置属性
+        div1.title = "这是一个新的盒子";
+        div1.setAttribute("data-index", 2);
+        div1.setAttribute('class', 'new-box');
+        // H5新增的获取自定义属性的方法：element.dataset.属性名
+        console.log(div1.dataset.index);
+        console.log(div1.dataset);//dataset:数据的集合
+        console.log(div1.dataset.listName);//驼峰命名法
+        console.log(div1.dataset['listName']);//驼峰命名法
+
+
+        // 3.操作属性：删除属性
+        div1.removeAttribute("data-index");
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <label>请输入省份</label>
+    <input type="text" id="province">
+    <label>请输入城市</label>
+    <input type="text" id="city">
+    <button id="query">查询区县</button>
+    <ul id="areaList"></ul>
+    <script>
+        /* 需求：根据用户选择的省份和城市，查询所有的区县 */
+        document.querySelector('#query').addEventListener('click', function () {
+            const province = document.querySelector('#province').value;
+            const city = document.querySelector('#city').value;
+            // 3.组织查询参数字符串
+            const obj = {
+                pname: province,
+                cname: city
+            }
+            // 查询参数对象---》pname=省份&cname=城市
+            const paramsObj = new URLSearchParams(obj);
+            const queryString = paramsObj.toString();
+            console.log(queryString)
+
+            //4.使用XHR 
+            const xhr = new XMLHttpRequest();
+            xhr.open('get', `http://hmajax.itheima.net/api/area?${queryString}`);
+            xhr.addEventListener('loadend', function () {
+                console.log(xhr.response);
+                const data = JSON.parse(xhr.response);
+                console.log(data);
+                const str = data.list.map(areaName => {
+                    return `<li>${areaName}</li>`
+                }).join('');
+                document.querySelector('#areaList').innerHTML = str;
+
+
+            });
+            xhr.send();
+
+
+        });
+
+
+
+
+    </script>
+</body>
+
+</html>

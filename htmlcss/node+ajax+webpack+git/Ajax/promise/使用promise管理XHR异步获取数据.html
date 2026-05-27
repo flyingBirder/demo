@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p></p>
+    <script>
+        // 1. 新建一个 Promise 实例
+        const p = new Promise((resolve, reject) => {
+            // 2. 执行XHR异步操作, 发送请求获取省份数据
+            const xhr = new XMLHttpRequest();
+            xhr.open('get', 'http://hmajax.itheima.net/api/province');
+            xhr.addEventListener('loadend', function () {
+                console.log(xhr.response);
+                if (xhr.status >= 200 && xhr.status < 300) {
+                    // 响应状态码在 200 到 300 之间时，认为是成功的，调用 resolve 方法，传递成功的结果, then 方法可以捕获成功的结果
+                    resolve(JSON.parse(xhr.response));
+
+                } else {
+                    // 状态码不在 200 到 300 之间时，认为是失败的，调用 reject 方法，传递失败的结果, catch 方法可以捕获错误
+                    reject(new Error(xhr.response));
+                }
+            })
+            xhr.send();
+
+        });
+        // 3. 关联成功或失败的处理函数
+        p.then(res => {
+
+            document.querySelector('p').innerHTML = res.list.join('<br>');
+
+        }).catch(err => {
+            //错误对象要使用 console.dir() 方法查看
+            // 服务器返回的错误信息插入到页面p标签中显示
+            document.querySelector('p').innerHTML = err.message;
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学生就业统计表</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        table {
+
+            width: 800px;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        p {
+            text-align: right;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>学生就业统计表</h2>
+        <form autocomplete="off" id="info">
+            <input type="text" id="name" name="name" placeholder="请输入姓名">
+            <input type="text" id="age" name="age" placeholder="请输入年龄">
+            <input type="text" id="salary" name="salary" placeholder="请输入薪资">
+            <select id="sex" name="sex" required>
+                <option value="男">男</option>
+                <option value="女">女</option>
+            </select>
+            <select id="city" name="city" required>
+                <option value="北京">北京</option>
+                <option value="上海">上海</option>
+                <option value="广州">广州</option>
+                <option value="深圳">深圳</option>
+            </select>
+            <button class="addbtn">
+                <i></i>添加
+            </button>
+        </form>
+        <p>共有数据<span class="total"></span>条</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>姓名</th>
+                    <th>年龄</th>
+                    <th>性别</th>
+                    <th>就业城市</th>
+                    <th>薪资水平</th>
+                    <th>就业时间</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+
+    </div>
+
+    <script>
+        const form = document.querySelector('#info');
+        const name = document.querySelector('#name');
+        const age = document.querySelector('#age');
+        const sex = document.querySelector('#sex');
+        const tbody = document.querySelector('tbody');
+
+        // 1.1从本地存储读取最新数据
+        const arr = JSON.parse(localStorage.getItem('data')) || [];
+        //1.2利用map()和join()渲染页面
+        function render() {
+            // 遍历数据
+            const trArr = arr.map(function (ele, index) {
+                return `
+                <tr>
+                    <td>${ele.id}</td>
+                    <td>${ele.name}</td>
+                    <td>${ele.age}</td>
+                    <td>${ele.sex}</td>
+                    <td>${ele.city}</td>
+                    <td>${ele.salary}</td>
+                    <td>${ele.time}</td>
+                    <td>
+                        <a href="javascript:;" data-id="${index}">删除</a>
+                    </td>
+                </tr>             
+                `;
+            });
+            // 把返回的新数组转换为字符串
+            // 把生成的字符串赋值给tbody的innerHTML
+            tbody.innerHTML = trArr.join('');
+            // 渲染数据后，更新总数据条数
+            document.querySelector('.total').innerHTML = arr.length;
+        }
+        render();
+        // 新增功能
+        // 2.1form表单注册提交事件
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            // 2.2 验证表单数据是否完整
+            if (name.value === '' || age.value === '' || salary.value === '') {
+                alert('请填写完整信息');
+                return;
+            }
+            // 2.3给数组添加新数据
+            arr.push({
+                id: arr.length ? arr[arr.length - 1].id + 1 : 1,
+                name: name.value,
+                age: age.value,
+                sex: sex.value,
+                city: city.value,
+                salary: salary.value,
+                time: new Date().toLocaleString(),
+            });
+            // 2.4 渲染页面
+            render();
+            // 2.5 重置表单，清空表单数据
+            this.reset();
+            // 2.6 把数据存储到本地存储中
+            localStorage.setItem('data', JSON.stringify(arr));
+
+        });
+        // 3.删除功能
+        // 3.1 采用事件委托的形式给tbody注册点击事件
+        tbody.addEventListener('click', function (e) {
+            // 3.2 验证点击的是否是删除按钮
+            if (e.target.tagName === 'A') {
+                // 3.3 验证用户是否确认删除
+                if (confirm('确定删除吗？')) {
+                    /* 给删除按钮添加自定义属性data-id，值为当前数据的索引 */
+                    // 3.4 从数组中删除对应数据  
+                    arr.splice(e.target.dataset.id, 1);
+                    //  重新渲染页面
+                    render();
+                    // 3.5 把删除后的最新数据存储到本地存储中
+                    localStorage.setItem('data', JSON.stringify(arr));
+
+                }
+
+            }
+        });
+
+
+
+
+    </script>
+</body>
+
+</html>

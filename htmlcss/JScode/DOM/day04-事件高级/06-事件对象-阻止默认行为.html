@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <div>事件对象-阻止默认行为</div>
+     <a href="https://www.baidu.com">点击跳转</a>
+     <form action="https://www.baidu.com">
+        <input type="submit" value="提交">
+     </form>
+     <script>
+        //1. e.type：事件类型
+        var div  = document.querySelector('div');
+        div.addEventListener('click',fn);
+        div.addEventListener('mouseover',fn);
+        div.addEventListener('mouseout',fn);
+
+        function fn(e){
+            console.log(e.type)
+        }
+        //2. 阻止默认行为：事件对象的preventDefault()方法.比如让链接不跳转，提交按钮不提交表单
+        var a = document.querySelector('a');
+        a.addEventListener('click',function(e){
+            e.preventDefault();// 阻止a链接的跳转
+        })
+        //3. 传统注册事件
+        a.onclick = function(e){
+            // 1.普通浏览器 e.preventDefault()
+            e.preventDefault();
+            //2.IE8及以下浏览器 e.returnValue属性 ，也可以阻止默认行为, 但是不能和e.preventDefault()同时使用
+            e.returnValue;
+            // 3.也可以使用return false; 阻止默认行为, 没有兼容性问题，但是只能在传统注册事件中使用，而且return false; 必须写在事件处理函数的最后面。因为return 后面的代码不会执行。
+            return false;
+        }
+
+
+     </script>
+</body>
+</html>

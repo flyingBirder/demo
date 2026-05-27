@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button class="btn">点击我</button>
+    <script>
+        // 箭头函数this指向： 指向定义时的上下文
+        console.log(this); // window
+        const fn = () => {
+            // 该箭头函数中的this为函数声明环境中this一致，指向window
+            console.log(this);// window
+        }
+        fn();
+        const obj = {
+            name: '张三',
+            age: 18,
+            sex: '男',
+            sayName: () => {
+                // 该箭头函数中的this为函数声明环境中this一致，指向window
+                console.log(this);// window
+            }
+        }
+        obj.sayName();
+        // DOM事件
+        const btn = document.querySelector('.btn');
+        // 箭头函数this指向： 指向定义时的上下文
+        btn.addEventListener('click', () => {
+            // 该箭头函数中的this为函数声明环境中this一致，指向window
+            console.log(this);// window
+        });
+        // 普通函数this指向： 指向事件绑定的元素
+        btn.addEventListener('click', function () {
+            // 该普通函数中的this指向事件绑定的元素，指向btn
+            console.log(this);// btn
+        });
+        // 构造函数
+        function Person() {
+            // 构造函数中的this指向实例对象
+            console.log(this);// p1
+        }
+        // 原型对象上添加了普通函数sayName，指向实例对象p1
+        Person.prototype.sayName = function () {
+            console.log(this); // p1
+        }
+        // 原型对象上添加了箭头函数walk，指向window
+        Person.prototype.walk = () => {
+            console.log(this);// window
+        };
+
+        const p1 = new Person();// 实例化对象p1
+        p1.sayName();// p1
+
+
+    </script>
+</body>
+
+</html>

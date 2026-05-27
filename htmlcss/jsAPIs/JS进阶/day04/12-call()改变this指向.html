@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const obj = {
+            name: '张三',
+            age: 18,
+            sex: '男'
+        };
+        function fun(name, age) {
+            console.log(this);// {name: '张三', age: 18, sex: '男'}
+            console.log(this.name, age);
+        }
+        //  call方法改变this指向, 第一个参数是要改变的this指向, 后面的参数是要传递的参数
+        // 调用fun函数时, 改变this指向为obj, 并传递参数'sss'和8
+        fun.call(obj, 'sss', 8);
+    </script>
+</body>
+
+</html>

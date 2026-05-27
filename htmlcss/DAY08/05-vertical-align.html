@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vertical-align垂直对齐方式</title>
+    <link rel="stylesheet" href="./iconfont/iconfont.css">
+    <style>
+        img{
+            width: 100px;
+            height: 100px;
+            border: 1px solid red;
+
+
+            /* 图片和文字并排显示时，图片下方有空白缝隙，原因是浏览器把行内块和行内标签当作文字处理，默认按照基线对齐。可以使用vertical-align: middle;将图片垂直居中对齐 */
+            /* 解决图片和文字垂直对齐问题，使用vertical-align: middle; */
+            /* vertical-align: middle; 垂直居中对齐,适用于行内元素/行内块元素 */
+            vertical-align: middle;
+            
+            /* 解决问题: 图片下方有空白缝隙，使用display:block;将图片转换为块级元素 */
+            
+
+        }
+        
+       
+    </style>
+</head>
+<body>
+
+    <div>
+        <img src="./images/1.webp" alt="">
+        <span>这是一个商品</span>
+    </div>
+</body>
+</html>

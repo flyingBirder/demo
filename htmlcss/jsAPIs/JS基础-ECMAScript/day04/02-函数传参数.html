@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*   function getSum(num1, num2) {
+        document.write(num1 + num2);
+      }
+  
+      getSum(10, 20);
+      getSum();// NaN 如果没有传递实参，默认值是undefined，undefined和数字做加法运算结果是NaN
+      getSum(10);// 10NaN  如果传递了一个实参，另一个没有传递，默认值是undefined，undefined和数字做加法运算结果是NaN
+   */
+    // 如果未传入实参，可以给形参设着默认值，这样可以避免未传入实参时，默认值是undefined，undefined和数字做加法运算结果是NaN的问题
+    /*  function getSum(num1 = 0, num2 = 0) {
+       document.write(num1 + num2);
+     }
+     getSum(11, 22);
+  */
+    /*   function getSum(start, end) {
+        let sum = 0;
+        for (let i = start; i <= end; i++) {
+          sum += i;
+        }
+        console.log(sum);
+      }
+      getSum(1, 100);
+   */
+
+
+    /* 
+        function getArrSum(arr = []) {
+          let sum = 0;
+          for (let i = 0; i < arr.length; i++) {
+            sum += arr[i];
+          }
+          console.log(sum);
+        }
+        getArrSum([22, 44, 33, 55, 66]);
+        getArrSum();
+     */
+
+    function getSum(m, n) {
+      let sum = 0;
+      for (let i = m; i <= n; i++) {
+        sum += i;
+      }
+      console.log(sum);
+    }
+    let m = prompt('请输入第一个数字');
+    let n = prompt('请输入第二个数字');
+    getSum(Number(m), Number(n));
+
+
+
+  </script>
+</body>
+
+</html>

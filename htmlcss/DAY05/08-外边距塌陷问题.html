@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>外边距塌陷问题</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .parent{
+            width: 200px;
+            height: 200px;
+            background: grey;
+            /* 方法一：直接规避问题。取消子级元素的margin-top，直接给父级元素添加padding-top ，同时设置box-sizing: border-box; 保证盒子模型的高度包含padding */
+            /* padding-top: 50px;
+            box-sizing: border-box; */
+
+            /* 方法二：给父级元素添加overflow: hidden; 触发BFC ，防止外边距塌陷 */
+            overflow: hidden;
+
+            /* 方法三：给父级元素添加border-top: 1px solid transparent;  */
+            /* border-top: 1px solid transparent; */
+            
+        }
+        .child{
+            width: 100px;
+            height: 100px;
+            background: #0069c2;
+            margin-top: 50px;
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- 想要实现子级元素距离父级元素顶部50px; 方法一：直接规避问题。取消子级元素的margin-top，直接给父级元素添加padding-top ，同时设置box-sizing: border-box; 保证盒子模型的高度包含padding -->
+    <!-- 方法二：给父级元素添加overflow: hidden; 触发BFC ，防止外边距塌陷 -->
+    <div class="parent">
+        <div class="child"></div>
+    </div>
+    
+</body>
+</html>

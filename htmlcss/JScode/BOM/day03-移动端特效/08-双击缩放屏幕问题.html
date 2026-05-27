@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- 方法一：禁用缩放:user-scalable=no -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        a{
+            text-decoration: none;
+        }
+        ol,ul{
+            list-style: none;
+        }
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+       
+     
+    </style>
+   
+</head>
+<body>
+    <div>click延时解决方案：</div>
+    
+    <!-- 移动端click出现300毫秒延时问题，原因是移动端屏幕双击会缩放页面 -->
+    
+    <script>
+        // 方法二：封装tap，解决click出现300毫秒延时问题
+         function tap(obj,callback){
+            var ismove = false;
+            var startTime =0;
+            obj.addEventListener('touchstart',function(e){
+                startTime = Date.now();
+            });
+            obj.addEventListener('touchmove',function(e){
+                ismove = true;
+            });
+            obj.addEventListener('touchend',function(e){
+                console.log(ismove);
+
+                var endTime = Date.now();
+                if(!ismove&&(endTime-startTime<150)){// 手指离开的时间-手指触摸的时间小于150毫秒就算作是点击事件
+                    callback&&callback();
+                }
+                ismove = false;// 点击事件触发后，重置ismove为false
+                startTime = 0;
+            });
+
+
+
+        }
+        // 测试
+        var div = document.querySelector('div');
+        div.addEventListener('click',function(){
+            //调用tap函数，绑定点击事件
+            tap(div,function(){
+                console.log('点击了div');
+            });
+
+        });
+        
+       
+    </script>
+</body>
+</html>

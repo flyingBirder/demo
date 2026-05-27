@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        a{
+            text-decoration: none;
+        }
+        ol,ul{
+            list-style: none;
+        }
+        .nav{
+            width: 100%;
+            height: 100px;
+            background-color: pink;
+        }
+        .focus{
+            width: 100%;
+            height: 300px;
+            background-color: red;
+        }
+        .banner{
+            width: 100%;
+            height: 500px;
+            background-color: blue;
+        }
+        .content{
+            width: 100%;
+            height: 500px;
+            background-color: green;
+        }
+        .foot{
+            width: 100%;
+            height: 100px;
+            background-color: yellow;
+        }
+        .back{
+            width: 80px;
+            height: 30px;
+            color: white;
+            text-align: center;
+            line-height: 30px;
+            background-color: #ccc;
+            position: fixed;
+            bottom: 50px;
+            right: 50px;
+            display: none;
+            border-radius: 10px;
+        }
+    </style>
+    <script>
+        // 页面加载完成后执行
+        window.addEventListener('load',function(){
+            // 1.获取元素
+            var back = document.querySelector('.back');
+            var bannerTop = document.querySelector('.banner');
+            // 2.监听页面滚动事件scroll
+            window.addEventListener('scroll',function(){
+                // 3.判断 window.pageYOffset 被卷去的头部距离> 元素到文档顶部的距离
+                if(window.pageYOffset > bannerTop.offsetTop){
+                    back.style.display = 'block';
+                }else{
+                    back.style.display = 'none';
+                }
+                // console.log(window.scrollY,window.pageYOffset,bannerTop.offsetTop)
+                // window.scrollY 是元素到文档顶部的距离
+                // if(window.scrollY > bannerTop.offsetTop){
+                //     // element.offsetTop 是元素到文档顶部的距离
+                    
+                //     back.style.display = 'block';
+                // }else{
+                //     back.style.display = 'none';
+                // }
+            });
+            // 4.监听点击事件click
+            back.addEventListener('click',function(){
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+        });
+    </script>
+</head>
+<body>
+    <div class="nav"></div>
+    <div class="focus"></div>
+    <div class="banner"></div>
+    <div class="content"></div>
+    <div class="foot"></div>
+    <div class="back">backTop</div>
+    <!-- 移动端click出现300毫秒延时问题，原因是移动端屏幕双击会缩放页面 -->
+    
+</body>
+</html>

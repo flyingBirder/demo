@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .preview_img{
+            position: relative;
+            width: 300px;
+            height: 400px;
+            margin: 100px auto;
+            cursor: move;
+        }
+        .preview_img img{
+            width: 100%;
+            height: 100%;
+        }
+        .mask{
+            position: absolute;
+            /* top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%); */
+            width: 200px;
+            height: 200px;
+            background-color: #fede4f;
+            opacity: 0.5;
+            border: 1px solid #fede4f;
+            cursor: move;
+            display: none;
+        }
+        .big{
+            position: absolute;
+            top: 0;
+            right: -500px;
+            width: 400px;
+            height: 400px;
+            border: 1px solid #333;
+            background-color: rgba(0,0,0,0.5);
+            display: none;
+            overflow: hidden;
+        }
+        .big img{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+
+
+    </style>
+</head>
+<body>
+    <div class="preview_img">
+        <img src="images/pic.jpeg" alt="">
+        <div class="mask"></div>
+        <div class="big">
+            <img src="images/pic.jpeg" alt="">
+        </div>
+    </div>
+    <script>
+        // 如果js写在外部文件中，需要等页面加载完毕再执行。所以要将代码写在window.onload=function(){}中，再引入页面中
+        // 1.获取元素
+        var imgBox = document.querySelector('.preview_img');
+        var mask = document.querySelector('.mask');
+        var big = document.querySelector('.big');
+        // 2.鼠标移入事件
+        imgBox.addEventListener('mouseover',function(){
+            big.style.display = 'block';
+            mask.style.display = 'block';
+        })
+        // 3.鼠标移出事件
+        imgBox.addEventListener('mouseout',function(){
+            big.style.display = 'none';
+            mask.style.display = 'none';
+        })
+        // 鼠标移动的时候，让黄色的框跟着移动
+        imgBox.addEventListener('mousemove',function(e){
+            // 鼠标在图片中的位置
+            var x = e.pageX - this.offsetLeft;
+            var y = e.pageY - this.offsetTop;
+            //  鼠标在图片中的位置减去mask的一半，就是mask的位置
+            mask.style.left = x- mask.offsetLeft/2 + 'px';
+            mask.style.top = y- mask.offsetTop/2 + 'px';
+        })
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .nav{
+            /* position: fixed;
+            top: 0;
+            left: 0; */
+            width: 100%;
+            height: 50px;
+            background-color: greenyellow;
+        }
+        .header{
+            height: 200px;
+            background-color: orange;
+        }
+        .banner{
+            height: 300px;
+            background-color: hotpink;
+        }
+        .content{
+            height: 1500px;
+            background-color: #eee;
+        }
+        .footer{
+            height: 100px;
+            background-color: #ccc;
+        }
+
+        .back-top{
+            /* display: none; */
+            position: fixed;
+            top:100px;
+            right: 0px;
+            width: 80px;
+            height: 50px;
+            line-height: 50PX;
+            text-align: center;
+            background-color: red;
+            cursor: pointer;
+            border-radius: 20PX;
+        }
+    </style>
+</head>
+<body>
+    <!--1. window.scrollTo(x,y) 方法：滚动窗口至文档中指定坐标位置 -->
+    <div class="nav"></div>
+    <div class="header"></div>
+    <div class="banner"></div>
+    <div class="content"></div>
+    <div class="footer"></div>
+    <div class="back-top">backTop</div>
+    <script>
+        var backTop = document.querySelector('.back-top');
+        var content = document.querySelector('.content');
+        // 2.页面滚动事件 scroll事件
+        document.addEventListener('scroll',function(){
+            // 当页面滚动到内容区域顶部时，显示返回顶部按钮  
+            if(window.pageYOffset >= content.offsetTop){
+                backTop.style.display = 'block';
+            }else{
+                backTop.style.display = 'none';
+            }
+        });
+
+
+
+
+        // 3.点击返回顶部按钮
+        backTop.addEventListener('click',function(){
+            // window.scroll(x,y) 方法可以用来滚动到页面的指定坐标位置
+            // window.scrollTo(0,0);
+            // 调用 animate 函数，实现平滑滚动效果
+            animate(window,0);
+
+        });
+        function animate(obj,target,callback){
+            clearInterval(obj.timer); //解决一个bug：不停的点击按钮，定时器会累加，导致元素移动速度加快
+            obj.timer = setInterval(function(){
+                var step = (target - window.pageYOffset) / 10;
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);// Math.ceil()向上取整，Math.floor()向下取整
+                if(window.pageYOffset == target){
+                    clearInterval(obj.timer);
+                    if(callback){                 
+                        callback();
+                    }
+                }else{
+                    // obj.style.left =window.pageYOffset + step+ 'px';
+                    window.scrollTo(0,window.pageYOffset + step);
+                }
+            },15);
+}
+    </script>
+</body>
+</html>

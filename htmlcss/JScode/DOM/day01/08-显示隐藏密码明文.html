@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>显示隐藏密码明文</title>
+    <style>
+        .box{
+            margin: 100px auto;
+            position: relative;
+            width: 300px;
+            border-bottom: 1px solid #ccc;
+    
+        }
+        .box input{
+            width: 200px;
+            height: 30px;
+            border: 0;
+            outline: none;
+        }
+        .box label{
+            position: absolute;
+            bottom: 2px;
+            right: 2px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <label for=""><img src="" alt="" id="eye"><span>></span></label>
+        <input type="password" placeholder="请输入密码" id="pwd">
+    </div>
+    <script>
+        // 1. 获取元素
+        var eye = document.getElementById('eye');
+        var pwd = document.getElementById('pwd');
+        var span = document.querySelector('span');
+        // 2. 注册事件
+        var flag = 0;
+        span.onclick = function(){
+            // 点击之后flag值会发生改变
+            if(flag == 0){
+                pwd.type = 'text';
+                // eye.src = './img/eye-close.png';
+                flag = 1;
+                
+            }else{
+                pwd.type = 'password';
+                // eye.src = './img/eye.png';
+                flag = 0;
+            }   
+        }
+    </script>
+</body>
+</html>

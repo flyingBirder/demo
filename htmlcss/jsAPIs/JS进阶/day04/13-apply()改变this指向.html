@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const obj = {
+            age: 18,
+        };
+        function fn(x, y, z) {
+            console.log(this);// obj
+            console.log(x, y, z)// 1 2 3
+            return x + y + z;
+
+        }
+        // fn.apply(thisArg, [argsArray])方法作用：
+        // 1.调用函数2.改变this指向3.可以传递参数4.返回函数的执行结果
+
+
+        const res = fn.apply(obj, [1, 2, 3]);
+        // console.log(res);// undefined
+        console.log(res);// 6
+        // 使用场景：求数组的最大值和最小值
+        const arr = [1, 2, 3, 4, 5];
+        console.log(Math.max.apply(null, arr));// 5
+        console.log(Math.min.apply(Math, arr));// 1
+
+        // 求数组的最大值和最小值的另一种方法
+        console.log(Math.max.apply(null, arr) === Math.max(...arr));// true
+        console.log(Math.min.apply(null, arr) === Math.min(...arr));// true
+    </script>
+</body>
+
+</html>

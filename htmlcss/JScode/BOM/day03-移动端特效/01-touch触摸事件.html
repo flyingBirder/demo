@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        var div  = document.querySelector('div');
+        // 1.监听touchstart事件:当用户触摸到屏幕时触发；
+        div.addEventListener('touchstart',function(){
+            console.log('touchstart');
+        });
+        // 2.监听touchmove事件:当用户在屏幕上滑动时触发；
+        div.addEventListener('touchmove',function(){
+            console.log('touchmove');
+        });
+        // 3.监听touchend事件:当用户从屏幕上移除触摸点时触发；
+        div.addEventListener('touchend',function(){
+            console.log('touchend');
+        });
+    </script>
+    
+</body>
+</html>

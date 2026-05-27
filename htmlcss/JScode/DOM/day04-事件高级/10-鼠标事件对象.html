@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 鼠标事件对象 </title>
+    <style>
+        body{
+            height: 2000px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // mouseEvent:鼠标事件对象：当鼠标触发事件时，会生成一个事件对象，包含了鼠标的相关信息。
+        document.addEventListener('click',function(mouseEvent){ // mouseEvent也可以写为e
+                // 2. clientX/clientY：鼠标事件触发时，鼠标指针的水平/垂直坐标（距离浏览器窗口的距离）
+                console.log(mouseEvent.clientX);
+                console.log(mouseEvent.clientY);
+                console.log('-----------------');
+                // 3. 开发推荐使用： pageX/pageY：鼠标事件触发时，鼠标指针的水平/垂直坐标（距离文档的距离） 需求：出现滚动条时，计算鼠标距离文档的距离;
+                console.log(mouseEvent.pageX);
+                console.log(mouseEvent.pageY);
+                // 1. screenX/screenY：鼠标事件触发时，鼠标指针的水平/垂直坐标（距离屏幕的距离）
+                console.log(mouseEvent.screenX);
+                console.log(mouseEvent.screenY);
+
+        })
+    </script>
+</body>
+</html>

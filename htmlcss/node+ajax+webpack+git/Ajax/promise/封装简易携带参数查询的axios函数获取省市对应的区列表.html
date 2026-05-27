@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p></p>
+    <script>
+        function myAxios(config) {
+            return new Promise((resolve, reject) => {
+                const xhr = new XMLHttpRequest();
+                // 判断是否有params选项，携带查询参数。 
+                if (config.params) {
+                    // 3. 处理参数  例如： pname=陕西省&cname=西安市
+                    const params = new URLSearchParams(config.params);
+                    const queryString = params.toString();
+                    config.url += `?${queryString}`;
+                }
+
+                xhr.open(config.method || 'get', config.url);
+                xhr.addEventListener('loadend', function () {
+                    if (xhr.status >= 200 && xhr.status < 300) {
+                        resolve(JSON.parse(xhr.response));
+                    } else {
+                        reject(new Error(xhr.response));
+                    }
+                });
+                xhr.send();
+            });
+
+        }
+
+        myAxios({
+            url: 'http://hmajax.itheima.net/api/area',
+            params: {
+                pname: '陕西省',
+                cname: '西安市'
+            }
+        }).then(res => {
+            console.log(res);
+            document.querySelector('p').innerHTML = res.list.join('<br>');
+        }).catch(err => {
+            console.dir(err);
+            document.querySelector('p').innerHTML = err.message;
+        });
+    </script>
+</body>
+
+</html>

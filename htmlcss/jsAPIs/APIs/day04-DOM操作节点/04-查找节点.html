@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <p>我是p标签</p>
+        <span>
+            我是span标签
+        </span>
+    </div>
+    <script>
+        const p = document.querySelector('p');
+        // console.log(p.parentNode);
+        // console.log(p.nextElementSibling)
+        const span = document.querySelector('span');
+        // console.log(span.previousElementSibling);
+        const div = document.querySelector('div');
+        // console.log(div.children);
+        const pp = document.createElement('p');
+        pp.innerHTML = '我是新创建的p标签';
+        // document.body.appendChild(pp);
+        document.body.insertBefore(pp, div);
+
+    </script>
+</body>
+
+</html>

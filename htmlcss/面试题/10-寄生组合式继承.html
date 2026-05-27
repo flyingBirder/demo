@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // 父类构造函数
+        function Person(name) {
+            this.name = name;
+        }
+        // 父类原型方法
+        Person.prototype.sayHi = function () {
+            console.log(`我是${this.name}`);
+        }
+        //------------核心代码------------
+        //组合式继承：通过调用父类构造函数，继承父类属性；通过原型链继承父类原型方法
+        // 寄生式继承：父类的原型中，有子类的构造函数
+        // 通过构造函数继承父类属性
+        function Student(name) {
+            // 调用父类构造函数，继承父类属性；通过call()方法将父类构造函数的this指向子类实例，和参数直接传递到父类的构造函数中，实现继承父类属性
+            Person.call(this, name);
+        }
+        // 等价于
+        // Student.prototype = Object.create(Person.prototype);
+        // Student.prototype.constructor = Student;
+
+        // 通过原型链继承父类原型方法
+        // 1.通过Object.create()创建一个新对象，将父类原型赋值给新对象的原型，
+        // 2.将新对象赋值给子类原型
+        // 3.将子类原型的constructor属性指向子类构造函数
+        const prototype = Object.create(Person.prototype, {
+            constructor: {
+                value: Student
+            }
+        });
+        Student.prototype = prototype;
+        const s = new Student('lily');// 
+        s.sayHi();// 我是lily
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>交互两个变量</title>
+</head>
+
+<body>
+  <script>
+    let num1 = 10;
+    let num2 = 20;
+    let temp;
+    // 声明一个临时变量temp
+    temp = num1;// 把num1的值赋值给temp
+    num1 = num2;// 把num2的值赋值给num1
+    num2 = temp;// 把temp的值赋值给num2
+    console.log(num1);// 20
+    console.log(num2);// 10
+
+  </script>
+
+</body>
+
+</html>

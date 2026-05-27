@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box {
+      list-style: none;
+      height: 40px;
+      text-align: center;
+      line-height: 40px;
+    }
+
+    .active {
+      background-color: yellowgreen;
+      font-weight: 800;
+    }
+  </style>
+</head>
+
+<body>
+  <div data-id="1" data-index="0"></div>
+  <ul>
+    <li>111</li>
+    <li>222</li>
+    <li>333</li>
+  </ul>
+  <input type="checkbox" id="autoPlay">
+  <input type="checkbox" class="check">
+  <script>
+    const lis = document.querySelectorAll('ul li');
+    for (let i = 0; i < lis.length; i++) {
+      lis[i].style.color = 'red';
+    }
+    const ul = document.querySelector('ul');
+    lis[0].innerHTML += '<span>hhhhhh</span>';
+    // style属性只能设置行内样式
+    lis[1].style.color = 'green';
+    lis[1].style.backgroundColor = 'yellow';
+    lis[1].style.fontSize = '28px';
+    lis[2].style.backgroundColor = '#f2f2f2';
+    lis[2].style.borderBottom = '2px solid red';
+    // 给第一个li添加active类名
+    lis[0].className = 'active box';
+
+    lis[2].classList.add('box');
+    lis[2].classList.toggle('active');
+
+    //表单元素
+    const autoPlay = document.querySelector('#autoPlay');
+    const check = document.querySelector('.check');
+
+    autoPlay.checked = 'checked';
+    check.checked = true;
+    let i = 0;
+    let timer = setInterval(function () {
+      i++;
+      document.write(`${i}`);
+    }, 1000);
+    // clearInterval(timer);
+
+
+  </script>
+
+</body>
+
+</html>

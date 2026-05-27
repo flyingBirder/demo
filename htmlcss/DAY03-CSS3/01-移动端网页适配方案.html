@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- 视口标签：规定html页面的尺寸，让html页面的宽度=设备的宽度/逻辑分辨率的宽度 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style> 
+        /* @media(width:375px) {
+            body{
+                background-color: pink;
+            }
+        } */
+    </style>
+</head>
+<body>
+<div>
+    适配方案：
+    1宽度适配，高度固定像素写法，适用于pc端,常见的百分比布局和flex布局
+    2等比适配，宽高等比缩放，适用于移动端，常见的rem布局和vw/vh单位布局
+</div>
+<div>
+    rem单位：相对单位，是相对于html标签的字号计算结果的。1rem=html标签的font-size大小
+    
+    rem使用：
+    1.在html标签上设置font-size为根字体大小，默认16px，1rem=16px
+    2.在其他元素上设置字体大小，单位为rem，根据根字体大小进行缩放
+</div>
+    
+<script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.2/??flexible_css.js,flexible.js"
+></script>
+</body>
+</html>

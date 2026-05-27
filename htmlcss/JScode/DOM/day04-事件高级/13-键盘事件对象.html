@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1. 键盘事件对象: event.key 可以获取按下的键值,key有兼容性问题,不建议使用
+        // keydown和 keyup 事件不区分字母大小写，但是 keypress 事件区分字母大小写
+        // 2. 键盘事件对象: event.keyCode 属性可以获取按下的键的 ASCII 码值
+
+        document.addEventListener('keydown', function (event) {
+            console.log('keydown 事件触发，按下的键值为：' + event.key);
+            console.log('keydown 事件触发，按下的键的 ASCII 码值为：' + event.keyCode);
+        });
+        document.addEventListener('keyup', function (event) {
+            console.log('keyup 事件触发，释放的键值为：' + event.key);
+            console.log('keyup 事件触发，释放的键的 ASCII 码值为：' + event.keyCode);
+        });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            /* box-sizing: border-box; */
+        }
+
+
+        .header {
+            display: inline-block;
+            background-color: aquamarine;
+        }
+
+        .divbox {
+            margin: 100px auto;
+            width: 100px;
+            height: 100px;
+            border: 1px solid #333;
+            padding: 10px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">33333333333333333</div>
+    <div class="divbox">
+    </div>
+    <script>
+        let divbox = document.querySelector('.divbox');
+        let header = document.querySelector('.header');
+        console.log(divbox.offsetTop);
+        console.log(header.clientWidth)
+    </script>
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

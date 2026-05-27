@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>操作元素-修改表单元素</title>
+</head>
+<body>
+    <button>按钮</button>
+    <input type="text" value="请输入内容">
+    <script>
+        // 1. 先获取元素
+        var btn = document.querySelector('button');
+        var input = document.querySelector('input');
+        // 2. 注册元素的事件
+        btn.onclick = function(){
+            // 3. 操作元素:点击按钮改变输入框的内容,
+            //innerHTML改变的是标签内的内容,value改变的是表单元素的属性值
+            input.value = '你好啊';
+            // 4. 操作元素:点击按钮改变按钮的内容
+            btn.innerHTML = '点击了';
+            // 5.点击按钮后,按钮就不能再点击了,使用disabled属性
+            // 6.this指向的是事件函数的调用者,这里是btn按钮
+            this.disabled = true;
+        }
+    </script>
+
+    
+</body>
+</html>

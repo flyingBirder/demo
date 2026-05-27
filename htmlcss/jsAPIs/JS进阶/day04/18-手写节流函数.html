@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            text-align: center;
+            line-height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <script>
+        const box = document.querySelector('.box');
+        let i = 0;
+        function mouseMove() {
+            box.innerHTML = i++;
+        }
+        // 节流函数：throttle(fn, delay)
+        // 作用：限制函数fn在delay时间内只能调用一次
+        // 应用场景：鼠标移动事件、滚动事件、搜索事件等
+        function throttle(fn, delay) {
+            let timer = null;
+            return function () {
+                // 如果定时器不存在,则开启定时器
+                if (!timer) {
+                    timer = setTimeout(function () {
+                        fn();// 等时间到了才能调用函数fn
+                        timer = null;// 调用完成后，将定时器清空
+                        // 在开启的定时器中，无法使用clearTimeout方法清除定时器，只能在定时器执行完成后，将定时器清空
+                    }, delay)
+                }
+            }
+        }
+        //鼠标移动事件，每1秒只能调用一次mouseMove函数
+        box.addEventListener('mousemove', throttle(mouseMove, 1000));
+
+
+    </script>
+</body>
+
+</html>

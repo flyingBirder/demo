@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网页轮播图</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        ul,li{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        .sliderbar{
+            margin: 100px auto;
+            position: relative;
+            width: 400px;
+            height: 300px;
+            overflow: hidden;
+
+        }
+        .sliderbar ul{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 1600px;
+            height: 300px;
+            background-color: pink;
+            display: flex;
+
+            /* transition: all 0.5s ease-in-out; */
+        }
+        .sliderbar ul li{
+            width: 400px;
+            height: 300px;
+        }
+        .sliderbar ul li img{
+            width: 400px;
+            height: 300px;
+        }
+        .sliderbar ol.indicator{
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .sliderbar ol.indicator li{
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background-color: #fff;
+            border-radius: 50%;
+            margin-left: 20px;
+            cursor: pointer;
+        }
+        /* .sliderbar ol.indicator li:first-child{
+            background-color: #000;
+        } */
+
+        /* .sliderbar ol li.current{
+            background-color: red !important;
+
+        } */
+
+        .sliderbar .arrow{
+            display: none;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 18px;
+            color: #fff;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+        }
+    
+    
+        .sliderbar .arrow-left{
+            left: 10px;
+        }
+        .sliderbar .arrow-right{
+            right: 10px;
+
+        }
+        .current{
+            background-color: red !important;
+        }
+    </style>
+    <script src="animate.js"></script>
+    <script src="index.js"></script>
+</head>
+<body>
+    <!-- 轮播图功能需求：
+     1.鼠标经过轮播图模块，左右切换按钮显示，离开隐藏
+     2.点击右侧按钮一次，图片往左播放一张，同时左侧指示器也往右切换，同理点击左侧按钮一次，图片往右播放一张，同时左侧指示器也往左切换
+     3.图片播放的同时，下面的指示器也会同步切换
+     4.点击下面的小圆点，可以播放相应的图片
+     5.鼠标不经过轮播图，轮播图也会自动播放
+     6.鼠标经过，自动播放停止，离开继续播放
+     
+    
+    -->
+    <div class="sliderbar">
+        <ul>
+            <li><img src="../images/1.jpg" alt=""></li>
+            <li><img src="../images/2.jpg" alt=""></li>
+            <li><img src="../images/3.jpeg" alt=""></li>
+            <li><img src="../images/4.jpeg" alt=""></li>
+            
+        </ul>
+        <ol class="indicator">
+            <!-- <span></span>
+            <span></span>
+            <span></span>
+            <span></span> -->
+        </ol>
+        
+        <a href="javascript:void(0)" class="arrow arrow-left"><</a>
+        <a href="javascript:void(0)" class="arrow arrow-right">></a>
+        
+
+    </div>
+</body>
+</html>

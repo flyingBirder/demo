@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1. 新建一个 Promise 实例
+        // 2. 执行异步操作
+        // 3. 处理异步操作的结果
+        const p = new Promise((resolve, reject) => {
+
+            // promise 实例有三种状态 pending fulfilled rejected
+            // 只能从 pending 到 fulfilled 或者从 pending 到 rejected
+            // 一旦状态改变,就不会再变了
+            // promise对象创建时，就会立即执行异步操作的代码
+            console.log('promise 实例创建时,立即执行异步操作的代码');
+            setTimeout(() => {
+                // resolve('success');// 成功时调用 resolve 方法 ,传递成功的结果，状态改变为 fulfilled。 then 方法可以捕获成功的结果 
+                reject('error');// 失败时调用 reject 方法 ,传递失败的结果，状态改变为 rejected。 catch 方法可以捕获错误
+            }, 2000);
+        });
+        console.log(p);
+        p.then(res => {
+            console.log(res);
+        }).catch(err => {
+            console.log(err);
+        })
+    </script>
+</body>
+
+</html>

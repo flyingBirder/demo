@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>按钮1</button>
+    <button>按钮2</button>
+    <button>按钮3</button>
+    <script>
+        // 排他思想：多个元素中，只有一个元素可以实现某种效果，其他元素都要取消该效果
+        // 1.获取所有按钮元素
+        var btns = document.getElementsByTagName('button');
+        for(var i =0; i<btns.length;i++){
+        // 2.遍历所有按钮元素，绑定点击事件
+            btns[i].onclick = function(){
+                // 3.在点击事件中，先将所有按钮的背景颜色清空
+                for(var j = 0;j<btns.length;j++){
+                    btns[j].style.backgroundColor = '';
+                }
+                // 4.将当前点击的按钮背景颜色设置为红色
+                this.style.backgroundColor = 'red';
+            }
+        }
+
+    </script>
+    
+</body>
+</html>

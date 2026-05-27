@@ -1,0 +1,82 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ul,
+ol {
+  list-style: none;
+}
+img {
+  border: 0;
+}
+a {
+  text-decoration: none;
+  color: #333;
+}
+.bg-body-tertiary {
+  background-color: pink!important;
+}
+.container .navbar-brand img {
+  width: 200px;
+  height: 39px;
+}
+.navbar-collapse {
+  flex-grow: 0;
+}
+@media (max-width: 768px) {
+  .carousel .carousel-item {
+    height: 250px;
+  }
+}
+@media (min-width: 768px) {
+  .carousel .carousel-item {
+    height: 400px;
+  }
+}
+@media (min-width: 992px) {
+  .carousel .carousel-item {
+    height: 500px;
+  }
+}
+.carousel .carousel-item {
+  background-size: cover;
+  background-position: center 0;
+}
+.carousel .carousel-item:nth-child(1) {
+  background-image: url(http://cdn.alloyteam.com/assets/img/banner_1-ec70a4.jpg);
+}
+.carousel .carousel-item:nth-child(2) {
+  background-image: url(http://cdn.alloyteam.com/assets/img/banner_0-c9e792.jpg);
+}
+.carousel .carousel-item:nth-child(3) {
+  background-image: url(http://cdn.alloyteam.com/assets/img/banner_tweb2019-47723f.png);
+}
+.carousel .carousel-item:nth-child(4) {
+  background-image: url(http://cdn.alloyteam.com/assets/img/banner_2-37b0e7.jpg);
+}
+.project {
+  margin-top: 60px;
+  text-align: center;
+}
+.project .row div {
+  height: 200px;
+  margin-bottom: 10px;
+}
+.project .row div a {
+  height: 200px;
+  display: block;
+  border-radius: 4px;
+}
+.project .row div:nth-child(1) a {
+  background-color: #70c3ff !important;
+}
+.project .row div:nth-child(2) a {
+  background-color: #fd6a7f !important;
+}
+.project .row div:nth-child(3) a {
+  background-color: #7f8ea0 !important;
+}
+.project .row div:nth-child(4) a {
+  background-color: #89d04f !important;
+}

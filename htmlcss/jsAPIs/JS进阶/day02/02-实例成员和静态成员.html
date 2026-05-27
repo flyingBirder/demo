@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 构造函数: 用于创建对象的函数
+        function Person(name) {
+            this.name = name;
+        }
+        const p1 = new Person('张三');
+        // 实例成员: 只能通过实例对象访问的成员
+        p1.age = 18;// 实例属性
+        p1.name = '张三三';
+        p1.sayHi = function () { // 实例方法
+            console.log('你好');
+        }
+        console.log(p1);
+
+        // 静态成员: 只能通过构造函数访问的成员
+        Person.sex = '男';// 静态属性
+        Person.sayHello = function () { // 静态方法
+            console.log('你好');
+        }
+        console.log(Person)
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let obj = {
+      uname: 'lily',
+      age: '18',
+      gender: 'female',
+      hobby: ['sing', 'dance'],
+      address: '中国 北京',
+      email: 'lily@qq.com',
+      sing: function () {
+        console.log('我会唱歌');
+      },
+      dance: function (x, y) {
+        console.log(`我会跳${x}和¥${y}两种舞蹈`);
+
+      }
+    };
+
+    obj.sing();
+    obj.dance('跳广场舞', '跳街舞');
+
+
+
+  </script>
+</body>
+
+</html>

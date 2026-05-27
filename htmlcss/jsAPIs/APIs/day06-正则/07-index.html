@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../iconfont/iconfont.css">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        a {
+            color: #000;
+            text-decoration: none;
+        }
+
+        ul,
+        li {
+            list-style: none;
+        }
+
+        .topNav {
+            width: 100%;
+            height: 50px;
+            background-color: #f8f9fa;
+        }
+
+        .wrapper {
+            width: 1200px;
+            height: 100%;
+            margin: 0 auto;
+        }
+
+        .topNav ul {
+            height: 50px;
+            line-height: 50px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .topNav ul li {
+            margin-left: 20px;
+        }
+
+        .topNav ul li a.active {
+            color: #007bff;
+        }
+
+        .topNav ul li a:active {
+            color: #007bff;
+        }
+
+        .topNav ul li a:hover {
+            color: #007bff;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 顶部导航栏 -->
+    <div class="topNav">
+        <div class="wrapper">
+            <ul>
+                <li><a class="active" href="./06-login.html">请先登录</a></li>
+                <li><a href="./05-register.html">免费注册</a></li>
+                <li><a href="javascript:void(0);">我的订单</a></li>
+                <li><a href="javascript:void(0);">会员中心</a></li>
+                <li><a href="javascript:void(0);">帮助中心</a></li>
+                <li><a href="javascript:void(0);">在线客服</a></li>
+                <li><a href="javascript:void(0);"><i class="iconfont icon-a-159_queren"></i>手机版 </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- 首页 -->
+    <div class="header"></div>
+    <!--  -->
+    <div class="main"></div>
+    <script>
+        // 获取第一个导航
+        const firstNav = document.querySelector('.topNav ul li:first-child');
+        const secondNav = document.querySelector('.topNav ul li:nth-child(2)');
+        function render() {
+            // 读取本地存储的用户名
+            const uname = localStorage.getItem('userName');
+            if (uname) {
+                firstNav.innerHTML = `<li><a href="javascript:void(0);">你好，${uname}</a></li>`;
+                secondNav.innerHTML = `<li><a href="javascript:void(0);">退出登录</a></li>`;
+
+            } else {
+                firstNav.innerHTML = `<li><a href="./06-login.html">请先登录</a></li>`;
+                secondNav.innerHTML = `<li><a href="./05-register.html">免费注册</a></li>`;
+
+            }
+
+        }
+        render();
+        // 退出登录
+        secondNav.addEventListener('click', function () {
+            // 清除本地存储的用户名
+            localStorage.removeItem('userName');
+            // 重新渲染导航栏
+            render();
+        })
+    </script>
+</body>
+
+</html>

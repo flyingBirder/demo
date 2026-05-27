@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .wrapper {
+            width: 1200px;
+            margin: 0 auto;
+        }
+
+
+        .box-hd {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .box-hd h3 {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .box-hd a {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .box-hd a:hover {
+            color: red;
+        }
+
+        .box-bd {
+            margin-top: 20px;
+        }
+
+        .box-bd ul {
+            list-style: none;
+            display: flex;
+            /* 主轴方向 */
+            flex-direction: row;
+            /* 控制子元素是否换行 */
+            flex-wrap: wrap;
+            /* 交叉轴上的对齐方式 */
+            align-items: center;
+            /* 主轴上的对齐方式 */
+            justify-content: flex-start;
+            /* 多行子元素，在多行上的对齐方式 */
+            align-content: flex-start;
+
+        }
+
+        .box-bd ul li {
+            padding: 10px;
+            width: 25%;
+            margin-bottom: 20px;
+            border: 1px solid #eee;
+
+
+        }
+
+        .box-bd ul li:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+
+
+
+
+        .box-bd ul li a {
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #333;
+        }
+
+        .box-bd ul li a img {
+            width: 260px;
+            height: 225px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="box-hd">
+            <h3>
+                课程介绍
+            </h3>
+            <a href="#">查看更多</a>
+        </div>
+        <div class="box-bd">
+            <ul></ul>
+        </div>
+    </div>
+    <script>
+        // 重构
+        let data = [
+            {
+                name: 'HTML',
+                time: '2023-01-01',
+                src: '../day01-获取元素/images/1.jpeg'
+            },
+            {
+                name: 'CSS',
+                time: '2023-01-02',
+                src: '../day01-获取元素/images/2.jpeg'
+            },
+            {
+                name: 'JavaScript',
+                time: '2023-01-03',
+                src: '../day01-获取元素/images/3.jpeg'
+            },
+            {
+                name: 'DOM',
+                time: '2023-01-04',
+                src: '../day01-获取元素/images/4.jpeg'
+            },
+            {
+                name: 'BOM',
+                time: '2023-01-05',
+                src: '../day01-获取元素/images/5.jpeg'
+            },
+            {
+                name: '事件',
+                time: '2023-01-06',
+                src: '../day01-获取元素/images/6.jpeg'
+            }
+        ];
+        const ul = document.querySelector('.box-bd ul');
+        for (let i = 0; i < data.length; i++) {
+            const li = document.createElement('li');
+            /* innerHTML可以解析标签 */
+            li.innerHTML = `
+            <a href="#">
+                <img src="${data[i].src}" alt="">
+                <p>${data[i].name}</p>
+                <span>${data[i].time}</span>    
+            </a>
+            `;
+            ul.appendChild(li);
+        }
+    </script>
+</body>
+
+</html>

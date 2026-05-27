@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <label for="province">省份：</label>
+        <select name="province" id="province">
+
+        </select>
+        <label for="city">城市：</label>
+        <select name="city" id="city">
+
+        </select>
+        <label for="district">区县：</label>
+        <select name="district" id="district">
+
+        </select>
+    </form>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        /* 需求：获取省份数据，根据省份数据获取城市数据，根据城市数据获取区县数据 ；默认下拉菜单展示第一个省份第一个城市第一个地区*/
+
+        // 1.获取省份数据,并默认展示第一个省份
+        axios({ url: 'http://hmajax.itheima.net/api/province' }).then(res => {
+            console.log(res);
+            const pname = res.data.list[0];
+            // document.querySelector('#province').innerHTML = res.data.list.map(item => `<option value="${item}">${item}</option>`).join('');
+            // 2.根据省份数据获取城市数据
+            axios({ url: 'http://hmajax.itheima.net/api/city', params: { pname } }).then(res => {
+                console.log(res);
+                const cname = res.data.list[0];
+                document.querySelector('#city').innerHTML = res.data.list.map(item => `<option value="${item}">${item}</option>`).join('');
+                // 3.根据城市数据获取区县数据
+                axios({ url: 'http://hmajax.itheima.net/api/area1', params: { pname, cname } }).then(res => {
+                    console.log(res);
+                    document.querySelector('#district').innerHTML = res.data.list.map(item => `<option value="${item}">${item}</option>`).join('');
+                })
+            })
+        }).catch(err => {
+            console.dir(err);
+        });
+    </script>
+</body>
+
+</html>

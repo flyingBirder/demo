@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>响应式网页</title>
+    <style>
+        body{
+            background-color: #ddd;
+        }
+        @media(min-width:768px){
+            body{
+                background-color: pink;
+            }
+        }
+        @media(min-width:992px){
+            body{
+                background-color: aquamarine;
+            }
+        }
+        @media(min-width:1200px){
+            body{
+                background-color:skyblue;
+            }
+        }
+
+        /* tip:(css层叠原理)
+        min-width从小到大写；
+        max-width从大到小写；
+          */
+    </style>
+</head>
+<body>
+    <!-- 响应式网页 : 网页能够根据不同的设备宽度,自动调整布局和样式,提供更好的用户体验. -->
+     <!-- 实现响应式网页的方式 : 1.媒体查询2.bootstrap框架-->
+     <!-- 1. 媒体查询 : 根据不同的设备宽度,使用不同的CSS样式. -->
+     <!-- 2. 弹性布局 : 使用flexbox布局,能够自动调整元素的宽度和高度. -->
+     <!-- 3. 响应式图片 : 使用响应式图片,能够根据设备宽度,自动加载不同大小的图片. -->
+      <!-- 4. 响应式字体 : 使用响应式字体,能够根据设备宽度,自动调整字体大小. -->
+       <!-- 5. 响应式导航栏 : 使用响应式导航栏,能够根据设备宽度,自动切换为水平导航栏或垂直导航栏. -->
+        <!-- 6. 响应式表格 : 使用响应式表格,能够根据设备宽度,自动调整表格布局. -->
+         <!-- 7. 响应式按钮 : 使用响应式按钮,能够根据设备宽度,自动调整按钮大小. -->
+</body>
+</html>

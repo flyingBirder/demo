@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <% if(htmlWebpackPlugin.options.useCdn){ %>
+        <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.8/css/bootstrap.min.css" rel="stylesheet">
+        <% } %>
+</head>
+
+
+<body>
+    <!-- 警告框 -->
+    <div class="alert info-box"></div>
+    <!-- 登录页 -->
+    <div class="login-wrap">
+        <div class="title "> 黑马头条</div>
+        <div>
+            <form class="login-form">
+                <div class="item">
+                    <label for="username" class="form-label">手机号</label>
+                    <input type="text" class="form-control username" name="mobile" value="13888888888">
+                </div>
+                <div class="item">
+                    <label for="password" class="form-label">验证码</label>
+                    <input type="password" class="form-control password" name="code" value="246810">
+                </div>
+
+                <div class="item">
+                    <button type="button" class="btn btn-primary btn-login">登录</button>
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+
+</body>
+<% if(htmlWebpackPlugin.options.useCdn){ %>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/1.4.0/axios.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.8/js/bootstrap.min.js"></script>
+    <% } %>
+
+</html>

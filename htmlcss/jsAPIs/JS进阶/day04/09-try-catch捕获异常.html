@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>123</p>
+    <script>
+        function fn() {
+            try {
+                // 可能会出错的代码,写到try代码块中
+                const p = document.querySelector('p');
+                p.innerText = 'hello world';
+            } catch (error) {
+                // 出错后的处理代码
+                // 拦截错误，提供浏览器提供的错误信息，但是不中断程序的执行
+                console.log(error.message);
+                // 也可以搭配throw 抛出错误；中断程序的执行
+                // throw new Error(err.message);
+                // 需要加 return 语句中断程序的执行
+                return;
+
+            }
+            finally {
+                // 无论是否出错，finally 代码块中的代码都会执行
+                console.log('finally 代码块中的代码');
+            }
+            // 没有出错时执行的代码
+            console.log('没有出错时执行的代码');
+        }
+        fn();
+    </script>
+</body>
+
+</html>

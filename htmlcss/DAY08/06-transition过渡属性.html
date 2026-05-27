@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* transition过渡属性: 可以指定哪些属性发生过渡效果 */
+       /* 过度属性是添加给过度的元素的，一般结合:hover伪类使用 */
+       /* transition是一个复合属性，属性值空格隔开。过渡属性可以指定多个属性，用逗号隔开 */
+
+
+
+
+        img{
+            width: 200px;
+            height: 200px;
+            border-radius: 30px;
+            /* transition: all 1s; */
+            
+            /* transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+            transition-duration: 1s;
+            transition-property: width,height,border-radius; */
+
+            transition: width 1s,height 1s,border-radius 1s;
+        }
+
+        img:hover{
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            
+
+        }
+    </style>
+</head>
+<body>
+    <img src="./images/bg.webp" alt="">
+
+    
+</body>
+</html>

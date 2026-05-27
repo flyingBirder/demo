@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>学生信息案例</h2>
+    <form action="" class="info" autocomplete="off">
+        <label for="name">姓名：</label>
+        <input type="text" class="uname" name="uname" placeholder="请输入姓名">
+        <label for="name">年龄：</label>
+        <input type="text" class="age" name="age" placeholder="请输入年龄">
+        <label for="name">性别：</label>
+        <select name="gender" class="gender">
+            <option value="男">男</option>
+            <option value="女">女</option>
+        </select>
+        <label for="name">薪资：</label>
+        <input type="text" class="salary" name="salary" placeholder="请输入薪资">
+        <select name="city" class="city">
+            <option value="北京">北京</option>
+            <option value="上海">上海</option>
+            <option value="广州">广州</option>
+            <option value="深圳">深圳</option>
+        </select>
+        <button class="add">提交</button>
+    </form>
+    <h1>就业榜</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>学号</th>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>性别</th>
+                <th>薪资</th>
+                <th>城市</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- 4.4 遍历数组 渲染到表格中 -->
+
+        </tbody>
+    </table>
+    <script>
+        // 1.获取表单元素
+        const uname = document.querySelector('.uname');
+        const age = document.querySelector('.age');
+        const gender = document.querySelector('.gender');
+        const salary = document.querySelector('.salary');
+        const city = document.querySelector('.city');
+
+        const items = document.querySelector('.info').querySelectorAll('[name]');
+
+        //2. 声明一个空数组
+        const arr = [];
+        const form = document.querySelector('.info');
+        // 3. 提交表单事件
+        form.addEventListener('submit', function (e) {
+            // 3.1阻止表单默认提交行为 不跳转
+            e.preventDefault();
+            // 表单验证  第一种方法 逻辑与判断  所有条件都满足才会执行，如果不通过直接中断后续代码
+            /*  if (!uname.value || !age.value || !salary.value) {
+                 alert('请填写完整信息');
+                 return;
+             } */
+
+            // 表单验证第二种 采用表单都有name属性 可以直接获取到表单元素
+
+            for (let i = 0; i < items.length; i++) {
+                console.log(items[i].value);
+
+                if (items[i].value === '') {
+                    return alert('请填写完整信息');
+
+                }
+            }
+
+
+            const obj = {
+                studentID: arr.length + 1,
+                name: uname.value,
+                age: age.value,
+                gender: gender.value,
+                salary: salary.value,
+                city: city.value,
+            };
+            // 3.2把对象添加到数组中
+            arr.push(obj);
+            // 3.3重置 清空表单输入框
+            this.reset();
+            // 3.4调用渲染函数
+            render();
+        });
+        // 4. 封装渲染函数
+        function render() {
+            // 4.1先清空表格内容, 避免重复渲染.因为数组里面包含了所有的学生信息
+            document.querySelector('tbody').innerHTML = '';
+            // 4.2遍历数组 渲染到表格中
+            for (let i = 0; i < arr.length; i++) {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                <td>${arr[i].studentID}</td>
+                <td>${arr[i].name}</td>
+                <td>${arr[i].age}</td>
+                <td>${arr[i].gender}</td>
+                <td>${arr[i].salary}</td>
+                <td>${arr[i].city}</td>
+                <td><a href="javascript:;" data-id=${i}>删除</a></td>
+                `;
+                // 4.3 把tr添加到tbody中
+                document.querySelector('tbody').appendChild(tr);
+
+            }
+        }
+
+        // 删除事件  事件委托给tbody  点击删除按钮 删除对应的tr
+        document.querySelector('tbody').addEventListener('click', function (e) {
+            if (e.target.tagName === 'A' && e.target.dataset.id) {
+                // 删除数组中对应的元素
+                arr.splice(e.target.dataset.id, 1);
+                // 删除完后 重新渲染表格
+                render();
+            }
+        });
+    </script>
+</body>
+
+</html>

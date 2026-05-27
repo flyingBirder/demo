@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 同步任务： 一个任务完成后，再完成下一个任务。按照代码顺序执行，同步任务在主线程执行栈 -->
+     <!-- 异步任务：不按照代码顺序执行，可以同时进行多个任务 -->
+       <!-- 异步任务： 定时器setTimeout 、setInterval 、ajax 、事件监听 ，资源加载如load,普通事件如click 、resize等 -->
+      <!-- js执行机制：先执行同步代码，再执行异步代码，异步代码在事件队列中等待，待同步代码执行完毕后，才会执行异步代码 -->  
+       <!-- 事件循环： 浏览器或Node.js 会持续检查执行栈是否为空，如果为空，就会从事件队列中取出一个事件，放到执行栈中执行，这个过程会不断重复，就像循环一样，所以叫做事件循环 -->
+    <script>
+        // 执行队列 132
+        console.log(111);
+        setTimeout(function(){
+            console.log(222);
+        },2000)
+        console.log(333);
+
+        // 执行队列 132
+        console.log(111);
+        setTimeout(function(){
+            console.log(222);
+        },1000)
+        console.log(333);
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>精灵图配合实现逐帧动画</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-image: url(./images/bg.jpeg);
+            /* 逐帧动画steps(n) ,n为精灵图中图片的数量 */
+            animation: move 1s steps(4) infinite;
+        }
+        @keyframes move {
+            /* 移动背景图（移动的距离=精灵图的宽度） */
+            0%{
+                background-position: 0px;
+            }
+            100%{
+                background-position: -400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    
+</body>
+</html>

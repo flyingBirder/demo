@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- 视口标签：规定html页面的尺寸，让html页面的宽度=设备的宽度/逻辑分辨率的宽度 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style> 
+
+
+/* 
+rem:
+1.手机屏幕大小不同，分辨率不同，如何设置不同的html标签字号呢？使用媒体查询。
+媒体查询能检测视口的宽度，编写差异化的css。当某个条件成立执行其中的css样式。
+2.设备宽度不同，html标签字号设置多少合适呢？
+*/
+        @media(width:375px) {
+            body{
+                background-color: pink;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    
+<script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.2/??flexible_css.js,flexible.js"
+></script>
+</body>
+</html>

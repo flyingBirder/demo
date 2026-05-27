@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!--
+ 手写mycall()方法：
+    1.定义myCall方法
+    2.设置this并调用原函数
+    3.接收剩余参数并返回结果
+-->
+
+<body>
+    <script>
+        // 1.定义myCall方法
+        // 3.接收剩余参数并返回结果
+        Function.prototype.myCall = function (thisArg, ...args) {
+            //console.log(thisArg);// {name: '张三', age: 18}
+            // console.log(this);// func函数 //原型对象里面的this指向实例化对象
+            //2.设置this并调用原函数
+            thisArg.func = this;// 把func函数赋值给thisArg对象
+            //console.log(thisArg);// {name: '张三', age: 18, func: ƒ}
+            const res = thisArg.func(...args);// 调用thisArg对象上的func函数
+            delete thisArg.func;// 删除thisArg对象上的func属性//动态添加的，避免影响thisArg对象的其他属性
+            return res;// 返回func函数的执行结果
+
+        }
+        // func instanceof Function // func是一个函数// func是一个构造函数Function的实例化对象
+        console.log(func instanceof Function);// true
+        // 1. 先获取到调用myCall的函数 func
+        // 2. 把func中的this指向person
+        // 3. 执行func函数
+        // 4. 返回func函数的执行结果
+        function func(num1, num2) {
+            console.log(this);// {name: '张三', age: 18}
+            console.log(num1, num2);// 4 6
+            return num1 + num2;
+        }
+        const person = {
+            name: '张三',
+            age: 18,
+        }
+        const res = func.myCall(person, 4, 6);
+        console.log(res);// 10
+    </script>
+
+</body>
+
+</html>

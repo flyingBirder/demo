@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 事件冒泡：事件会从触发事件的元素开始，向父元素传递，直到document对象。 -->
+    <div class="father">我是father
+        <div class="son">
+            我是son
+        </div>
+    </div>
+    <script>
+        var son = document.querySelector('.son');
+        var father = document.querySelector('.father');
+        //需求：点击son区域时，希望 father和document都不会触发事件
+        son.addEventListener('click',function(e){
+            alert('我是son');
+            // 兼容性处理：判断事件对象是否存在stopPropagation()方法
+            if(e&& e.stopPropagation){
+            // stopPropagation()方法：阻止事件冒泡，阻止事件向父元素传递
+                e.stopPropagation(); // 阻止事件冒泡
+            }else{
+                // 兼容IE8及以下浏览器
+                window.event.cancelBubble = true;
+            }
+        })
+        // 点击father区域时，希望document也不会触发事件
+        father.addEventListener('click',function(){
+            alert('我是father');
+            if(e&& e.stopPropagation){
+                e.stopPropagation();
+            }else{
+                window.event.cancelBubble = true;
+            }
+        })
+        // 点击document也会触发事件
+        document.addEventListener('click',function(){
+            alert('我是document');
+        })
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setInterval()定时器</title>
+</head>
+<body>
+    <!-- 
+        window.setInterval(调用函数，重复执行的时间间隔)：
+        1.window可以省略不写
+        2.setInterval()定时器会一直执行，直到被清除。
+        适用范围：任何需要重复执行的操作，例如动画、轮播图、实时数据更新等。
+        3.清除定时器：clearInterval(定时器的标识符)
+
+    -->
+    <div id="ad">这是一个元素</div>
+    <script>
+        // 例如，每5秒隐藏一次广告元素
+        setInterval(function() {
+            document.getElementById('ad').style.display = 'none';
+        }, 5000);
+    </script>
+    
+
+
+</body>
+</html>

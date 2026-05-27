@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件委托/事件代理</title>
+    <style>
+        ul li{
+            width: 100px;
+            color: #333;
+            height: 20px;
+            background-color: pink;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 事件委托/事件代理：利用事件冒泡的机制，将事件处理函数绑定在父元素上，当子元素触发事件时，会冒泡到父元素上，从而触发事件处理函数。 -->
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+    </ul>
+    <script>
+        var ul = document.querySelector('ul');
+        ul.addEventListener('click',function(e){
+            if(e.target){
+                console.log(e.target.innerHTML);
+                for(var i= 0;i<ul.children.length;i++){
+                    ul.children[i].style.backgroundColor = '';
+                }
+                e.target.style.backgroundColor = 'red';
+
+            }
+
+        });
+    </script>
+    
+</body>
+</html>

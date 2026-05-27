@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>解决回调函数地狱问题</title>
+</head>
+
+<body>
+    <form action="">
+        <label for="province">省份：</label>
+        <select name="province" id="province">
+            <option value="">请选择省份</option>
+
+        </select>
+        <label for="city">城市：</label>
+        <select name="city" id="city">
+            <option value="">请选择城市</option>
+
+        </select>
+        <label for="district">区县：</label>
+        <select name="district" id="district">
+            <option value="">请选择区县</option>
+
+        </select>
+    </form>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        /* 使用promise链式调用，解决回调函数地狱问题
+        做法：每个promise对象中管理一个异步任务，用.then返回新的promise对象，串联起来。
+        
+        */
+        // 1.获取省份数据,并默认展示第一个省份
+        let pname = '';
+        axios({ url: 'http://hmajax.itheima.net/api/province' }).then(res => {
+            pname = res.data.list[0];
+            document.querySelector('#province option:first-child').innerHTML = pname;
+            // 2.根据省份获取城市数据,并默认展示第一个城市
+            return axios({ url: 'http://hmajax.itheima.net/api/city', params: { pname } });
+        }).then(res => {
+            const cname = res.data.list[0];
+            document.querySelector('#city option:first-child').innerHTML = cname;
+            // 3.根据省份和城市获取区县数据,并默认展示第一个区县
+            return axios({ url: 'http://hmajax.itheima.net/api/area', params: { pname, cname } });
+        }).then(res => {
+            const areaName = res.data.list[0];
+            document.querySelector('#district option:first-child').innerHTML = areaName;
+        });
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      width: 200px;
+      height: 200px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box"></div>
+  <script>
+    // 定义一个随机颜色的函数,默认返回16进制颜色值,如果传入false,则返回rgb颜色值
+    function getRandomcolor(flag = true) {
+      if (flag) {
+        let str = '#';
+        let arr = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];
+        for (let i = 0; i < 6; i++) {
+
+          str += arr[Math.floor(Math.random() * arr.length)];// 随机获取数组中的元素,并拼接在字符串中
+        }
+        return str;
+      } else {
+        let r = Math.floor(Math.random() * 256);
+        let g = Math.floor(Math.random() * 256);
+        let b = Math.floor(Math.random() * 256);
+        return `rgb(${r},${g},${b})`;
+      }
+    }
+    let color = getRandomcolor(true);
+    // alt + 方向键 可以快速移动代码行
+    // shift  + 方向键 可以快速选中代码行
+    setInterval(() => {
+      document.body.style.backgroundColor = getRandomcolor(true);
+    }, 1000);
+
+  </script>
+</body>
+
+</html>

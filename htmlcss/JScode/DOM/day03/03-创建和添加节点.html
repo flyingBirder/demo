@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>123</li>
+    </ul>
+    <!-- 需要给页面添加一个新的元素：1.创建新节点,并添加内容; 2.添加节点 -->
+    <script>
+        // 1.创建新节点
+        var newLiafter = document.createElement('li'); 
+        // 1.1 给新节点添加内容
+        newLiafter.innerHTML = '456';
+
+        // 2.添加节点 node.appendChild(child); node 是父节点，child 是子节点,将 child 节点添加到 node 节点的子节点列表末尾
+        var ul = document.querySelector('ul');
+        ul.appendChild(newLiafter);
+
+        // 3.添加节点 node.insertBefore(child,指定元素); 插入到指定元素之前
+        var newLibefore = document.createElement('li');
+        newLibefore.innerHTML = '789';
+        ul.insertBefore(newLibefore, ul.children[0]);
+
+
+
+
+    </script>
+
+
+</body>
+</html>

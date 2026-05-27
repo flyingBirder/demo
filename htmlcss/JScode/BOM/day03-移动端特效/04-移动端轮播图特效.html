@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        ol,ul,li{
+            list-style: none;
+        }
+        /* 搜索框模块 */
+        .search-index{
+            margin: 8px 10px;
+            height: 44px;
+            line-height: 44px;
+            font-size: 16px;
+            color: #333;
+            background-color: #fff;
+
+        }
+        .search-index .search{
+            float: left;
+            width: 80%;
+            height: 44px;
+            line-height: 44px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+        .search-index .user{
+            float: right;
+            height: 44px;
+            line-height: 44px;
+        }
+        /* 焦点图模块 */
+        .focus{
+        
+            height: 280px;
+            position: relative;
+            width: 100%;
+        }
+        .focus ul{
+            /* 清除浮动 */
+            overflow: hidden;  
+            position: absolute;
+            width: 500%;
+            margin-left: -100%;
+            
+        }
+        .focus ul li{
+            float: left;
+            width: 20%;
+        }
+        .focus ul li img{
+            width: 100%;
+        }
+        .focus ol{
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            margin: 0;
+        }
+        .focus ol li{
+            display: inline-block;
+            margin-right: 10px;
+            width: 5px;
+            height: 5px;
+            background-color: red;
+            border-radius: 2px;
+        }
+        .focus ol li.current{
+            width: 15px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 搜索框 -->
+    <div class="search-index">
+        <div class="search">搜索：目的地/酒店/景点/航班号</div>
+        <a href="javascript:;" class="user">我的</a>
+    </div>
+    <!-- 焦点图模块 -->
+    <div class="focus"> 
+        <ul>
+            <li><img src="images/3.jpeg" alt=""></li>
+            <li><img src="images/1.jpeg" alt=""></li>
+            <li><img src="images/2.jpeg" alt=""></li>
+            <li><img src="images/3.jpeg" alt=""></li>
+            <li><img src="images/1.jpeg" alt=""></li>
+        </ul>
+        <!-- 小圆圈 -->
+        <ol>
+            <li class="current"></li>
+            <li></li>
+            <li></li>
+        </ol>
+
+    </div>
+    <script>
+        // 1.获取元素
+        var focus = document.querySelector('.focus');
+        var ul = focus.querySelector('ul');
+        var ol = focus.querySelector('ol');
+        var width = focus.offsetWidth;
+        // 2.利用定时器自动轮播图片
+        var index = 0;
+        var timer = setInterval(function(){
+            index++;
+            var translatex = -index*width;
+            ul.style.transition = 'all 0.5s linear';
+            ul.style.transform = 'translateX('+ translatex +'px)';
+            
+       },2000);
+       // 等着过渡完成后再去判断index值 ，transitionend事件：监听过渡完成的事件
+       ul.addEventListener('transitionend',function(){
+           if(index>= 3){
+               index = 0;
+               ul.style.transition = 'none';// 去掉过渡效果，实现无缝连接
+               translatex = -index*width; // 重新设置ul的translateX值，实现无缝连接
+               ul.style.transform = 'translateX('+ translatex +'px)';
+           }else if(index<0){
+               index = 2;
+               ul.style.transition = 'none';// 去掉过渡效果，实现无缝连接
+               translatex = -index*width; // 重新设置ul的translateX值，实现无缝连接
+               ul.style.transform = 'translateX('+ translatex +'px)';
+           }
+           // 3.小圆圈跟随图片切换
+           // 把带有current类名的小圆圈移除，给当前小圆圈添加current类名
+           ol.querySelector('li.current').classList.remove('current');
+           ol.children[index].classList.add('current');
+       });
+
+       // 4.用户手指拖动图片，图片可以滑动
+       var flag = false;// 记录手指是否正在拖动图片
+       var startX = 0;// 记录手指触摸时的初始坐标
+       var moveX = 0;
+       ul.addEventListener('touchstart',function(e){
+        startX = e.targetTouches[0].pageX;
+        clearInterval(timer);
+        console.log(startX);
+       });
+       // 移动手指，计算手指的滑动距离并且移动盒子
+       ul.addEventListener('touchmove',function(e){
+        // 计算手指的滑动距离
+        moveX = e.targetTouches[0].pageX - startX;
+        var translatex = -index*width + moveX;
+
+        // 手指拖动的时候不需要动画效果，所以要去掉过渡效果
+        ul.style.transition = 'none';
+        ul.style.transform = 'translateX('+ translatex+'px)';
+        flag  = true;// 记录手指正在拖动图片
+        e.preventDefault(); // 阻止页面滚动的默认事件
+       });
+       // 手指离开根据滑动距离判断是回弹还是播放上一张或下一张
+       ul.addEventListener('touchend',function(e){
+        // 如果用户手指移动过才做判断否则不做任何操作
+        if(flag){
+            if( Math.abs(moveX) >50){
+            if(moveX > 0){
+
+                // 如果是右滑播放上一张
+                index--;
+            }else{
+                // 如果是左滑播放下一张
+                index++;
+            }
+            var translatex = -index*width;
+            ul.style.transition = 'all .3s';
+            ul.style.transform = 'translateX('+ translatex+'px)';
+            }else{
+                // 如果滑动的距离小于50就回弹
+                var translatex = -index*width;
+                ul.style.transition = 'all .3s';// 加上过渡效果，实现缓慢回弹
+                ul.style.transform = 'translateX('+ translatex +'px)';
+            }
+        }
+      
+        // 手指离开的时候重新开启定时器
+        clearInterval(timer);// 开启之前先清除定时器，确保只有一个定时器
+        timer = setInterval(function(){
+            index++;
+            var translatex = -index*width;
+            ul.style.transition = 'all 0.5s linear';
+            ul.style.transform = 'translateX('+ translatex +'px)';
+            
+        },2000);
+
+
+    });
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+        -静态属性：
+        定义：static 
+        访问：类名.属性名
+
+        -私有属性：
+        定义：#属性名
+        访问：只能在类的方法中访问，不能在类的外部访问
+        
+        */
+        class Test {
+            // 静态属性
+            static stInfo = '这是一个静态属性';
+            // 静态方法
+            static stMethod() {
+                console.log('我是静态方法');
+            }
+            // 私有属性
+            #privateInfo = '这是一个私有属性';
+            // 私有方法
+            #privateMethod() {
+                console.log('我是私有方法');
+            }
+            testPrivate() {
+                console.log(this.#privateInfo);
+                this.#privateMethod();
+            }
+
+        }
+        //访问静态属性和方法
+        Test.stMethod();
+        console.log(Test.stInfo);
+        // 访问私有属性和方法
+        const test = new Test();
+        test.testPrivate();
+
+        //类的外部，不能访问私有属性和方法
+        // 在控制台中可以访问到私有属性和方法，便于调试
+
+
+    </script>
+</body>
+
+</html>

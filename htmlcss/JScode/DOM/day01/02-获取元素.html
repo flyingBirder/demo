@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>获取元素</title>
+</head>
+<body>
+    <!-- 方法一：根据元素的id属性值获取元素对象 -->
+    <div id="time">2025-10-21</div>
+     <script>
+        // 获getElementById取元素：根据元素的id属性值获取元素对象
+        var div = document.getElementById('time');
+        console.log(div);
+        // 返回值：元素对象
+        console.log( typeof div);//object
+        // console.dir()查看元素对象的属性和方法
+        console.dir(div);
+     </script>
+     <!-- 方法二：根据元素的标签名获取元素对象 -->
+      <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+      </ul>
+      <ol>
+        <li>ol1</li>
+        <li>ol2</li>
+        <li>ol3</li>
+      </ol>
+      <script>
+        console.log('------------------');
+        // getElementsByTagName获取元素：根据元素的标签名获取元素对象
+        var lis = document.getElementsByTagName('li');
+        // 返回值：元素对象的集合（类数组对象）,以伪数组的形式存储
+        console.log(lis);
+        // 可以通过索引值来获取具体的元素对象
+        console.log(lis[0]);
+        //如果只有一个元素对象，也可以通过索引值来获取，返回的依然是伪数组形式
+        console.log(lis[0]);
+        //如果页面中没有该元素对象，返回的是一个空的伪数组对象
+        console.log(lis[4]);//undefined
+        // 可以使用typeof运算符来判断返回值的类型
+        console.log( typeof lis);//object
+
+        // 还可以使用element.getElementsByTagName()方法来获取元素对象的集合
+        //获取某个元素（父元素）的子元素对象的集合，父元素必须是单个元素。
+        var ols = document.getElementsByTagName('ol');
+        console.log(ols[0].getElementsByTagName('li'));
+
+        // 遍历元素对象的集合：
+        // 1.使用for循环
+        // for(var i=0;i<lis.length;i++){
+        //     console.log(lis[i]);
+        // }
+        // 2.可以使用forEach()方法来遍历元素对象的集合
+        // lis.forEach(function(item){
+        //     console.log(item);
+        // })
+        // 3.可以使用for...of循环来遍历元素对象的集合
+        // for(var item of lis){
+        //     console.log(item);
+        // }
+        // 4.可以使用for...in循环来遍历元素对象的集合
+        // for(var item in lis){
+        //     console.log(item);
+        // }
+    
+      </script>
+    <div class="box">box1</div>
+    <div class="box">box2</div>
+    <div  id="box3">box3</div>
+    <script>
+        console.log('h5新增的------------------');
+        // h5方法三：使用getElementsByClassName获取元素：根据元素的类名获取元素对象
+        var boxes = document.getElementsByClassName('box');
+        console.log(boxes);
+        // h5方法四：使用querySelector获取元素：根据元素的选择器获取元素对象，返回的是第一个匹配的元素对象
+        var box1 = document.querySelector('.box');//根据类选择器获取元素对象
+        console.log(box1);
+        var box3 = document.querySelector('#box3');//根据id选择器获取元素对象
+        console.log(box3);
+        // h5方法五：使用querySelectorAll()方法来获取元素对象的集合
+        var boxes = document.querySelectorAll('.box');
+        console.log(boxes);//返回的是一个类数组对象，以伪数组的形式存储
+
+    </script>
+    <script>
+        console.log('获取特殊元素------------------');
+        //获取body元素对象
+        var body = document.body;
+        console.log(body);
+        // 获取html元素对象
+        var html = document.documentElement;
+        console.log(html);
+    </script>
+
+
+
+
+    
+</body>
+</html>

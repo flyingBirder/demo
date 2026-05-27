@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul></ul>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        /* Promise.all()方法 */
+        /* 需求：同时获取多个接口数据，等所有接口数据都返回后，再进行下一步操作 */
+
+
+        // 1.创建多个promise对象，每个promise对象管理一个异步任务
+        const p1 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve('p1成功');
+            }, 1000);
+        });
+        const p2 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve('p2成功');
+            }, 2000);
+        });
+        const p3 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve('p3成功');
+            }, 3000);
+        });
+        // 2.调用Promise.all()方法，传入多个promise对象，返回一个新的promise对象
+
+        Promise.all([p1, p2, p3]).then(res => {
+            console.log(res);
+        });
+
+        // 3.如果有一个promise对象失败，Promise.all()方法会立即返回失败状态
+        const p4 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                reject('p4失败');
+            }, 4000);
+        });
+        Promise.all([p1, p2, p3, p4]).then(res => {
+            console.log(res);
+        }).catch(err => {
+            console.log(err);
+        });
+
+        /* 需要同一个时间显示多个请求的结果时，就要多个请求合并。使用Promise.all()方法
+        例如：默认显示北京、上海、广州、深圳的天气
+        code ： 北京-110100
+        code ： 上海-310100
+        code ： 广州-440100
+        code ： 深圳-440300
+        */
+        // 1.请求北京、上海、广州、深圳的天气数据
+        const bjPromise = axios({ url: 'http://hmajax.itheima.net/api/weather', params: { code: '110100' } });
+        const shPromise = axios({ url: 'http://hmajax.itheima.net/api/weather', params: { code: '310100' } });
+        const gzPromise = axios({ url: 'http://hmajax.itheima.net/api/weather', params: { code: '440100' } });
+        const szPromise = axios({ url: 'http://hmajax.itheima.net/api/weather', params: { code: '440300' } });
+        // 2.使用Promise.all()方法，传入多个promise对象，返回一个新的promise对象
+        Promise.all([bjPromise, shPromise, gzPromise, szPromise]).then(res => {
+            console.log(res);
+            const htmlStr = res.map(item => { return `<li>${item.data.weather}</li>` }).join('');
+            document.querySelector('ul').innerHTML = htmlStr;
+        }).catch(err => {
+            console.log(err);
+        });
+
+
+    </script>
+</body>
+
+</html>

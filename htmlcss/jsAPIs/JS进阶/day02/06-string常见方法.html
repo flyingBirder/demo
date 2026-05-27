@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 字符串常见方法
+        const str = 'hello world';
+        // 1. 字符串长度
+        console.log(str.length);// 11
+        // 2. 字符串拼接
+        console.log(str + '你好');// hello world你好
+        // 3. 字符串截取
+        console.log(str.slice(0, 5));// hello
+        // 4. 字符串替换
+        console.log(str.replace('world', 'js'));// hello js
+        // 5. 字符串分割
+        console.log(str.split(' '));// ['hello', 'world']
+        // 6. 字符串转换为数组
+        console.log(str.split(''));// ['h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd']
+        // 7.字符串的截取 substring(开始的下标【, 结束的下标】)方法 不接受负数参数  0-5 包含0不包含5
+        console.log(str.substring(6, 8));// wo  
+        console.log(str.substring(6, 8));// wo
+        // 8. 字符串的截取 substr(开始的下标, 截取的长度)方法 不接受负数参数  0-5 包含0不包含5
+        console.log(str.substr(6, 5));// world  
+        // 9.判断当前字符串是否以指定的字符串开头, 是返回true 否返回false
+        console.log(str.startsWith('hello'));// true
+        // 10.判断当前字符串是否以指定的字符串结尾, 是返回true 否返回false
+        console.log(str.endsWith('world'));// true
+        // 11. 字符串的去空格 trim()方法
+        const str2 = '  hello world  ';
+        console.log(str2);// '  hello world  '
+        console.log(str2.trim());// 'hello world'
+        // 12. 字符串的大小写转换
+        console.log(str.toUpperCase());// HELLO WORLD
+        console.log(str.toLowerCase());// hello world
+        // 13. 字符串的查找 indexOf()方法 从左往右查找 找到第一个返回下标 没有找到返回-1
+        console.log(str.indexOf('l'));// 2
+        console.log(str.indexOf('l', 3));// 3 从下标3开始查找l 找到返回3 没有找到返回-1
+        console.log(str.indexOf('js'));// -1
+        // 14. 字符串的查找 lastIndexOf()方法 从右往左查找 找到第一个返回下标 没有找到返回-1
+        console.log(str.lastIndexOf('l'));// 9
+        console.log(str.lastIndexOf('l', 8));// 3 从下标8开始查找l 找到返回3 没有找到返回-1
+        console.log(str.lastIndexOf('js'));// -1
+
+        // 15. includes()方法 判断当前字符串是否包含指定的字符串 是返回true 否返回false
+        console.log(str.includes('hello'));// true
+        console.log(str.includes('js'));// false
+        console.log(str.includes('world', 6));// true 从下标6开始查找world 找到返回true 没有找到返回false
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,89 @@
+// out: ../css/
+// 直接在less中引入base.less 不需要在html中引入base.css
+@import './base.less';
+@import './common.less';
+
+//定义变量
+@rootSize:37.5rem;
+
+.header{
+    display: flex;;
+    justify-content: space-between;
+    height: (44/@rootSize);
+    line-height: (44/@rootSize);
+    padding: 0 (15/@rootSize);
+    background-color: pink;
+    .back{
+        font-size: (22/@rootSize);
+        transform: rotate(180deg);
+    }
+    h3{
+        font-size: (17/@rootSize);
+
+    }
+    .note{
+        color:#2cb5a5;
+        font-size: (15/@rootSize);
+    }
+}
+
+//banner
+.banner{
+    margin-top: (30/@rootSize);
+    margin-bottom:(34/@rootSize) ;
+    text-align: center;
+    img{
+        width: (240/@rootSize);
+        height: (206/@rootSize);
+        margin-bottom: (18/@rootSize);
+    }
+    p{
+        font-size: (16/@rootSize);
+        span{
+            color: #16c2a3;
+
+        }
+    }
+
+}
+.type{
+    padding: 0 (15/@rootSize);
+    ul li{
+        border: (1/@rootSize) solid #16c2a3;
+        height: (78/@rootSize);
+        border-radius: (4/@rootSize);
+        margin-bottom: (15/@rootSize);
+        padding: (15/@rootSize);
+
+        a{
+            height: 100%;
+            display: flex;
+            align-items: center;
+            img{
+                margin-right: (10/@rootSize);
+                width: (40/@rootSize);
+                height: (40/@rootSize);
+                border-radius: 50%;
+            }
+            .text{
+                flex: 1;
+                h4{
+                    font-size: (16/@rootSize);
+                    color: #3c3e42;
+                    line-height: (24/@rootSize);
+
+                }
+                p{
+                    font-size: (14/@rootSize);
+                    
+                }
+
+            }
+            span{
+                font-size: (16/@rootSize);
+                color: #16c2a3;
+            }
+        }
+    }
+
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>offset和style的区别</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            margin-top: 100px;
+        }
+    </style>
+</head>
+<body>
+    <!-- offsetWidth和style.width的区别： -->
+    <!-- offsetWidth： 返回元素的宽度（包含边框、内边距、内容宽度） -->
+    <!-- style.width： 返回元素的宽度（不包含边框、内边距、内容宽度） -->
+    <div style="width: 200px; height: 200px; background-color: pink;"></div>
+    <script>
+        var div = document.querySelector('div');
+        console.log(div.offsetWidth); // 200
+        console.log(div.style.width); // 200px
+
+    </script>
+    <!-- offset和style的区别： -->
+    <!-- offset：1.可以获取到任意样式表中的样式属性值；2.获取的数值是数值类型，不带单位；3.offsetWidth和offsetHeight是只读属性，不能赋值4.offsetwidth获取的宽度包括边框、内边距、内容宽度 -->
+     <!-- style：1.只能获取到行内样式表中的样式属性值；2.获取的数值是字符串类型，带单位；3.style.width和style.height是可读写属性，可以赋值4.style.width和style.height获取的宽度不包括边框、内边距 -->
+     <!-- 总结： -->
+     <!-- 1.如果要获取元素的宽度或高度，建议使用offsetWidth和offsetHeight，因为它们包含边框、内边距、内容宽度和高度 -->
+     <!-- 2.如果要给元素赋值宽度或高度，建议使用style.width和style.height，因为它们不包含边框、内边距 -->
+</body>
+</html>

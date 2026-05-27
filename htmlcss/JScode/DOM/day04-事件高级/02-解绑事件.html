@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>解绑事件/删除事件</title>
+</head>
+<body>
+<div>
+    <button>传统注册事件</button>
+    <button>事件监听注册事件</button>
+    <button>attachEvent事件监听注册事件</button>
+</div>    
+<script>
+    // 1.获取按钮元素
+    var btn = document.querySelectorAll('button');
+    // 2.传统注册事件
+    btn[0].onclick = function(){
+        alert('传统注册事件');
+        // 传统解绑事件
+        btn[0].onclick = null;
+    }
+    btn[1].addEventListener('click',fn);//fn不需要调用，只需要写函数名即可
+    function fn(){
+        alert('addEventListener事件监听注册事件');
+        // 事件监听解绑事件
+        btn[1].removeEventListener('click',fn);
+    }
+
+    btn[2].attachEvent('onclick',fn1);
+    function fn1(){
+        alert('attachEvent事件监听注册事件');
+        // attachEvent解绑事件
+        btn[2].detachEvent('onclick',arguments.callee);
+    }
+</script>
+</html>

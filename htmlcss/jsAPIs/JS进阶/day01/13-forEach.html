@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // forEach方法 ,就是加强版的for循环,适用于遍历数组对象，每个item就是一个对象元素。
+        // 遍历数组,对数组中的每个元素执行一次提供的函数
+        // 不会改变原数组
+        // 没有返回值
+        const arr = [1, 2, 3, 4, 5];
+        // 
+        arr.forEach(function (item, index) {
+            console.log(item, index);
+        })
+        // 
+        arr.forEach(item => {
+            console.log(item);
+        });
+    </script>
+</body>
+
+</html>

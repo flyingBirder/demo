@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        a{
+            text-decoration: none;
+        }
+        ol,ul{
+            list-style: none;
+        }
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+       
+     
+    </style>
+    <!-- 引入fastclick.js插件 -->
+    <script src="fastclick.js"></script>
+   
+</head>
+<body>
+    <div>click延时解决方案：使用fastclick插件</div>
+    
+    <!-- 移动端click出现300毫秒延时问题，原因是移动端屏幕双击会缩放页面 -->
+
+    <script>
+        if ('addEventListener' in document) {
+            document.addEventListener('DOMContentLoaded', function() {
+                FastClick.attach(document.body);
+            }, false);
+        }
+        var div = document.querySelector('div');
+        div.addEventListener('click',function(){
+            console.log('点击了div');
+        });
+    </script>
+</body>
+</html>

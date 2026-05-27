@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.23/lodash.min.js
+"></script>
+    <!-- <script src="https://cdn.bootcdn.net/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script> -->
+    <!-- <script src="./lodash.js"></script> -->
+    <script>
+        const obj = {
+            name: '张三',
+            age: 18,
+            sex: '男',
+            hobby: ['篮球', '足球', '跑步'],
+            family: {
+                baby: '小绿'
+            }
+        };
+        const o = _.cloneDeep(obj);
+        o.age = 22;
+        o.hobby.push('游泳～～');
+        o.family.baby = '小蓝++';
+        console.log(o);
+        console.log(obj);
+    </script>
+</body>
+
+</html>

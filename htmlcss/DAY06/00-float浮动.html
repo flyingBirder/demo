@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>浮动的基本使用与布局</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box; 
+        }
+        li{
+            list-style: none;
+        }
+        /* 浮动的基本使用与布局 */
+        /* 浮动的元素特点：1.顶对齐，2具备行内块元素的特点 3.会脱离文档流，向左或向右移动，直到碰到父元素的边框或另一个浮动元素 */
+        .float-left{
+            width: 100px;
+            height: 100px;
+            background: #ff0;
+            float: left;
+        }
+        .float-right{
+            width: 100px;
+            height: 100px;
+            background: #666;
+            float: right;
+        }
+        .product{
+            margin: 50px auto;
+            width: 1226px;
+            height: 628px;
+            background-color: #eee;
+            /* clear: both; */
+        }
+        .product .leftbox{
+            float: left;
+            width: 234px;
+            height: 628px;
+            background-color: #ff6;
+        }
+        .product .rightbox{
+            float: right;
+            width: 978px;
+            height: 628px;
+            /* background-color: #6ff; */
+        }
+        .product .rightbox ul li{
+            float: left;
+            width: 234px;
+            height: 300px;
+            background-color: #f00;
+            margin-right: 14px;
+            margin-bottom: 14px;
+
+            
+        }
+        /* 设置4的倍数的li 取消margin-right */
+        .product .rightbox ul li:nth-child(4n){
+            margin-right: 0;
+        }
+        /* 如果父级宽度不够，浮动的盒子会掉下来 */
+
+    </style>
+</head>
+<body>
+    <!-- <div class="float-left">我是第一个div</div>
+    <div class="float-right">我是第二个div</div> -->
+    <div class="product">
+        <div class="leftbox"></div>
+        <div class="rightbox">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+
+    
+</body>
+</html>

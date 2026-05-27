@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>操作元素</title>
+</head>
+<body>
+    <!-- innerText和innerHTML的区别 -->
+    <!-- innerText：只能获取元素中的文本内容，不能获取元素中的标签内容,会去掉空格和换行 -->
+    <!-- innerHTML：可以获取元素中的文本内容，也可以获取元素中的标签内容，会保留空格和换行 -->
+     <div>
+     </div>
+     <script>
+        var div = document.querySelector('div');
+        div.innerText = 'nihap';
+        div.innerHTML = '<strong>你好啊</strong>';
+        console.log(div.innerHTML);
+
+     </script>
+    <button>点击显示时间</button>
+    <div>今天是：</div>
+    <p>你好啊</p>
+    <script>
+        // 点击按钮,div里面的文字会发生变化
+        // 1.获取元素 
+        var btn = document.querySelector('button');
+        var div = document.querySelector('div');
+        var p = document.querySelector('p');
+        // 2.绑定事件
+        // 点击按钮调用getDate函数，将返回值显示在div中
+        btn.onclick = function(){
+            div.innerText = getDate();
+        }
+        function getDate(){
+            var date = new Date();
+            var year = date.getFullYear();
+            var month = date.getMonth() + 1;
+            var day = date.getDate();
+            var time = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
+            var arr = ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'];
+            // getDay()方法返回的是一个0-6的数字，分别对应星期日到星期六，所以要将返回值和数组的索引对应起来
+            var week = arr[date.getDay()];
+            return '今天是：' + year + '-' + month + '-' + day + ' ' + time + ' ' + week;
+
+        }
+        // 刷新页面时调用getDate函数，将返回值显示在div中
+        //我们元素可以不用添加事件，直接在页面加载时调用函数
+        p.innerText = getDate();
+
+    
+    </script>
+    
+</body>
+</html>

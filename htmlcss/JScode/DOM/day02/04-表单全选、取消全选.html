@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <!-- 
+        需求：全选/取消全选
+
+    -->
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    <input type="checkbox" id="checkAll">
+                </th>
+                
+                <th>商品</th>
+                <th>价钱</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <input type="checkbox" class="checkItem"> 
+                </td>
+                <td>商品1</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" class="checkItem">
+                </td>
+                <td>商品2</td>
+                <td>200</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" class="checkItem">
+                </td>
+                <td>商品3</td>
+                <td>300</td>
+            </tr>
+        </tbody>
+        
+    </table>
+    <script>
+        // 1. 获取元素
+        var checkAll = document.getElementById("checkAll");
+        //var checkItems = document.getElementsByClassName("checkItem");
+        var checkItems = document.querySelector('tbody').getElementsByTagName('input');
+        // 2. 注册事件 全选/取消全选
+        checkAll.onclick = function () {
+            for (var i = 0; i < checkItems.length; i++) {
+                // 将全选复选框的状态赋值为下面所有的复选框
+                checkItems[i].checked = checkAll.checked;
+            }
+        }
+        // 下面的复选框需要全部选中，全选才会被选中。
+        // 给下面所有的复选框循环注册事件，每次点击都需要判断下面所有的复选框是否都被选中，如果有一个未被选中，全选就不被选中。
+        for (var i = 0; i < checkItems.length; i++) {
+
+            checkItems[i].onclick = function () {
+                // isChecked 表示全选是否被选中
+                var isChecked = true;
+                for (var j = 0; j < checkItems.length; j++) {
+                    // 3.1.1 有一个未被选中，全选就不被选中
+                    if (!checkItems[j].checked) {
+                        isChecked = false;
+                        // 若有一个未选中直接跳出循环
+                        break;
+                    }
+                }
+                // 3.2 赋值
+                checkAll.checked = isChecked;
+            }
+        }
+    </script>
+    
+</body>
+</html>

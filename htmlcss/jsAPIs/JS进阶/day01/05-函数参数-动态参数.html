@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 动态参数: 函数可以接收任意数量的参数
+        function fun() {
+            console.log(arguments);
+
+            let sum = 0;
+            for (let i = 0; i < arguments.length; i++) {
+                sum += arguments[i];
+            }
+            console.log(sum);
+        }
+        fun(1, 2, 3, 4, 5);
+    </script>
+</body>
+
+</html>

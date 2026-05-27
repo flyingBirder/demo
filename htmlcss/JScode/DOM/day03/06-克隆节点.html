@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- node.cloneNode() 克隆节点 -->
+    <ul>
+        <li>111</li>
+        <li>222</li>
+        <li>333</li>
+    </ul>
+    <button>克隆按钮</button>
+    <script>
+        // 获取克隆按钮元素
+        var btn = document.querySelector('button');
+        var  ul = document.querySelector('ul');
+        
+        // 点击克隆按钮，将第一个li元素克隆一份添加到ul元素中
+        btn.onclick = function(){
+            // 1.获取li元素
+            var lis = ul.querySelectorAll('li');
+            // 2.克隆li元素，cloneNode(true) 深克隆，包括li元素的所有子节点，
+            // cloneNode(false) 浅克隆，只克隆li元素，不克隆li元素的子节点
+            var cloneLi = lis[0].cloneNode(true);
+            // 3.将克隆的li元素添加到ul元素中
+            ul.appendChild(cloneLi);
+
+        }
+    </script>
+
+    
+</body>
+</html>

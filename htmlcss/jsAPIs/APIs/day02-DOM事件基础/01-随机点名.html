@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    .box {
+      width: 500px;
+      margin: 50px auto;
+      font-size: 24px;
+      height: 40px;
+      line-height: 40px;
+      display: flex;
+    }
+
+    .box p {
+      margin-left: 20px;
+      color: red;
+      font-size: 28px;
+    }
+
+    .btns {
+      height: 40px;
+      text-align: center;
+      line-height: 40px;
+    }
+
+    .start,
+    .stop {
+      width: 100px;
+      height: 40px;
+      line-height: 40px;
+      margin: 0 10px;
+
+    }
+  </style>
+</head>
+
+<body>
+  <h2>随机点名</h2>
+  <div class="box">
+    <span>名字是：</span>
+    <p>这里显示姓名</p>
+  </div>
+  <div class="btns">
+    <button class="start">开始点名</button>
+    <button class="stop">停止点名</button>
+  </div>
+  <script>
+    const arr = ['张三', '李四', '王五', '赵六', '王二'];
+    const start = document.querySelector('.start');
+    const stop = document.querySelector('.stop');
+    const p = document.querySelector('p');
+    let random = 0;
+    let timer = '';
+
+    start.addEventListener('click', function () {
+      timer = setInterval(function () {
+        random = Math.floor(Math.random() * arr.length);
+        p.innerHTML = arr[random];
+      }, 30);
+      if (arr.length === 1) {
+        start.disabled = true;
+        stop.disabled = true;
+      }
+    });
+
+    stop.addEventListener('click', function () {
+      clearInterval(timer);
+      arr.splice(random, 1);
+      // console.log(arr);
+    });
+
+  </script>
+</body>
+
+</html>

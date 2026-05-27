@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 随机生成1-10之间的随机数
+    function getRandomNum(n, m) {
+      return Math.floor(Math.random() * (m - n + 1)) + n;
+    }
+    let randomNum = getRandomNum(1, 10);
+    /*     
+        // 未限定猜数字的次数
+        while (true) {
+          let inputNum = prompt('请输入你猜的数字');
+          if (inputNum > randomNum) {
+            alert('你猜的数字大了');
+          } else if (inputNum < randomNum) {
+            alert('你猜的数字小了');
+          } else {
+            alert('恭喜你猜对了');
+            break;// 猜对了跳出循环
+          }
+        }
+     */
+    let flag = true;// 记录是否猜对了的标志位
+    for (let i = 0; i < 3; i++) {
+      let inputNum = prompt('请输入你猜的数字');
+      if (inputNum > randomNum) {
+        alert('你猜的数字大了');
+      } else if (inputNum < randomNum) {
+        alert('你猜的数字小了');
+      } else {
+        flag = false; // 猜对了，将flag设置为false
+        alert('恭喜你猜对了');
+        break;
+      }
+    }
+    if (flag) {
+      alert('很遗憾，你的次数已经用完');
+    }
+
+  </script>
+
+</body>
+
+</html>

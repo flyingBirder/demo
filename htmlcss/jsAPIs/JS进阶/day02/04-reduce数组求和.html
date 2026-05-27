@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // reduce方法,数组求和
+        const arr = [1, 2, 3, 4, 5];
+        //1. 累加器,初始值为0
+        const sum = arr.reduce(function (prev, current) {
+            return prev + current;
+        }, 0);
+        console.log(sum);// 15
+
+        //2. 累加器，有初始值
+        const sum1 = arr.reduce(function (prev, current) {
+            return prev + current;
+        }, 10);
+        console.log(sum1);// 25
+        //3. 箭头函数写法
+        //const sum2 = arr.reduce((prev,current)=>{return prev + current;},100);
+        const sum2 = arr.reduce((prev, current) => prev + current, 100);
+        // 4. 箭头函数写法，没有初始值
+        const sum3 = arr.reduce((prev, current) => prev + current);
+        console.log(sum3);// 15
+
+
+
+    </script>
+
+</body>
+
+</html>

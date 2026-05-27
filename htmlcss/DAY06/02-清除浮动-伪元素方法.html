@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>浮动的基本使用与布局</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box; 
+        }
+        li{
+            list-style: none;
+        }
+        .top{
+            margin: 0 auto;
+            width: 1226px;
+            /* 如果浮动元素的父级未设置高度，子元素浮动后，父级无法撑起高度，导致高度塌陷 */
+            /* height: 200px; */
+        }
+        .top .left{
+            float: left;
+            width: 234px;
+            height: 200px;
+            background-color: red;
+        }
+       .top .right{
+            float: right;
+            width: 992px;
+            height: 200px;
+            background-color: green;
+       }
+       /* 方法二：给浮动元素的父级添加伪元素清除浮动 */
+       .clearfix::after{
+        content: '';
+        display: block;
+        clear: both;
+       }
+
+        .bottom{
+            height: 80px;
+            background: brown;
+        }
+
+       
+    </style>
+</head>
+<body>
+    <div class="top clearfix">
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+   <div class="bottom"></div>
+
+    
+</body>
+</html>

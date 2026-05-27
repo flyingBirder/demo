@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="time"></div>
+    <script>
+        /* 利用递归函数实现setTimeout模拟setInterval效果
+        需求：
+        1. 页面每隔一秒输出一次当前时间
+        2.输出当前时间可以使用new Date().toLocaleString()方法
+    
+        */
+
+        function getTime() {
+            document.getElementById('time').innerHTML = new Date().toLocaleString();
+            // 递归调用getTime函数，实现每隔1秒输出一次当前时间
+            setTimeout(getTime, 1000);
+        }
+        getTime();
+    </script>
+</body>
+
+</html>

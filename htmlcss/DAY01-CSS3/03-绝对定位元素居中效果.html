@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>平移实现定位居中</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            /* 绝对定位元素居中效果 */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            /* 向左向上移动自身尺寸的一半 */
+            /* 方法一：使用translate实现居中 */
+            /* transform: translate(-50%,-50%); */
+
+            
+            /* 方法二：使用margin负值实现居中 */
+            margin-top: -100px;
+            margin-left: -100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    
+</body>
+</html>

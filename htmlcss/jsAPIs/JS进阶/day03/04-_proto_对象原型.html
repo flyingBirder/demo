@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function Person(name) {
+            this.name = name;
+        }
+        // 原型对象上添加方法
+        Person.prototype.sayName = function () {
+            console.log(this.name);
+        }
+        // 创建实例对象
+        const peppa = new Person('佩奇');
+        // 调用实例对象的方法
+        peppa.sayName(); // 佩奇
+
+        // 实例对象的__proto__指向原型对象
+        console.log(peppa.__proto__);// {sayName: ƒ}
+        // Person.prototype 是原型对象
+        console.log(Person.prototype);// {sayName: ƒ}
+        // 实例对象的__proto__指向原型对象，原型对象的constructor指向构造函数
+        console.log(peppa.__proto__ === Person.prototype);// true
+
+        // 实例对象的constructor指向构造函数
+        console.log(peppa.__proto__.constructor) // ƒ Person(name){ this.name = name; }
+        // 原型对象的constructor指向构造函数
+        console.log(Person.prototype.constructor) // ƒ Person(name){ this.name = name; }
+        console.log(peppa.__proto__.constructor === Person.prototype.constructor) // true
+
+        peppa.__proto__.constructor === Person; // true
+        Person.prototype.constructor === Person; // true
+
+
+    </script>
+</body>
+
+</html>

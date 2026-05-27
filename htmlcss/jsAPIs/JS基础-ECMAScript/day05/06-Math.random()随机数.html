@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let arr = ['red', 'blue', 'yellow'];
+    let randomNum1 = Math.floor(Math.random() * arr.length);
+    console.log(randomNum1);
+
+
+
+    // 生成0-10之间的随机数
+
+    let randomNum = Math.random() * 10 + 1; // math.random()生成0-1之间的随机数 [0,1)左闭右开
+    //console.log(Math.floor(randomNum));// 向下取整，获取0-10之间的整数
+
+    // 生成5-10之间的随机数
+    let randomNum2 = Math.floor(Math.random() * (10 - 5 + 1)) + 5; // math.random()生成0-1之间的随机数 [0,1)左闭右开
+    console.log(randomNum2);
+
+    // 生成N-M之间的随机数
+    function getRandomNum(N, M) {
+      return Math.floor(Math.random() * (M - N + 1)) + N;
+
+    }
+    let randomNum3 = getRandomNum(5, 10);
+    console.log(randomNum3);
+  </script>
+</body>
+
+</html>

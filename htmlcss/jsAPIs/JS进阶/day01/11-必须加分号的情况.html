@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1. 立即执行函数表达式
+        (function () {
+            console.log('hello world');
+        })();
+
+        // 2.使用数组的时候
+        const arr = [1, 2, 3, 4, 5];
+        arr.map(function (item) {
+            console.log(item);
+        });
+        [1, 2, 3, 4, 5].map(function (item) {
+            console.log(item);
+        })
+
+        // 将最大值和最小值返回值解构给Max和Min
+        function getMaxMin(arr) {
+            const max = Math.max(...arr);
+            const min = Math.min(...arr);
+            return [max, min];
+        }
+        const [Max, Min] = getMaxMin([1000, 60]);
+        console.log(Max, Min);// 5 1
+    </script>
+</body>
+
+</html>

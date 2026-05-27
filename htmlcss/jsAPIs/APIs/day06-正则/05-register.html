@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../iconfont/iconfont.css">
+    <title>注册页面表单验证</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        h2 {
+            text-align: center;
+            margin: 20px 0;
+
+        }
+
+        .form-item {
+            margin: 10px auto;
+            width: 330px;
+            height: 80px;
+            position: relative;
+        }
+
+        .form-item input {
+            width: 100%;
+            height: 46px;
+            font-size: 16px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            padding-left: 8px;
+            outline: none;
+        }
+
+        input::placeholder {
+            font-size: 14px;
+            color: #ced4da;
+        }
+
+        .form-item a {
+            position: absolute;
+            top: 0;
+            right: 8px;
+            color: #007bff;
+            cursor: pointer;
+            font-size: 12px;
+            text-decoration: none;
+            width: 90px;
+            height: 48px;
+            line-height: 48px;
+            text-align: right;
+        }
+
+        .form-item span {
+            position: absolute;
+            bottom: 12px;
+            left: 0;
+            font-size: 12px;
+        }
+
+        .agreement {
+            text-align: center;
+            height: 40px;
+        }
+
+        i {
+            font-style: normal;
+            font-size: 14px;
+        }
+
+        i:nth-child(2) {
+            color: #27ba98;
+        }
+
+        .iconfont {
+            font-size: 20px;
+            vertical-align: bottom;
+            margin-right: 5px;
+            cursor: pointer;
+        }
+
+        .icon-a-159_queren {
+            color: #ced4da;
+        }
+
+        .icon-queren {
+            color: #27ba98;
+        }
+
+        input[type="submit"] {
+            background-color: #27ba98;
+            color: #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>新用户注册</h2>
+    <form action="" autocomplete="off">
+        <div class="form-item">
+            <input type="text" name="username" placeholder="请输入用户名">
+            <span class="msg"></span>
+        </div>
+        <div class="form-item">
+            <input type="text" name="phone" placeholder="请输入手机号">
+            <span class="msg"></span>
+        </div>
+        <div class="form-item">
+            <input type="text" name="code" placeholder="请输入短信验证码">
+            <a class="sendCode" href="javascript:void(0);">发送验证码</a>
+            <span class="msg"></span>
+        </div>
+
+        <div class="form-item">
+            <input type="password" name="password" placeholder="请输入密码">
+            <span class="msg"></span>
+        </div>
+        <div class="form-item">
+            <input type="password" name="confirmPsd" placeholder="请确认密码">
+            <span class="msg"></span>
+        </div>
+        <div class="form-item agreement">
+            <i class="iconfont icon-a-159_queren"></i>已阅读并同意《<i>用户服务协议</i>》
+        </div>
+
+        <div class="form-item">
+            <input type="submit" value="下一步">
+        </div>
+
+    </form>
+    <script>
+        // 1.发送验证码
+        const send = document.querySelector('a.sendCode');
+        // 初始时,设置节流阀开启状态,可以点击发送验证码
+        let flag = true;
+        send.addEventListener('click', function () {
+            // 判断节流阀是否开启,开启则执行
+            if (flag) {
+                // 立马设置节流阀关闭状态,防止重复点击
+                flag = false;
+                send.innerHTML = `05秒后重新发送`;
+                let i = 5;
+                let timerId = setInterval(function () {
+                    i--;
+                    send.innerHTML = `0${i}秒后重新发送`;
+                    if (i === 0) {
+                        clearInterval(timerId);
+                        send.innerHTML = '重新发送';
+                        // 清除定时器后,开启节流阀
+                        flag = true;
+                    }
+                }, 1000);
+            }
+        });
+
+
+
+        // 2.验证用户名
+        // 2.1获取用户名表单元素,表单必须有name属性，才能通过name属性收取值
+        const username = document.querySelector('input[name="username"]');
+        // 2.2添加change事件监听：当用户名输入框内的内容发生改变时触发，避免失去焦点时触发，次数频繁 
+        username.addEventListener('change', verifyUsername);
+        // 2.3封装验证用户名的函数
+        function verifyUsername() {
+            const span = username.nextElementSibling;
+            // 2.4定义正则表达式，验证用户名格式是否正确
+            const reg = /^[a-zA-Z0-9_]{6,8}$/;
+            if (!reg.test(username.value)) {
+                span.innerHTML = '用户名格式错误,请输入6-8位字母、数字或下划线';
+                span.style.color = 'red';
+                return false;
+            }
+            // 2.5如果用户名格式正确就清空span元素的内容，返回true
+            span.innerHTML = '';
+            return true;
+        }
+
+
+
+        // 3.验证手机号
+        // 3.1获取手机号表单元素,表单必须有name属性，才能通过name属性收取值
+        const phone = document.querySelector('input[name="phone"]');
+        // 2.2添加change事件监听：当用户名输入框内的内容发生改变时触发，避免失去焦点时触发，次数频繁 
+        phone.addEventListener('change', verifyphone);
+        // 2.3封装验证用户名的函数
+        function verifyphone() {
+            const span = phone.nextElementSibling;
+            // 2.4定义正则表达式，验证用户名格式是否正确
+            const reg = /^1(3\d|4[5-9]|5[0-35-9]|6[567]|7[0-8]|8[0-9]|9[0-35-9])\d{8}$/;
+            if (!reg.test(phone.value)) {
+                span.innerHTML = '手机号格式错误,请输入正确的11位手机号';
+                span.style.color = 'red';
+                return false;
+            }
+            // 2.5如果用户名格式正确就清空span元素的内容，返回true
+            span.innerHTML = '';
+            return true;
+        }
+
+        // 4.验证短信验证码
+        // 4.1获取短信验证码表单元素,表单必须有name属性，才能通过name属性收取值
+        const code = document.querySelector('input[name="code"]');
+        // 4.2添加change事件监听：当短信验证码输入框内的内容发生改变时触发，避免失去焦点时触发，次数频繁 
+        code.addEventListener('change', verifycode);
+        // 4.3封装验证短信验证码的函数
+        function verifycode() {
+            const span = send.nextElementSibling;
+            // 4.4定义正则表达式，验证短信验证码格式是否正确        
+            const reg = /^\d{6}$/;
+            if (!reg.test(code.value)) {
+                span.innerHTML = '验证码格式错误,请输入6位数字验证码';
+                span.style.color = 'red';
+                return false;
+            }
+            // 4.5如果短信验证码格式正确就清空span元素的内容，返回true
+            span.innerHTML = '';
+            return true;
+        }
+
+
+        // 5.验证密码
+        // 5.1获取密码表单元素,表单必须有name属性，才能通过name属性收取值
+        const password = document.querySelector('input[name="password"]');
+        // 5.2添加change事件监听：当密码输入框内的内容发生改变时触发，避免失去焦点时触发，次数频繁 
+        password.addEventListener('change', verifypassword);
+        // 5.3封装验证密码的函数
+        function verifypassword() {
+            const span = password.nextElementSibling;
+            // 5.4定义正则表达式，验证密码格式是否正确        
+            const reg = /^[a-zA-Z0-9-_]{6,20}$/;
+            if (!reg.test(password.value)) {
+                span.innerHTML = '密码格式错误,请输入6-20位字母、数字或下划线';
+                span.style.color = 'red';
+                return false;
+            }
+            // 5.5如果密码格式正确就清空span元素的内容，返回true
+            span.innerHTML = '';
+            return true;
+        }
+
+
+        // 6.验证确认密码
+        // 6.1获取密码表单元素,表单必须有name属性，才能通过name属性收取值
+        const confirmPsd = document.querySelector('input[name="confirmPsd"]');
+        // 6.2添加change事件监听：当密码输入框内的内容发生改变时触发，避免失去焦点时触发，次数频繁 
+        confirmPsd.addEventListener('change', verifyconfirmPsd);
+        // 6.3封装验证密码的函数
+        function verifyconfirmPsd() {
+            const span = confirmPsd.nextElementSibling;
+            // 6.4 判断输入的确认密码是否与密码一致
+            if (confirmPsd.value !== password.value) {
+                span.innerHTML = '确认密码与密码不一致';
+                span.style.color = 'red';
+                return false;
+            }
+            // 6.5如果确认密码与密码一致就清空span元素的内容，返回true
+            span.innerHTML = '';
+            return true;
+        }
+
+        // 7.确认勾选用户服务协议
+        const queren = document.querySelector('.icon-a-159_queren');
+        queren.addEventListener('click', function () {
+            // 切换类名，实现选中效果
+            this.classList.toggle('icon-queren');
+        });
+
+
+        // 8.验证提交按钮
+        // 8.1获取提交按钮
+        const form = document.querySelector('form');
+        // 8.2 添加提交事件监听
+        form.addEventListener('submit', function (e) {
+            if (!queren.classList.contains('icon-queren')) {
+                alert('请确认勾选用户服务协议');
+                // 8.3阻止表单提交
+                e.preventDefault();
+            }
+            if (!verifyUsername()) e.preventDefault();
+            if (!verifyphone()) e.preventDefault();
+            if (!verifycode()) e.preventDefault();
+            if (!verifypassword()) e.preventDefault();
+            if (!verifyconfirmPsd()) e.preventDefault();
+
+        });
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

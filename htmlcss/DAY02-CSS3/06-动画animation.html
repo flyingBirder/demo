@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 过渡：实现两个状态间的变化过程；
+        动画：实现多个状态间的变化过程，动画过程可控。（重复播放、最终画面、是否暂停）
+    -->
+        <style>
+            div{
+                /* animation-name: 动画名称 动画时长 速度曲线 延迟时间  重复次数 动画方向 动画播放状态; */
+                /* 必须有的属性值：动画名称 动画时长 */
+                width: 200px;
+                height: 200px;
+                background-color: pink;
+                /* 动画属性 linear：线性动画 */
+                animation: move 1s linear;
+                /* steps:分布动画，工作中，配合精灵图实现精灵动画 */
+                animation: move 1s steps(3);
+                /* 如果有两个时间，第一个动画时长，第二个是延迟时间 */
+                /* infinite无限循环播放; */
+                animation: move 1s 2s linear infinite;
+                /* forwards：动画结束后，停留在结束状态 */
+                animation: move 1s 2s linear infinite forwards;
+                
+            }
+            /* 百分比 */
+            @keyframes move{
+                from{
+                    transform: translateX(0);
+
+                }
+                to{
+                    transform: translateX(200px);
+                }
+            }
+            
+            @keyframes move{
+                /* 百分比表示动画时长的百分比 */
+                0%{
+                    transform: translateX(0);
+                }
+                50%{
+                    transform: translateX(100px);
+                }
+                100%{
+                    transform: translateX(200px);
+                }
+            }
+        </style>
+</head>
+<body>
+    <div></div>
+    
+</body>
+</html>

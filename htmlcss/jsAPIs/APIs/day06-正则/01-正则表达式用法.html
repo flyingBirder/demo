@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const str = '我在学习正则表达式';
+        // 定义规则
+        const reg = /正则/;
+        // 测试规则是否符合
+        console.log(reg.test(str)); // true
+        console.log(reg.exec(str)); // ['正则', index: 4, input: '我在学习正则表达式', groups: undefined]
+
+        console.log(/^哈?$/.test('哈哈'))
+    </script>
+</body>
+
+</html>

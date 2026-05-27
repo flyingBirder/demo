@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            text-align: center;
+            line-height: 100px;
+        }
+    </style>
+    <script src="./lodash.js"></script>
+</head>
+
+<body>
+    <div class="box"></div>
+    <script>
+        const box = document.querySelector('.box');
+        let i = 0;
+        function mouseMove() {
+            box.innerHTML = i++;
+        }
+
+        // lodash库 节流函数：throttle(fn, delay)
+        // 作用：限制函数fn在delay时间内只能调用一次
+        // 应用场景：鼠标移动事件、滚动事件、搜索事件等
+        box.addEventListener('mousemove', _.throttle(mouseMove, 3000));
+
+
+    </script>
+</body>
+
+</html>

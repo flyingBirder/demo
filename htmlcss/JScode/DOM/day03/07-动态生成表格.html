@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            width: 500px;
+            margin: 110px auto;
+            border-collapse: collapse;
+            text-emphasis: center;
+        }
+        th, td{
+            border: 1px solid #000;
+            padding: 10px;
+        }
+        thead tr{
+            height: 40px;
+            text-align: center;
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <table border="1" cellspacing="0">
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>性别</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- 循环生成tr元素 -->
+        </tbody>
+    </table>
+    <script>
+        // 1.准备数据
+        var data = [
+            {
+                name: '张三',
+                age: 18,
+                sex: '男',
+
+            },
+            {
+                name: '李四',
+                age: 19,
+                sex: '男',
+            },
+            {
+                name: '王五',
+                age: 20,
+                sex: '男',
+            },
+        ];
+        var tbody = document.querySelector('tbody');
+        // 2.循环遍历数据，生成tr元素
+        for(var i = 0;i<data.length;i++){
+
+            // 创建行tr
+            var tr = document.createElement('tr');
+            // 将tr元素添加到tbody元素中
+            tbody.appendChild(tr);
+            for(k in data[i]){
+                // 创建单元格td
+                var td = document.createElement('td');
+                // 给单元格添加内容
+                td.innerHTML = data[i][k];
+                 // 将td元素添加到tr元素中
+                 tr.appendChild(td); 
+            }
+            // 3.创建删除单元格
+            var td = document.createElement('td');
+            // 给单元格添加内容
+            td.innerHTML = '<a href="javascript:;">删除</a>';
+            // 将td元素添加到tr元素中
+            tr.appendChild(td);
+        }
+        // 删除操作
+        var abtn = tbody.querySelectorAll('a');
+        for(var i = 0; i<abtn.length;i++){
+            abtn[i].onclick = function(){
+                tbody.removeChild(this.parentNode.parentNode);
+            }
+
+        }
+    </script>
+
+    <!-- 遍历对象的属性名和属性值 
+    for(k in obj){
+        k: 属性名
+        obj[k]: 属性值
+    } -->
+</body>
+</html>

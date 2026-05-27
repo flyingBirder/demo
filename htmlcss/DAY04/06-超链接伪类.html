@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>超链接伪类</title>
+    <style>
+        超链接伪类：选择不同状态的链接
+
+        /* 未访问的链接 */
+        a:link {
+            color: blue;
+        }
+
+        /* 已访问的链接 */
+        a:visited {
+            color: red;
+        }
+
+        /* 鼠标悬停在链接上 */
+        a:hover {
+            color: green;
+        }
+
+        /* 点击链接时 */
+        a:active {
+            color: yellow;
+        }
+
+        /* 实际开发工作中，通常只使用:hover伪类 */
+    </style>
+</head>
+
+<body>
+    <a href="javascript:void(0)">点击跳转到百度</a>
+    <a href="javascript:;">点击跳转到百度</a>
+    <a href="https://www.baidu.com">点击跳转到百度</a>
+
+</body>
+
+</html>

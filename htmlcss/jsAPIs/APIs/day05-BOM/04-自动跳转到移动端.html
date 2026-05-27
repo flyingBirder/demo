@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 检测userAgent浏览器信息
+        !(function () {
+            const userAgent = navigator.userAgent;
+            console.log(userAgent);
+            // 1. 检测用户是否是android 或者 ios
+            const android = userAgent.match(/(Android);?[\s\/]+([\d.]+)?/);
+            const ios = userAgent.match(/(iPhone\soS)\s([\d_]+)/);
+            console.log(android, ios);
+            if (android || !ios) {
+                location.href = 'https://www.baidu.com/';
+            }
+        })();
+    </script>
+</head>
+
+<body>
+    <div>我是pc</div>
+
+</body>
+
+</html>

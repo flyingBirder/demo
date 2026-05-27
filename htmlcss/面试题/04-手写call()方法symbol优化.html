@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+        1.定义Call方法
+        2.设置this并调用原函数
+        3.接收剩余参数并返回结果
+        4.使用Symbol优化避免属性名冲突
+        
+        */
+        function myCall(thisArg, ...args) {
+            /* thisArg.fn = this;
+            const res = thisArg.fn(...args);
+            delete thisArg.fn;
+            return res; */
+
+            const key = Symbol('key');
+            thisArg[key] = this;
+            const res = thisArg[key](...args);
+            delete thisArg[key];
+            return res;
+
+        }
+        const food = {
+            name: '红烧肉'
+        }
+        function func(num1, num2) {
+            console.log(this);// {name: '红烧肉'}
+            console.log(this.name, num1, num2);
+            return num1 + num2;
+        }
+        const res = func.myCall(food, 100, 200);
+        console.log(res);
+    </script>
+
+</body>
+
+</html>

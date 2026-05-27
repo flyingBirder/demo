@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>操作元素-修改样式属性</title>
+    <style>
+        div{
+            position: relative;
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            font-size: 16px;
+        }
+        span{
+            position: absolute;
+            top: 0;
+            right: -20px;
+            width: 20px;
+            height: 20px;
+            border: 1px solid black;
+            text-align: center;
+            line-height: 22px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div>123
+        <span>*</span>
+    </div>
+
+    <script>
+        // 1. 获取元素
+        var div = document.querySelector('div');
+        var span = document.querySelector('span');
+        // 2. 注册事件 处理程序
+        div.onclick = function(){
+            // js修改样式属性:注意点
+            // 1. 样式属性名采用驼峰命名法
+            // 2. 产生的是行内样式，css权重较高，会覆盖外部样式表的样式
+
+            // 点击div后，背景颜色变成红色
+            div.style.backgroundColor = 'red';
+            // 点击div后，宽度变成400px
+            div.style.width = '400px';
+            div.style.fontSize = '30px';
+
+        }
+        span.onclick = function(){
+            
+            // 点击span后，隐藏div
+            div.style.display = 'none';
+        }
+        
+    </script>
+    
+</body>
+</html>

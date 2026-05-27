@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function Object() { }
+        console.log(Object.prototype);// {}
+        console.log(Object.prototype.__proto__); // null
+
+        function Person() { }
+        const p1 = new Person();// p1 是 Person 的实例对象
+        console.log(p1.__proto__.constructor); // Person()
+        console.log(Person.prototype.constructor); // Person()
+        console.log(p1.__proto__);// Person {} 
+        console.log(Person.prototype); // Person {}
+        console.log(p1.__proto__ === Person.prototype); // true
+        console.log(Person.prototype.__proto__);// {}
+        console.log(Person.prototype.constructor); // Person()
+        console.log(Person.prototype.__proto__ === Object.prototype); // true
+
+        // instanceof 运算符 
+        // instanceof 运算符 用于检测构造函数的 prototype 属性是否出现在对象的原型链中的任何位置
+        console.log(p1 instanceof Person); // true
+        console.log(p1 instanceof Object); // true
+        console.log(p1 instanceof Array); // false
+
+
+    </script>
+</body>
+
+</html>

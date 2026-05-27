@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>伪元素选择器</title>
+    <style>
+        /* 伪元素选择器作用：通过css创建虚拟元素（伪元素），用来摆放装饰性的内容，他的显示模式是行内元素 */
+        /* 伪元素选择器分类：
+            1. 单冒号（:）表示伪类选择器
+            2. 双冒号（::）表示伪元素选择器
+        */
+        /* 伪元素选择器必须要写的属性：
+            content：用来设置伪元素的内容
+        */
+
+        div{
+            font-size: 20px;
+           line-height: 20px;
+            font-weight: bold;
+            text-align: center;
+
+        }
+        div::before,div::after{
+
+            color: #0069c2;
+            display: inline-block;  
+           width: 20px;
+           height: 20px;
+           /* font-size: 20px;
+           line-height: 20px;
+            font-weight: bold;
+            text-align: center; */
+        }
+        div::before{
+            content:'<';
+           
+        }
+        div::after{
+            content: '>';
+        }
+       
+    </style>
+</head>
+<body>
+    <div>我是一本沉睡的书</div>
+    
+    
+</body>
+</html>
+

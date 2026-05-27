@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        .container {
+            position: relative;
+            margin: 100px auto;
+            width: 330px;
+            height: 48px;
+            line-height: 48px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+        }
+
+        input {
+            margin-left: 8px;
+            width: 220px;
+            height: 46px;
+            font-size: 16px;
+            border: none;
+            vertical-align: super;
+            outline: none;
+        }
+
+        /*  placeholder 占位符样式 */
+        input::placeholder {
+            font-size: 14px;
+            color: #ced4da;
+        }
+
+        div a {
+            position: absolute;
+            top: 0;
+            right: 8px;
+            color: #007bff;
+            cursor: pointer;
+            font-size: 12px;
+            text-decoration: none;
+            width: 90px;
+            height: 48px;
+            line-height: 48px;
+            text-align: right;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <input type="text" placeholder="短信验证码"><a href="javascript:void(0);">发送验证码</a>
+    </div>
+    <script>
+        const input = document.querySelector('input');
+        const send = document.querySelector('a');
+
+        // 初始时,设置节流阀开启状态,可以点击发送验证码
+        let flag = true;
+        send.addEventListener('click', function () {
+            // 判断节流阀是否开启,开启则执行
+            if (flag) {
+                // 立马设置节流阀关闭状态,防止重复点击
+                flag = false;
+                send.innerHTML = `05秒后重新发送`;
+                let i = 5;
+                let timerId = setInterval(function () {
+                    i--;
+                    send.innerHTML = `0${i}秒后重新发送`;
+                    if (i === 0) {
+                        clearInterval(timerId);
+                        send.innerHTML = '重新发送';
+                        // 清除定时器后,开启节流阀
+                        flag = true;
+                    }
+                }, 1000);
+            }
+        });
+    </script>
+</body>
+
+</html>

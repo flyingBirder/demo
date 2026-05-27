@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+     -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+<style>
+    .alert {
+        opacity: 0;
+        transition: all 0.5s;
+    }
+
+    .alert.show {
+        opacity: 1;
+    }
+</style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="alert " role="alert">
+            提示消息
+        </div>
+        <form class="form_wrap">
+            <div class="mb-3">
+                <label for="username" class="form-label">用户名</label>
+                <input type="text" class="form-control username" id="username">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">密码</label>
+                <input type="password" class="form-control password" id="password">
+            </div>
+
+            <button type="button" class="btn btn-primary btn-login">登录</button>
+        </form>
+        <script src="https://cdn.jsdelivr.net/npm/form-serialize@0.7.2/index.min.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+        <script>
+
+            const myAlert = document.querySelector('.alert');
+            function showAlert(msg, isSuccess) {
+                myAlert.classList.add('show');
+                myAlert.innerText = msg;
+                const bgStyle = isSuccess ? 'alert-success' : 'alert-danger';
+                myAlert.classList.add(bgStyle);
+                setTimeout(() => {
+                    myAlert.classList.remove('show');
+                    myAlert.classList.remove(bgStyle);
+                }, 3000);
+
+
+            }
+            document.querySelector('.btn-login').addEventListener('click', function () {
+                // 收集手机号和验证码数据 serialize 插件
+                const loginForm = document.querySelector('.form_wrap');
+                const loginData = serialize(loginForm, { hash: true, empty: true });
+                console.log(loginData);
+                // 解构赋值
+                const { username, password } = loginData;
+                console.log(username, password);
+
+
+                // 获取用户名和密码
+                // const username = document.querySelector('.username').value;
+                // const password = document.querySelector('.password').value;
+
+                // 校验用户名和密码长度
+                if (username.length < 8) {
+                    showAlert('请输入用户名，用户名长度不能小于8位', false)
+                    return;
+                }
+                if (password.length < 6) {
+                    showAlert('请输入密码，密码长度不能小于6位', false)
+                    return;
+                }
+                axios({
+                    url: 'http://hmajax.itheima.net/api/login',
+                    method: 'post',
+                    data: {
+                        username: username,
+                        password: password
+                    }
+                }).then(res => {
+                    if (res.data.code === 200) {
+                        showAlert('登录成功', true)
+                    }
+                    console.log(res.data.message)
+                }).catch(error => {
+                    showAlert(error.response.data.message, false)
+                    console.log(error.response.data.message)
+                });
+            });
+        </script>
+</body>
+
+</html>

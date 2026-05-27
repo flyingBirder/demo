@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 随机点名，不需要删除数组中的元素，随机点名可以重复
+    let arr = ['张三', '李四', '王五', '赵六', '王二'];
+    let randomNum = Math.floor(Math.random() * arr.length); // 随机生成的数组的索引
+    document.write(arr[randomNum]);
+    // 随机抽奖，需要从数组中删除随机点的人
+    arr.splice(randomNum, 1);// 从数组中删除随机点的人  splice(起始索引,删除的个数) 
+    console.log(arr);
+
+
+
+  </script>
+</body>
+
+</html>

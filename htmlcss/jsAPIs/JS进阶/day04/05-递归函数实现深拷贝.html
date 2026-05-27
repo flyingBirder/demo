@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const obj = {
+            name: '张三',
+            age: 18,
+            sex: '男',
+            hobby: ['篮球', '足球', '跑步'],
+            family: {
+                baby: '小绿'
+            }
+        };
+        const o = {};
+        function deepCopy(newObj, oldObj) {
+            for (let k in oldObj) {
+                // 一定先处理数组，再处理对象，顺序不能颠倒，因为万物皆对象
+                // 先判断是否是数组
+                if (oldObj[k] instanceof Array) {
+                    // 是数组，递归调用深拷贝函数
+                    // 给新对象添加新属性，属性值是一个空数组
+                    newObj[k] = [];
+                    deepCopy(newObj[k], oldObj[k]);
+
+                } else if (oldObj[k] instanceof Object) { // 是对象，递归调用深拷贝函数
+
+                    newObj[k] = {};
+                    deepCopy(newObj[k], oldObj[k]);
+
+                } else {
+                    // 不是数组，也不是对象，直接赋值；给新对象添加新属性
+                    newObj[k] = oldObj[k];
+                }
+            }
+        }
+        deepCopy(o, obj);
+        o.age = 20;
+        o.hobby.push('游泳');
+        o.family.baby = '小蓝';
+        console.log(o);
+        console.log(obj);
+
+
+    </script>
+</body>
+
+</html>

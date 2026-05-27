@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .father {
+            width: 500px;
+            height: 500px;
+            background-color: red;
+        }
+
+        .son {
+            width: 300px;
+            height: 300px;
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+    <script>
+        document.body.addEventListener('click', function () {
+            console.log('点击了body');
+        });
+        document.querySelector('.father').addEventListener('click', function () {
+            console.log('点击了父元素');
+        });
+        document.querySelector('.son').addEventListener('click', function (e) {
+            e.stopPropagation();// 阻止事件向父级元素冒泡，即父级元素不执行同名事件
+            console.log('点击了子元素');
+        });
+    </script>
+</body>
+
+</html>

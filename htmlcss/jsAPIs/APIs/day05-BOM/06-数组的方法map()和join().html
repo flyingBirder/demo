@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组的方法map()和join()()</title>
+</head>
+
+<body>
+    <script>
+        // map() 方法
+        const arr = [1, 2, 3, 4, 5]
+        const newArr = arr.map(item => item * 2)
+        console.log(newArr)// [2, 4, 6, 8, 10]
+        // join() 方法
+        const str = newArr.join(',')
+        console.log(str)// 2,4,6,8,10
+        // split() 方法
+        const arr2 = str.split(',')
+        console.log(arr2)// [1, 4, 6, 8, 10]
+    </script>
+
+</body>
+
+</html>

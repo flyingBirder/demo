@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>选择器</title>
+    <style>
+         /* 通配符选择器 */
+         *{
+            color:black;
+            font-size: 16px;
+        }
+        /* 元素选择器 */
+        p{
+            color: gold;
+        }
+        /* 类选择器 */
+        .red{
+            color: red;
+
+        }
+        .div{
+            font-size: 30px;
+        }
+        /* id选择器 */
+        #p1{
+            color: green;
+        }
+       
+        /* 后代选择器 */
+        p span{
+            color: red;
+        }
+        /* 子选择器 */
+        p>span{
+            color: red;
+        }
+        /* 相邻兄弟选择器 */
+        p+span{
+            color: red;
+        }
+        /* 通用兄弟选择器 */
+        p~span{
+            color: red;
+        }
+        /* 属性选择器 */
+        p[title]{
+            color: red;
+        }
+        /* 属性选择器 */
+        p[title="p1"]{
+            color: red;
+        }
+        /* 属性选择器 */
+        p[title^="p"]{
+            color: red;
+        }
+        /* 属性选择器 */
+        p[title$="p"]{
+            color: red;
+        }
+        /* 属性选择器 */
+        p[title*="p"]{
+            color: red;
+        }
+
+        .box1 {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+        .box2 {
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <p>元素选择器</p>
+    <div class="div red">类选择器</div>
+    <div id="p1">id选择器</div>
+    <ul>
+        <li>列表项1</li>
+        <li>列表项2</li>        
+
+        <li>列表项3</li>
+    </ul>
+<div class="box1"></div>
+<div class="box2"></div>
+    
+</body>
+</html>

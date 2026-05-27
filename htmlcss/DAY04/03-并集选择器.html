@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>并集选择器</title>
+    <style>
+        *{
+            font-size: 16px;
+            color: #000;
+        }
+        /* 并集选择器：选择所有指定元素，用逗号隔开 */
+        /* 但如果你想对这些元素的后代（子级元素）应用样式，你需要使用后代选择器（空格）或者子选择器（大于号） */
+        div,
+        p,
+        span{
+            color: #0069c2;
+        }
+
+
+        div > h4, div > span {
+            color: yellowgreen;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        我是一个div元素
+        <span>我是div内的一个span元素</span>
+        <h4>我是div内的一个h4元素</h4>
+    </div>
+    <p>我是一个p元素</p>
+    <span>我是一个span元素</span>
+
+    
+</body>
+</html>

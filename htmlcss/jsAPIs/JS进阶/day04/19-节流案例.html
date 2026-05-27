@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .video {
+            width: 800px;
+            margin: 0 auto;
+        }
+
+        .video video {
+            width: 100%;
+        }
+    </style>
+    <script src="./lodash.js"></script>
+</head>
+
+<body>
+    <div class="video">
+        <video src="https://v.itheima.net/LapADhV6.mp4" controls></video>
+    </div>
+    <script>
+        /* 需求：页面打开，可以记录上一次视频的播放位置 
+        分析：
+        1.ontimeupdate 事件：在视频/音频当前的播放位置发送改变时触发
+        2.onloadeddata 事件：在当前帧的数据加载完成且还没有足够的数据播放视频/音频的下一帧时触发
+        */
+        const video = document.querySelector('video');
+        // 给视频添加时间更新事件，调用节流函数
+        video.ontimeupdate = _.throttle(function () {
+            console.log(video.currentTime);
+            // 每次更新时，将当前时间存储到本地存储中
+            localStorage.setItem('currentTime', video.currentTime);
+
+        }, 1000);
+        // 打开页面触发事件，从本地存储中取出存储的时间赋值给视频当前时间
+        video.onloadeddata = function () {
+            // 视频加载完成后，检查本地存储中是否有存储的当前时间
+            // 如果有，将视频当前时间设置为本地存储中的值；否则，将当前时间设置为0
+            // 确保视频从上次播放的位置继续播放
+            video.currentTime = localStorage.getItem('currentTime') || 0;
+        }
+    </script>
+</body>
+
+</html>

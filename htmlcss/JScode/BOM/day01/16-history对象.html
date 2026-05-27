@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div><a href="https://www.baidu.com">点击跳转</a></div>
+    <div>
+        <button id="backBtn">后退一页</button>
+        <button id="forwardBtn">前进一页</button>
+        <button id="refreshBtn">刷新当前页面</button>
+        <button id="goBtn">跳转到指定页面</button>
+    </div>
+    <script>
+        // 点击事件
+        document.getElementById('backBtn').onclick = function () {
+            history.back();
+        }
+        document.getElementById('forwardBtn').onclick = function () {
+            history.forward();
+        }
+        document.getElementById('refreshBtn').onclick = function () {
+            location.reload();
+        }
+        document.getElementById('goBtn').onclick = function () {
+            history.go(0);
+        }
+    </script>
+
+
+    <script>
+        // history对象： 表示浏览器的历史记录
+        // 常用方法： back()、forward()、go() 常用于oa系统的返回按钮、前进按钮、刷新按钮、跳转到指定页面
+        // 后退一页
+        // history.back();
+        // 前进一页
+        // history.forward();
+        // 跳转到指定页面
+        // history.go(0);// 刷新当前页面
+        // history.go(-1);// 后退一页
+        // history.go(1);// 前进一页
+    </script>
+
+    
+</body>
+</html>

@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        ul,
+        li {
+            list-style: none;
+        }
+
+        .container {
+            width: 100%;
+            height: 100%;
+            padding: 50px;
+            background-color: skyblue;
+        }
+
+        .top-box {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: aliceblue;
+        }
+
+        .top-box .title {
+            display: flex;
+
+        }
+
+        .search-box .search {
+            margin-left: 10px;
+            position: relative;
+        }
+
+        .top-box .search-box {
+            display: flex;
+            align-items: center;
+
+        }
+
+        .search-box input {
+            width: 200px;
+            height: 38px;
+            border-radius: 10px;
+            padding-left: 10px;
+            border: 0;
+            outline: none;
+
+
+        }
+
+        .search-list {
+            position: absolute;
+            top: 38px;
+            right: 0px;
+            width: 200px;
+            height: 200px;
+            background-color: aliceblue;
+            overflow: auto;
+            border-radius: 10px;
+            display: none;
+        }
+
+        .search-list li {
+
+            padding-left: 10px;
+            line-height: 30px;
+            height: 30px;
+            cursor: pointer;
+            color: #333;
+            font-size: 14px;
+        }
+
+        .show {
+            display: block;
+        }
+
+        .weather-box {
+            width: 100%;
+            height: 80%;
+            display: flex;
+            align-items: center;
+            color: aliceblue;
+        }
+
+        .tem-box {
+            margin-right: 50px;
+        }
+
+        .tem-box .temp {
+            font-size: 50px;
+        }
+
+        .climate-box {
+            display: flex;
+            align-items: center;
+        }
+
+        .climate-box .air {
+            margin-right: 20px;
+            width: 45px;
+            height: 40px;
+            background-color: #009688;
+            border-radius: 20px;
+            text-align: center;
+            line-height: 40px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .climate-box ul {
+            display: flex;
+        }
+
+        .climate-box ul li {
+            margin-right: 20px;
+
+
+        }
+
+        .climate-box ul li img {
+            width: 50px;
+            height: 50px;
+            vertical-align: middle;
+        }
+
+        .climate-box ul li:not(:first-child) {
+            line-height: 45px;
+        }
+
+        .today-weather {
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            display: flex;
+
+        }
+
+        .today-weather .range {
+            margin-right: 20px;
+        }
+
+        .today-weather .range-box span {
+            color: aliceblue;
+        }
+
+        .today-weather ul {
+            display: flex;
+        }
+
+        .today-weather ul li {
+            color: aliceblue;
+            margin-right: 20px;
+        }
+
+        .week-weather-box {
+            margin: 50px;
+            padding: 50px 30px;
+            background-color: whitesmoke;
+            border-radius: 20px;
+            color: #333;
+        }
+
+        .week-weather-box p {
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .week-wrap {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .week-wrap .item {
+            display: flex;
+            flex-direction: column;
+            align-items: center
+        }
+
+        .week-wrap .item .date-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center
+        }
+
+        .week-wrap .item .date-box .date {
+            font-size: 14px;
+            color: #999;
+        }
+
+        .week-wrap .item .temp {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .week-wrap .item .wind {
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+    <script src="myAxios.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="top-box">
+            <div class="title">
+                <span class="dateShort"></span>
+                <span class="calendar">
+                    <span class="datalunar">&nbsp; &nbsp;农历&nbsp;</span></span>
+            </div>
+            <div class="search-box">
+                <div class="location">
+                    <!-- <img src="img/location.png" alt=""> -->
+                    <span class="area"></span>
+                </div>
+                <div class="search">
+                    <input type="text" id="searchCity" placeholder="搜索城市">
+                    <ul class="search-list"></ul>
+                </div>
+
+            </div>
+        </div>
+        <div class="weather-box">
+            <div class="tem-box">
+                <span class="temp"></span>
+            </div>
+            <div class="climate-box">
+                <div class="air">
+                    <span class="psPm25"></span>
+                    <span class="psPm25Level"></span>
+                </div>
+                <ul>
+                    <li>
+                        <img src="" alt="" class="weatherImg">
+                        <span class="weather"></span>
+                    </li>
+                    <li class="windDirection"></li>
+                    <li class="windPower"></li>
+                </ul>
+            </div>
+        </div>
+        <div class="today-weather">
+            <div class="range-box">
+                <span>今天:</span>
+                <span class="range">
+                    <span class="weather"></span>
+                    <span class="temNight"></span>
+                    <span>-</span>
+                    <span class="temDay"></span>
+                    <span>℃</span>
+                </span>
+            </div>
+            <ul class="sun-list">
+                <li>
+                    <span>紫外线</span>
+                    <span class="ultraviolet"></span>
+                </li>
+                <li>
+                    <span>湿度</span>
+                    <span class="humidity"></span>
+                </li>
+                <li>
+                    <span>日出</span>
+                    <span class="sunriseTime"></span>
+                </li>
+                <li>
+                    <span>日落</span>
+                    <span class="sunsetTime"></span>
+                </li>
+            </ul>
+        </div>
+        <div class="week-weather-box">
+            <p>七日内天气预报</p>
+            <ul class="week-wrap">
+                <li class="item">
+                    <div class="date-box">
+                        <span class="dateFormat"></span>
+                        <span class="date"></span>
+                    </div>
+                    <img src="" class="weatherImg">
+                    <span class="weather"></span>
+                    <div class="temp">
+                        <span class="temNight"></span>&nbsp; &nbsp;-
+                        <span class="temDay"></span>
+                        <span>℃</span>
+                    </div>
+                    <div class="wind">
+                        <span class="windDirection"></span>
+                        <span class="windPower">&lt;</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+
+    </div>
+    <script>
+        // 1. 定义 getWeather 函数，渲染城市天气预报 接收城市编码作为参数
+        function getWeather(cityCode) {
+            myAxios({
+                url: 'http://hmajax.itheima.net/api/weather',
+                params: {
+                    city: cityCode
+                }
+            }).then(res => {
+                console.log(res);
+                const { area, date, dateShort, calendar, dateLunar, dayForecast, psPm25, psPm25Level, temperature, todayWeather, weather, weatherImg, windDirection, windPower } = res.data;
+                const { ultraviolet, humidity, sunriseTime, sunsetTime, temDay, temNight } = todayWeather;
+
+                const dataStr = `<span class="dateShort">${date}</span>
+                <span class="calendar">&nbsp;&nbsp;农历 &nbsp;<span class="datalunar">${dateLunar}</span></span>
+                `;
+                document.querySelector('.title').innerHTML = dataStr;
+                document.querySelector('.area').innerHTML = area;
+
+                const nowTemp = `<div class="tem-box">
+                <span class="temp">${temperature}</span><span>℃</span>
+            </div>
+            <div class="climate-box">
+                <div class="air">
+                    <span class="psPm25">${psPm25}</span>
+                    <span class="psPm25Level">${psPm25Level}</span>
+                </div>
+                <ul>
+                    <li>
+                        <img src=${weatherImg} alt="" class="weatherImg">
+                        <span class="weather">${weather}</span>
+                    </li>
+                    <li class="windDirection">${windDirection}</li>
+                    <li class="windPower">${windPower}</li>
+                </ul>
+            </div>`;
+                document.querySelector('.weather-box').innerHTML = nowTemp;
+                const todayWtSr = `<div class="range-box">
+                <span>今天:</span>
+                <span class="range">
+                    <span class="weather">${todayWeather.weather}</span>
+                    <span class="temNight">${temNight}</span>
+                    <span>-</span>
+                    <span class="temDay">${temDay}</span>
+                    <span>℃</span>
+                </span>
+            </div>
+            <ul class="sun-list">
+                <li>
+                    <span>紫外线</span>
+                    <span class="ultraviolet">${ultraviolet}</span>
+                </li>
+                <li>
+                    <span>湿度</span>
+                    <span class="humidity">${humidity}</span>
+                </li>
+                <li>
+                    <span>日出</span>
+                    <span class="sunriseTime">${sunriseTime}</span>
+                </li>
+                <li>
+                    <span>日落</span>
+                    <span class="sunsetTime">${sunsetTime}</span>
+                </li>
+            </ul>`;
+                document.querySelector('.today-weather').innerHTML = todayWtSr;
+                const dayForecastStr = dayForecast.map(item => {
+                    return `
+                <li class="item">
+                    <div class="date-box">
+                        <span class="dateFormat">${item.dateFormat}</span>
+                        <span class="date">${item.date}</span>
+                    </div>
+                    <img src="${item.weatherImg}" class="weatherImg">
+                    <span class="weather">${item.weather}</span>
+                    <div class="temp">
+                        <span class="temNight">${item.temNight}</span>-
+                        <span class="temDay">${item.temDay}</span>
+                        <span>℃</span>
+                    </div>
+                    <div class="wind">
+                        <span class="windDirection">${item.windDirection}</span>
+                        <span class="windPower">${item.windPower}</span>
+                    </div>
+                </li>`;
+                }).join('');
+                document.querySelector('.week-wrap').innerHTML = dayForecastStr;
+            });
+        }
+        // 默认打开网页就显示北京市天气预报 
+        getWeather('110100');
+        document.querySelector('#searchCity').addEventListener('input', function (e) {
+            console.log(e.target.value);
+            myAxios({
+                url: 'http://hmajax.itheima.net/api/weather/city',
+                params: {
+                    city: e.target.value
+                }
+            }).then(res => {
+                console.log(res);
+                // 显示搜索列表
+                document.querySelector('.search-list').classList.add('show');
+                const cityList = res.data.map(item => {
+                    return `<li class="city-item" data-code="${item.code}">${item.name}</li>`;
+                }).join('');
+                document.querySelector('.search-list').innerHTML = cityList;
+            });
+        });
+        // 点击搜索列表中的城市，获取该城市的天气信息
+        // 事件委托 
+        document.querySelector('.search-list').addEventListener('click', e => {
+            if (e.target.tagName === 'LI') {
+                const cityCode = e.target.dataset.code;
+                getWeather(cityCode);
+                // 隐藏搜索列表
+                document.querySelector('.search-list').classList.remove('show');
+                document.querySelector('#searchCity').value = e.target.innerHTML;
+            }
+        })
+
+
+    </script>
+</body>
+
+</html>

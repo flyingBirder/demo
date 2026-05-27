@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--记住用户名的案例： 如果勾选记住用户名，下次用户打开浏览器时，就在文本框中显示上次登录的用户名 -->
+    <!-- 分析：
+    1.将数据存储起来，用到本地存储
+    2.关闭页面也可以显示用户名，用到localStorage
+    3.打开页面时，先判断是否有用户名，如果有，就将用户名显示在文本框中，同时勾选记住用户名复选框
+    
+    -->
+    <input type="text" id="uname">
+    <input type="checkbox" id="remember">
+    <label for="remember">记住用户名</label>
+    <script>
+        var uname = document.querySelector('#uname');
+        var remember = document.querySelector('#remember');
+        // 2.打开页面时，先判断是否有用户名，如果有，就将用户名显示在文本框中，同时勾选记住用户名复选框
+        if(localStorage.getItem('uname')){
+            uname.value = localStorage.getItem('uname');
+            remember.checked = true;
+        }
+        // 3.如果勾选了记住用户名复选框，就将用户名存储到本地存储中
+        // 如果取消勾选，就从本地存储中删除用户名
+        remember.addEventListener('change',function(){
+            if(remember.checked){
+                localStorage.setItem('uname',uname.value);
+            }else{
+                localStorage.removeItem('uname');
+            }
+        });
+        
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>盒子模型计算尺寸</title>
+    <style>
+        div{
+            /* 如何想要实现版心居中效果，盒子必须要设置宽度width */
+            /* 然后设置外边距margin: 0 auto; */
+            /* 因为浏览器会自动计算浏览器视口的宽度减去盒子宽度除以2就是盒子的外边距，所以盒子就会居中显示 */
+            margin: 0 auto;
+            width: 200px;
+            height: 200px;
+            background:paleturquoise;
+            padding: 20px;
+
+            /* 盒子模型计算尺寸: border-box ,设置该属性后padding值和border值会包含在width和height内，不会撑大盒子。 */
+           
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        我是一个div
+    </div>
+    
+</body>
+</html>

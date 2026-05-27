@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>密码框验证信息</title>
+    <style>
+        .box{
+            margin: 100px auto;
+            width: 400px;
+        }
+        .msg{
+            color: #999;
+             /* 添加背景图片
+            background-image: url(./images/msg.png);
+            background-repeat: no-repeat;
+            background-position: left center; */
+        }
+        .msg-success{
+            color: #0f0;
+            /* 添加成功的背景图片
+           background-image: url(./images/msg-success.png); */
+        }
+        .msg-wrong{
+            color: #f00;
+            /* 添加失败的背景图片
+           background-image: url(./images/msg-wrong.png); */
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <label for="pwd">密码：</label>
+        <input type="password" id="pwd">
+        <span class="msg">请输入6-12位密码</span>
+    </div>
+
+    <script>
+        // 1. 获取元素
+        const pwd = document.querySelector('#pwd');
+        const msg = document.querySelector('.msg');
+
+        // 2. 绑定事件 失去焦点时验证密码位数是否在6-12位之间
+        pwd.onblur = function(){
+            // 2.2 验证密码位数是否在6-12位之间
+            if(this.value.trim().length < 6 || this.value.trim().length > 12){
+                msg.innerHTML = '输入位数必须在6-12位之间';
+                msg.className = 'msg msg-wrong';
+            }
+            else{
+                msg.innerHTML = '输入位数符合要求';
+                msg.className = 'msg msg-success';
+            }
+        }
+    </script>
+
+    
+</body>
+</html>

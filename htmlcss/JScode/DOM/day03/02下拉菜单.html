@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul{
+            list-style: none;
+        }
+        li{
+            position: relative;
+            width: 100px;
+            height: 30px;
+        }
+        .nav li ul{
+            position: absolute;
+            top: 100%;
+            left: 0;
+            display: none;
+        }
+        
+    </style>
+</head>
+<body>
+    <ul class="nav">
+        <li>
+            <a href="#">111</a>
+            <ul>
+                <li>111</li>
+                <li>111</li>
+                <li>111</li>
+                <li>111</li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">222</a>
+            <ul>
+                <li>222</li>
+                <li>222</li>
+                <li>222</li>
+                <li>222</li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">333</a>
+            <ul>
+                <li>333</li>
+                <li>333</li>
+                <li>333</li>
+                <li>333</li>
+            </ul>
+        </li>
+    </ul>
+    <script>
+        // 获取导航栏元素和所有li元素
+        var nav = document.querySelector('.nav');
+        var lis = nav.children;
+        console.log(lis);
+        // 遍历每个li元素
+        for(var i = 0;i<lis.length;i++){
+            // 鼠标移入时，显示下拉菜单，背景颜色变红
+            lis[i].mouseover = function(){
+                this.children[1].style.display = 'block';
+                this.children[0].style.backgroundColor = 'red';
+            }
+            // 鼠标移出时，隐藏下拉菜单，背景颜色透明
+            lis[i].mouseout = function(){
+                this.children[1].style.display = 'none';
+                this.children[0].style.backgroundColor = 'transparent';
+            }
+
+        }
+    </script>
+    
+</body>
+</html>

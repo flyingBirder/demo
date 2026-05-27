@@ -1,0 +1,51 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    margin: 100px auto;
+    position: relative;
+    width: 500px;
+    height: 100%;
+}
+
+.alert {
+    position: absolute;
+    top: -70px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 500px;
+    opacity: 0;
+    transition: all 0.5s;
+}
+
+.show {
+    display: block;
+}
+
+.alert.show {
+    opacity: 1;
+}
+
+.form_wrap {
+    width: 500px;
+    background-color: white;
+}
+
+.form_wrap h3 {
+    text-align: center;
+}
+
+.form_wrap .item {
+    margin-bottom: 10px;
+}
+
+.form_wrap .item input {
+    width: 100%;
+}
+
+.form_wrap .item button {
+    width: 100%;
+}

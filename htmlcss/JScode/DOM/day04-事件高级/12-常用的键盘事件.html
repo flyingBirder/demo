@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 常用的键盘事件 -->
+    <script>
+        // 1. 键盘事件：当用户在键盘上按下或释放键时触发
+        // 2. 常用的键盘事件：keydown、keyup、keypress
+        // 3. 事件对象：event.key 可以获取按下的键值
+        // 4. 注意事项：keydown 和 keyup 事件会触发所有键，包括功能键和修饰键
+        // 5. 注意事项：keypress 事件只触发字符键，不包括功能键和修饰键（如 Shift、Ctrl、Alt 等）
+        // 6. 注意事项：keydown 和 keypress 事件在按下键时触发，keyup 事件在释放键时触发
+        // 7. 注意事项：keydown 和 keyup 事件可以用于监听特殊键（如 Shift、Ctrl、Alt 等）的按下和释放
+        // 8. 执行顺序：keydown -> keypress -> keyup
+        document.addEventListener('keydown', function (event) {
+            console.log('keydown 事件触发，按下的键值为：' + event.key);
+        });
+        document.addEventListener('keyup', function (event) {
+            console.log('keyup 事件触发，释放的键值为：' + event.key);
+        });
+        document.addEventListener('keypress', function (event) {
+            console.log('keypress 事件触发，按下的键值为：' + event.key);
+        });
+    </script>
+</body>
+</html>

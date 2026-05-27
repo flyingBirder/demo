@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>行内元素的垂直内外边距问题</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        span{
+            /* 行内元素的垂直内外边距问题：
+            1. 垂直方向的内外边距会失效
+            2. 水平方向的内外边距是有效的 */
+            /* 解决方法：
+            给行内元素设置行高line-height，就可以解决垂直方向的内外边距失效问题
+            */
+            margin: 20px;
+            padding: 20px;
+            line-height: 100px;
+        }
+        .box1{
+            
+            background: #0069c2;
+        }
+        .box2{
+            
+            background: #006699;
+        }
+    </style>
+</head>
+<body>
+    <span class="box1">span111</span>
+    <span class="box2">span222</span>
+    
+</body>
+</html>

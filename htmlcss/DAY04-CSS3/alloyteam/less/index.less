@@ -1,0 +1,94 @@
+//out: ../css/
+@import './base.less';
+
+//navbar
+.bg-body-tertiary{
+    background-color: pink!important;
+
+}
+.container .navbar-brand img{
+    width: 200px;
+    height: 39px;
+}
+.navbar-collapse{
+    flex-grow: 0;
+}
+//carousel
+.carousel{
+    @media (max-width: 768px){
+        .carousel-item {
+
+            height: 250px;
+
+        }
+    }
+    @media (min-width: 768px){
+        .carousel-item {
+
+            height: 400px;
+
+        }
+    
+    }
+    @media (min-width: 992px){
+        .carousel-item {
+
+            height: 500px;
+
+        }
+    }
+    .carousel-item {
+        background-size: cover;
+        background-position: center 0;
+    
+    }
+    .carousel-item:nth-child(1){
+        background-image: url(http://cdn.alloyteam.com/assets/img/banner_1-ec70a4.jpg);
+    }
+    .carousel-item:nth-child(2){
+        background-image: url(http://cdn.alloyteam.com/assets/img/banner_0-c9e792.jpg);
+    }
+    .carousel-item:nth-child(3){
+        background-image: url(http://cdn.alloyteam.com/assets/img/banner_tweb2019-47723f.png);
+    }
+    .carousel-item:nth-child(4){
+        background-image: url(http://cdn.alloyteam.com/assets/img/banner_2-37b0e7.jpg);
+    }
+
+}
+//project 删格共12份
+//视口宽度大于992px，项目内容显示为4列 col-lg-3,3代表的是每列宽度为3份
+//视口宽度大于768px，项目内容显示为2列 col-md-6，6代表的是每列宽度为6份
+
+
+.project{
+    margin-top: 60px;
+    text-align: center;
+    .row{
+        div{
+            height: 200px;
+            margin-bottom: 10px;
+            a{
+                height: 200px;
+                display: block;
+                border-radius: 4px;
+
+            }
+
+            // &：表示不会产生层级关系，直接选中当前元素div
+            &:nth-child(1) a{
+                background-color: rgb(112, 195, 255) !important;
+            }
+            &:nth-child(2) a{
+                background-color: rgb(253, 106, 127) !important;
+        ;
+            }
+            &:nth-child(3) a{
+                background-color: rgb(127, 142, 160) !important;
+            }
+            &:nth-child(4) a{
+                background-color: rgb(137, 208, 79) !important;
+            }
+        }
+    }
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+      // 匿名函数：1.函数表达式：必须先声明后调用
+      let fn = function(x,y){
+        console.log(x);
+      }
+      fn(2,3);
+   */
+
+    /*  // 具名函数的调用可以写在任何位置
+     function fun(){
+       console.log('hello world');
+     }
+     fun(); */
+
+    // 2.立即执行函数:必须加分号
+    /*   (function () {
+        let num = 20;
+      })();
+      (function () {
+        let num = 10;
+      })();
+  
+      (function (x, y) {// 形参
+        console.log(x + y);
+      })(3, 2);// 实参
+  
+   */
+
+    // 立即执行函数的第二种写法: (function(){}());
+    (function (x, y) {
+      console.log(x + y);
+    }(3, 4));
+
+    /*  (function(window,document){
+       
+ 
+     })(window,document); */
+
+  </script>
+
+
+</body>
+
+</html>

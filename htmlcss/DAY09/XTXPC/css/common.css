@@ -1,0 +1,261 @@
+/* 快捷导航和底部公共样式 */
+/* 版心居中 */
+.wrapper{
+    width: 1240px;
+    margin: 0 auto;
+}
+
+/* 快捷导航：通栏>版心wrapper>导航ul */
+.shortcut{
+    height: 52px;
+    background-color: #333;
+}
+.shortcut .wrapper{
+    display: flex;
+    justify-content: end;
+    height: 52px;
+}
+.shortcut ul{
+    display: flex;
+    /* 设置垂直方向居中，也可以使用align-items属性 */
+    line-height: 52px;
+
+}
+.shortcut ul li a{
+    padding: 0 15px;
+    border-right: 1px solid #999;
+    font-size: 14px;
+    color: #fff;
+}
+/* 最后一个li没有边框 */
+/* .shortcut ul li:last-child a{
+    border-right: 0;
+} */
+.shortcut ul li:nth-child(7) a{
+    border-right: none;
+}
+.shortcut ul li a span.iconfont{
+    margin-right: 4px;
+    /* 设置文字和图片垂直居中对齐，不再是基线对齐 */
+    vertical-align: middle;
+
+}
+.shortcut li:first-child a{
+    color:#5e869c;
+} 
+
+/* 底部公共样式 */
+
+.header{
+    display: flex;
+    height: 88px;
+    /* background-color: pink; */
+    margin: 22px auto;
+}
+.header .logo{
+    margin-right: 40px;
+    width: 200px;
+    height: 88px;
+}
+.header .logo a{
+    /* 行内元素转显示模式为块级元素,宽高生效 */
+    display: block;
+    width: 200px;
+    height: 88px;
+    background-image: url(../images/logo.jpeg);
+    font-size: 0;
+}
+/* 导航.nav */
+.header .nav{
+    margin-top: 33px;
+    margin-right: 28px;
+
+}
+.header .nav ul{
+    display: flex;
+}
+.header .nav ul li{
+    margin-right: 40px;
+
+}
+.header .nav ul li a{
+
+    padding-bottom: 10px;
+}
+.header .nav ul li a:hover{
+    border-bottom: 1px solid #5eb69c;
+    color: #5eb69c;
+}
+.header .search{
+    display: flex;
+    margin-top: 27px;
+    margin-right: 45px;;
+    width: 170px;
+    height: 34px;
+    line-height: 34px;
+    border-bottom:1px solid #f4f4f4;
+
+}
+.header .search .iconfont{
+    margin-right: 8px;
+    font-size: 16px;
+    color: #ccc;
+    cursor: pointer;
+}
+.header .search input{
+    /* 浏览器优先生效input标签默认宽度，所以flex:1不生效。解决办法：重置宽度为0 */
+    flex: 1;
+    width: 0;
+    border: 0;
+    
+   
+}
+.search input::placeholder{
+    font-size: 16px;
+    color:#ccc;
+}
+/* 购物车.cart */
+.header .cart{
+    position: relative;
+    margin-top: 32px;
+    font-size: 24px;
+
+}
+.header .cart i{
+    /* display: block; */
+    font-style: normal;
+    position: absolute;
+    /* right定位右对齐，如果数字增大会下向左对齐这不是我们想要的效果； */
+    /* left定位左对齐，数字变大会向右撑大符合预期。 */
+    left: 8px;
+    top: 1px;
+    background-color:#e26237;
+    border-radius: 8px;
+    font-size: 14px;
+    color:#eeeeee;
+    line-height: 15px;
+    padding: 0 5px;
+}
+
+
+
+
+/* 底部footer */
+.footer{
+    height: 580px;
+    background-color: #f4f4f4;
+}
+/* 服务service */
+.footer .service{
+    padding: 60px auto;
+    height: 178px;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.footer .service ul{
+    height: 178px;
+    display: flex;
+    /* 主轴对齐方式 */
+    justify-content: space-evenly;
+    align-items: center;
+}
+.footer .service ul li{
+    display: flex;
+    width: 190px;
+    height: 58px;
+
+}
+
+
+.footer .service ul li h5{
+    margin-right: 20px;
+    width: 58px;
+    height: 58px;
+    background-image: url(../images//sprite.png);
+}
+.footer .service ul li:nth-child(1) h5{
+    background-position: -31px -38px;
+    
+}
+.footer .service ul li:nth-child(2) h5{
+    background-position: -100px -38px;
+}
+.footer .service ul li:nth-child(3) h5{
+    background-position: -166px -38px;
+}
+.footer .service ul li:nth-child(4) h5{
+    background-position: -166px -101px;
+}
+.footer .service ul li p{
+    line-height: 58px;
+    font-size: 28px;
+    color: #333;
+}
+
+
+
+
+
+
+
+/* .help .left 帮助中心 */
+.footer .help{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 60px;
+    height: 300px;
+}
+
+.help .left{
+    display: flex;
+}
+.help .left dl{
+    margin-right: 84px;
+}
+.help .left dl:last-child{
+    margin-right: 0;
+}
+.help .left dl dt{
+    margin-bottom: 30px;
+    font-size: 18px;
+
+}
+.help .left dl dd{
+    margin-bottom: 10px;
+}
+.help .left dl dd a{
+    color:#969696;
+}
+.help .left dl dd span.iconfont{
+    color:#5eb69c;
+}
+/* .help .right */
+.help .right ul{
+    display: flex;
+}
+.help .right ul li:first-child{
+    margin-right: 24px;
+}
+.help .right .pic{
+    width: 120px;
+    height: 120px;
+}
+.help .right p{
+    color: #969696;
+    text-align: center;
+    margin-top: 3px;
+}
+/* 版权copyright */
+.footer .copyright{
+    text-align: center;
+}
+.footer .copyright p{
+    margin-bottom: 14px;
+    color: #a1a1a1;
+}
+.footer .copyright a{
+    color: #5eb69c;
+}
+.footer .copyright p:first-child a{
+    color: #a1a1a1;
+}

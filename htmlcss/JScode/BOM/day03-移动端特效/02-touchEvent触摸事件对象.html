@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            div{
+                width: 100px;
+                height: 100px;
+                background-color: pink;
+            }
+        </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        var div  = document.querySelector('div');
+        // 1.监听touchstart事件:当用户触摸到屏幕时触发；
+        div.addEventListener('touchstart',function(e){
+            // console.log(e);
+            // e.touches 表示当前屏幕上所有的触摸点，正在触摸当前屏幕的所有手指的一个列表
+            // e.targetTouches 表示正在触摸当前dom元素上的手指的一个列表,我们最常用的是e.targetTouches[0]
+            // e.changedTouches 表示当前事件中发生变化的触摸点，手指状态发生了改变的列表
+        });
+        // 2.监听touchmove事件:当用户在屏幕上滑动时触发；
+        div.addEventListener('touchmove',function(e){
+            // e 表示触摸事件对象
+            // console.log(e);
+
+        });
+        // 3.监听touchend事件:当用户从屏幕上移除触摸点时触发；
+        div.addEventListener('touchend',function(e){
+            console.log(e);// 当手指离开屏幕的时候，就没有了touches和touchmove，只有e.changedTouches列表中会有数据
+
+        });
+    </script>
+
+    
+</body>
+</html>

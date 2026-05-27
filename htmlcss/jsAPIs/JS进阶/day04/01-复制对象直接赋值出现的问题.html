@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        /* 开发中经常需要复制一个对象，但是直接赋值会导致两个对象指向同一个内存地址，修改其中一个对象，另一个对象也会被修改 */
+        const obj = {
+            name: '张三',
+            age: 18,
+            sex: '男'
+        }
+        const obj1 = obj
+        obj1.name = '李四'
+        console.log(obj1);// {name: '李四', age: 18, sex: '男'}
+        console.log(obj);// {name: '李四', age: 18, sex: '男'}
+        // 
+    </script>
+</body>
+
+</html>
